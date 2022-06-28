@@ -1,0 +1,88 @@
+{% if product.compare_at_price_max > product.price %}
+
+<div class="d-flex align-center">
+  <p class="ribbon-bestseller">Best Seller</p>
+</div>
+
+{% else %}
+<div style="content: ''; height: 31px;"></div>
+{% endif %}
+
+<a href="{{ product.url }}">
+  <div class="relative">
+    <img alt="{{ product.title }}" src="{{ product.featured_image | img_url: 'master' }}"
+    loading="lazy"
+    style="width: 100%;">
+    
+
+    {% if product.title contains '64 Bit' %}
+    <div class="absolute box-border"
+         style="width: 110px; background: #29C27F;
+         border-radius: 2px; padding: 6px 2px;
+         bottom: 20px; right: 0;">
+      <p class="sm-font white-font text-center" style="font-weight: 500;">6 left in stock!</p>
+    </div>
+
+    {% elsif product.title contains 'Microsoft Office 2016 Home' %}
+
+    <div class="absolute box-border"
+         style="width: 110px; background: #29C27F;
+         border-radius: 2px; padding: 6px 2px;
+         bottom: 20px; right: 0;">
+      <p class="sm-font white-font text-center" style="font-weight: 500;">5 left in stock!</p>
+    </div>
+    
+    
+
+    {% elsif product.title == 'Microsoft Word 2019 For Mac' %}
+
+    <div class="absolute box-border"
+         style="width: 110px; background: #29C27F;
+         border-radius: 2px; padding: 6px 2px;
+         bottom: 20px; right: 0;">
+      <p class="sm-font white-font text-center" style="font-weight: 500;">2 left in stock!</p>
+    </div>
+
+    {% endif %}
+
+    {% if product.title contains 'Microsoft Office 2019 Home And Student' %}
+    <div class="absolute box-border"
+         style="width: 110px; background: #29C27F;
+         border-radius: 2px; padding: 6px 2px;
+         bottom: 20px; right: 0;">
+      <p class="sm-font white-font text-center" style="font-weight: 500;">3 left in stock!</p>
+    </div>
+
+    {% elsif product.title contains 'Mac Office 2011 Home And Student' %}
+
+    <div class="absolute box-border"
+         style="width: 110px; background: #29C27F;
+         border-radius: 2px; padding: 6px 2px;
+         bottom: 20px; right: 0;">
+      <p class="sm-font white-font text-center" style="font-weight: 500;">2 left in stock!</p>
+    </div>
+
+    {% endif %}
+
+</div>
+</a>
+
+<img src="{{ "iconsmsword.png" | asset_img_url: "master" }}" alt="Software" class="iconsmwordsoftware">
+
+<p class="product-grid-title plus-two-font black-font">{{ product.title }}</p>
+
+
+<ul class="d-flex grid-price-flex">
+  <li class="price-margin dark-blue d-flex">
+  <span class="grid-price">{{ product.price | money_with_currency }}</span>
+  </li>
+
+{% if product.compare_at_price_max > product.price %}
+<li class="light-blue grid-compare-price">{{ product.compare_at_price | money_with_currency }}</li>
+{% endif %}
+
+  
+  
+</ul>
+
+

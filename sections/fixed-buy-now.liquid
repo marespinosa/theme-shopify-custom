@@ -1,0 +1,65 @@
+<div class="contain-lg center-block white-bg mobile-only" style="width: 100%; position: fixed; z-index: 2; bottom: 12.4%; border-top: 1px solid #E6EBEF;">
+  <div style="margin-left: 10px; margin-right: 10px;">
+
+    <div class="d-flex space-between align-center" style="padding-top: 8px; padding-bottom: 8px;">
+    <p class="sm-font" style="color: #505D68;">{{ product.title }}</p>
+    <ul>
+      {% if product.compare_at_price != blank %}
+      <li class="smallest-font" style="text-decoration: line-through;"><b>${{ product.compare_at_price | money_with_currency }}</b></li>
+      {% endif %}
+    <li class="smfont dark-blue" style="font-weight: 500;">${{ product.price | money_with_currency }}</li>
+    </ul>
+    </div>
+
+  </div>
+
+  <form action="/cart/add" method="post" enctype="multipart/form-data" data-cart-submit>
+
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+
+          <div class="selector-wrapper js">
+
+            <select
+              id="SingleOptionSelector-{{ forloop.index0 }}"
+              data-single-option-selector
+              data-index="option{{ option.position }}">
+              {% for value in option.values %}
+                <option
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+                    {{ value }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endfor %}
+      {% endunless %}
+
+
+      <select name="id" class="no-js" data-product-select style="display: none;">
+        {% for variant in product.variants %}
+          <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}">
+              {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <input type="hidden" id="Quantity" name="quantity" value="1" min="1">
+
+
+      <button class="pbutton linear-orange add-to-cart"
+        type="submit"
+        name="add" style="width: 100%; height: 64px; padding: 12px 70px;">
+          <span class="uppercase d-flex space-around align-center">
+              {% include 'icon-download' %}{{ 'products.product.add_to_cart' | t }}
+          </span>
+      </button>
+
+    </form>
+
+
+</div>

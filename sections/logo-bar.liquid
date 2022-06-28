@@ -1,0 +1,69 @@
+{% assign ss = section.settings %}
+<section>
+<div class="container-lg center-block">
+<div class="large-margin">
+<h3 id="logo-bar-header">Customers that are growing their business with GetMSOffice</h3>
+<ul class="logo-container d-flex light-grey align-center">
+
+<div class="logo-item-row d-flex space-between align-center">
+
+<li class="logo-item-list">
+  <img class="logo-item" src="{{ 'subaru.png' | asset_img_url: 'master' }}" loading="lazy">
+</li>
+
+<li class="logo-item-list">
+  <img class="logo-item" src="{{ 'paypal.png' | asset_img_url: 'master' }}" loading="lazy">
+</li>
+</div>
+
+<div class="logo-item-row d-flex space-between align-center">
+
+  <li class="logo-item-list">
+    <img class="logo-item" src="{{ 'ibm.png' | asset_img_url: 'master' }}" loading="lazy">
+  </li>
+
+  <li class="logo-item-list">
+    <img class="logo-item" src="{{ 'gsachs.png' | asset_img_url: 'master' }}" loading="lazy">
+  </li>
+
+</div>
+
+<div class="logo-item-row d-flex space-between align-center">
+  <li class="logo-item-list">
+    <img class="logo-item" src="{{ 'geico.png' | asset_img_url: 'master' }}" loading="lazy">
+  </li>
+
+  <li class="logo-item-list">
+    <img class="logo-item" src="{{ 'facebook.png' | asset_img_url: 'master' }}" loading="lazy">
+  </li>
+</div>
+
+<div class="logo-item-row d-flex space-between align-center">
+  <li class="logo-item-list">
+    <img class="logo-item" src="{{ 'bosch.png' | asset_img_url: 'master' }}" loading="lazy">
+  </li>
+<li class="logo-item-list">
+  <img class="logo-item" src="{{ 'mmm.png' | asset_img_url: 'master' }}" loading="lazy">
+</li>
+</div>
+
+</ul>
+</div>
+</div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Logo bar",
+    "settings": [
+
+    ],
+    "presets": [
+        {
+            "name": "Logo bar",
+            "category": "Custom"
+        }
+    ]
+  }
+{% endschema %}

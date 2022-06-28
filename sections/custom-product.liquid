@@ -1,0 +1,357 @@
+<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+<!------##### Successful cart  #####------>
+{% include 'successful-cart' %}
+
+<!-----##### Product info & spec #####----->
+
+<section style="margin-top: -45px;">
+<div class="light-grey" style="height: 405px; position: relative;">
+<div class=" container-lg center-block">
+<div class="large-margin" style="padding-top: 42px;">
+<ul class="d-flex space-between">
+
+<li class="product-info">
+
+<div style="margin-bottom: 25px;">
+  <p class="smallest-font"><a href="/collections">Products</a> > <span class="dark-blue">{{ product.title }}</span></p>
+</div>
+
+<h3 style="line-height: 40px; max-width: 312px; width: 100%;">{{ product.title }}</h3>
+
+<div class="product-price-container d-flex">
+
+<div class="black-font d-flex">
+<span style="font-size: 26px">$</span>
+<h1>{{ product.price | money_without_currency }}</h1>
+</div>
+
+{% if product.compare_at_price != blank %}
+<div class="compare-price">
+<b>${{ product.compare_at_price | money_without_currency }}</b>
+</div>
+{% endif %}
+
+</div>
+
+<div class="variant-checkbox-container">
+
+{{ product.description }}
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" data-cart-submit>
+
+    {% unless product.has_only_default_variant %}
+      {% for option in product.options_with_values %}
+
+        <div class="selector-wrapper js">
+
+          <select
+            id="SingleOptionSelector-{{ forloop.index0 }}"
+            data-single-option-selector
+            data-index="option{{ option.position }}">
+            {% for value in option.values %}
+              <option
+                value="{{ value | escape }}"
+                {% if option.selected_value == value %}selected="selected"{% endif %}>
+                  {{ value }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endfor %}
+    {% endunless %}
+
+
+    <select name="id" class="no-js" data-product-select style="display: none;">
+      {% for variant in product.variants %}
+        <option
+          {% if variant == current_variant %}selected="selected"{% endif %}
+          {% unless variant.available %}disabled="disabled"{% endunless %}
+          value="{{ variant.id }}">
+            {{ variant.title }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <input type="hidden" id="Quantity" name="quantity" value="1" min="1">
+
+    <button class="pbutton linear-orange" id="add-to-cart"
+      type="submit"
+      name="add">
+        <span class="uppercase">
+            {{ 'products.product.add_to_cart' | t }}
+        </span>
+    </button>
+  </form>
+
+</li>
+
+<li class="product-spec">
+<ul class="spec-detail dark-blue">
+<li style="font-size: 20px;">Details:</li>
+</ul>
+
+<div class="pspec-container" style="font-size: 14px; margin-top: 25px; line-height: 40px;">
+{{ product.description }}
+<a href="" class="d-flex align-center">
+<img src="{{ 'blue-chatbox.svg' | asset_url }}" style="margin-right: 10px;">
+<p class="light-blue underline">Have trouble? Chat with us</p>
+</a>
+</div>
+
+</li>
+
+</ul>
+
+<ul class="d-flex space-between align-center" style="width: 25%; margin-top: 8%;">
+  <li>
+    <img class="center-block" src="{{ 'download.svg' | asset_url }}" style="margin-bottom: 16px;">
+    <p class="smallest-font text-center" style="line-height: 14px;">Instant<br/>Download</p>
+  </li>
+  <li>
+    <img class="center-block" src="{{ 'lifetime.svg' | asset_url }}" style="margin-bottom: 16px;">
+    <p class="smallest-font text-center" style="line-height: 14px;">Lifetime<br/>License</p>
+  </li>
+  <li>
+    <img class="center-block" src="{{ 'service.svg' | asset_url }}" style="margin-bottom: 16px;">
+    <p class="smallest-font text-center" style="line-height: 14px;">24/7<br/>Support</p>
+
+</div>
+</div>
+</div>
+
+<img class="product-page-image" alt="{{ product.title }}" src="{{ product.featured_image | img_url: 'master' }}">
+
+</section>
+
+<!-----##### Arrow buttons #####------>
+
+<section class="center-block" style="display: block; width: fit-content; margin-top: 114px; margin-bottom: 40px;">
+<ul class="d-flex" style="margin-bottom: 10px;">
+<li class="dark-blue" style="padding: 13px 18px; background: #C2D1D9;">
+  <div style="transform: rotate(-90deg)">{% include 'icon-dark-blue-arrow' %}</div>
+</li>
+<li class="dark-grey white-font" style="padding: 13px 18px;">
+  <div style="transform: rotate(90deg)">{% include 'icon-white-arrow' %}</div>
+  <li>
+</ul>
+<p class="sm-font text-center">( 1 of 6 )</p>
+
+</section>
+
+<!-----##### Customer reviews #####----->
+
+<div class="container-lg center-block">
+  <div class="large-margin">
+
+    <h3 style="font-size: 36px; margin-bottom: 48px;">What people say about us</h3>
+
+    <div class="d-flex space-between align-center" style="width: 38.7%;">
+      <img src="{{ 'google.png' | asset_img_url: 'x21' }}">
+      <div class="d-flex">
+      <img src="{{ 'yellow-star.svg' | asset_url }}">
+      <p class="black-font"><b>4.2</b></p>
+      </div>
+      <img src="{{ 'reseller-ratings.png' | asset_img_url: 'x21' }}">
+      <div class="d-flex">
+        <img src="{{ 'yellow-star.svg' | asset_url }}">
+        <p class="black-font"><b>8.81</b></p>
+      </div>
+    </div>
+
+    <div class="d-flex space-around" style="margin-top: 62px; margin-bottom: 80px;">
+
+      <div style="flex: 0 0 28%;">
+      <ul class="d-flex space-between align-center" style="margin-bottom: 15px;">
+        {% include 'review-stars' %}
+        <p class="sm-font">4 days ago</p>
+      </ul>
+      <p class="dark-blue">“Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore”</p>
+        <ul class="d-flex space-between align-center" style="margin-top: 10px;">
+          <p class="sm-font">Jhon Due</p>
+          <p class="sm-font">Vancouver, BC</p>
+        </ul>
+      </div>
+
+      <div style="flex: 0 0 28%;">
+      <ul class="d-flex space-between align-center" style="margin-bottom: 15px;">
+        {% include 'review-stars' %}
+        <p class="sm-font">4 days ago</p>
+      </ul>
+      <p class="dark-blue">“Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore”</p>
+        <ul class="d-flex space-between align-center" style="margin-top: 10px;">
+          <p class="sm-font">Jhon Due</p>
+          <p class="sm-font">Vancouver, BC</p>
+        </ul>
+      </div>
+
+      <div style="flex: 0 0 28%;">
+      <ul class="d-flex space-between align-center" style="margin-bottom: 15px;">
+        {% include 'review-stars' %}
+        <p class="sm-font">4 days ago</p>
+      </ul>
+      <p class="dark-blue">“Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore”</p>
+        <ul class="d-flex space-between align-center" style="margin-top: 10px;">
+          <p class="sm-font">Jhon Due</p>
+          <p class="sm-font">Vancouver, BC</p>
+        </ul>
+      </div>
+
+    </div>
+
+</div>
+</div>
+
+<!-----##### Product description #####----->
+
+<section class="light-grey" style="padding-top: 70px; padding-bottom: 45px;">
+<div class="container-lg center-block">
+<div class="large-margin">
+
+<ul class="accordion-tab">
+
+<div id="accordion-opener" class="d-flex space-between align-center" style="margin-bottom: 18px; padding: 0 20px;">
+<h4 class="dark-blue">Description</h4>
+<div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+</div>
+
+<div class="tab-content">
+<div class="description-block-bg" style="background-image: url('{{ 'description-bg.png' | asset_img_url: 'master' }}')">
+<h3 class="white-font">{{ product.title }}</h3>
+</div>
+
+<div class="white-bg description-content-container">
+{{ product.description }}
+</div>
+<div>
+
+</ul>
+
+</div>
+</div>
+</section>
+
+<!----##### Features #####------>
+
+<section class="light-grey" style="padding-bottom: 30px;">
+<div class="container-lg center-block">
+<div class="large-margin">
+
+<ul class="accordion-tab">
+
+<div id="accordion-opener" class="d-flex space-between align-center" style="margin-bottom: 18px; padding: 0 20px;">
+<h4 class="dark-blue">Features</h4>
+<div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+</div>
+
+<div class="tab-content">
+<div class="description-block-bg black-bg" style="background-image: url('https://cdn.shopify.com/s/files/1/0244/3614/6228/files/blue-software.png?5978')">
+</div>
+
+<div class="white-bg feature-container">
+{{ product.description }}
+</div>
+
+<div class="pfeature-app-container">
+{{ product.description }}
+</div>
+</div>
+
+</ul>
+
+</div>
+
+</div>
+</section>
+
+<!-----##### System requirement #####----->
+
+<section class="light-grey" style="padding-bottom: 64px;">
+<div class="container-lg center-block">
+<div class="large-margin">
+
+<ul class="accordion-tab">
+
+<div id="accordion-opener" class="d-flex space-between align-center" style="padding: 0 20px; padding-bottom: 30px">
+<h4 class="dark-blue">System Requirements</h4>
+<div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+</div>
+
+<div class="tab-content">
+
+<div class="d-flex">
+<div class="linear-blue d-flex sr-flex-block">
+<img class="align-center" src="{{ 'system.png' | asset_img_url: 'master' }}">
+</div>
+<div class="white-bg sr-flex-block">
+<div class="sr-flex-content">
+{{ product.description }}
+</div>
+</div>
+</div>
+
+</div>
+
+</ul>
+
+</div>
+</div>
+</section>
+
+
+<!-----##### Why choose softwarekeep #####----->
+
+<section style="margin-top: 55px; margin-bottom: 52px;">
+<div class="container-lg center-block">
+<div class="large-margin">
+<h3>Why choose softwarekeep?</h3>
+<ul class="d-flex space-between" style="margin-top: 45px;">
+
+<li class="why-choose-block" style="background-image: url('https://cdn.shopify.com/s/files/1/0244/3614/6228/files/BBB-Bg.png?4682')">
+<div class="why-choose-content">
+<img alt="Better Business Bureau logo" src="{{ 'bbb.svg' | asset_url }}" style="margin-bottom: 36px;">
+<h3 class="white-font" style="margin-bottom: 28px;">Acreditated<br>Business</h3>
+<a href="" class="bigger-font white-font underline">Read more</a>
+</div>
+</li>
+
+<li class="why-choose-block" style="background-image: url('https://cdn.shopify.com/s/files/1/0244/3614/6228/files/U-Rewards-Bg.png?5985')">
+<div class="why-choose-content">
+<img alt="urewards logo" src="{{ 'u-rewards.png' | asset_img_url: 'master' }}" style="margin-bottom: 41px;">
+<h3 style="margin-bottom: 28px;">The only software<br>company that<br>takes you to Hawaii.</h3>
+<a href="" class="bigger-font dark-blue underline">Read more</a>
+</div>
+</li>
+
+<li class="why-choose-block" style="background-image: url('https://cdn.shopify.com/s/files/1/0244/3614/6228/files/Microsoft-Bg.png?5965')">
+<div class="why-choose-content">
+<h3 class="white-font" style="padding-top: 102px; margin-bottom: 28px;">We are Microsoft<br>Reseller Certified</h3>
+<a href="" class="bigger-font white-font underline">Read more</a>
+</div>
+</li>
+
+</ul>
+</div>
+</div>
+</section>
+
+
+<!-----##### Related product #####------>
+{% include 'related-product' %}
+
+
+<!-----##### Newsletter subscription #####----->
+{% include 'newsletter-subscription' %}
+
+{% unless product == empty %}
+  <script type="application/json" data-product-json>
+    {{ product | json }}
+  </script>
+{% endunless %}
+</div>

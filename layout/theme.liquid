@@ -1,0 +1,144 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+<meta name="google-site-verification" content="FWOhFYX9eikBKanBH23OVB-2nOmBT7K6-T0ELh1CfLA" />
+  <meta @charset "UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {% capture seo_title %}
+    {% if template == 'search' and search.performed == true %}
+      {{ 'general.search.heading' | t: count: search.results_count }}: {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+    {% else %}
+      {{ page_title }}
+    {% endif %}
+    {% if current_tags %}
+      {% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {% endif -%}
+    {% if current_page != 1 %}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {% endif %}
+    {% assign escaped_page_title = page_title | escape %}
+    {% unless escaped_page_title contains shop.name %}
+      &ndash; {{ shop.name }}
+    {% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title | strip }}</title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'social-meta-tags' %}
+
+  {{ 'main.scss.css' | asset_url | stylesheet_tag }}
+  
+  <script>
+    var theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        regularPrice: {{ 'products.product.regular_price' | t | json }},
+        sale: {{ 'products.product.on_sale' | t | json }},
+        showMore: {{ 'general.filters.show_more' | t | json }},
+        showLess: {{ 'general.filters.show_less' | t | json }},
+        addressError: {{ 'sections.map.address_error' | t | json }},
+        addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+        addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+        authError: {{ 'sections.map.auth_error_html' | t | json }},
+        newWindow: {{ 'general.accessibility.link_messages.new_window' | t | json }},
+        external: {{ 'general.accessibility.link_messages.external' | t | json }},
+        newWindowExternal: {{ 'general.accessibility.link_messages.new_window_and_external' | t | json }},
+        quantityMinimumMessage: {{ 'products.product.quantity_minimum_message' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    }
+
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+
+
+  {% if template.directory == 'customers' %}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {% endif %}
+
+  <script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
+  <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'option_selection.js' | asset_url }}"></script>
+  <script src="{{ 'jquery-ui.min.js' | asset_url }}" defer="defer"></script>
+  
+  {% render 'seo.ga4' %}
+
+  {{ content_for_header }}
+</head>
+
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+
+
+  {% section 'header' %}
+
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  {% include 'msoffice-overlay-menu' %}
+
+  {% include 'formac-overlay-menu' %}
+
+  {% include 'app-overlay-menu' %}
+
+  {% include 'windows-overlay-menu' %}
+
+  {% include 'antivirus-overlay-menu' %}
+
+  {% include 'successful-cart' %}
+
+  {% section 'off-canvas-cart' %}
+
+  {% include 'mobile-more-menu' %}
+
+  {% section 'footer' %}
+
+  {% section 'mobile-navigation' %}
+
+    <script src="{{ 'rivets-cart.min.js' | asset_url }}"></script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            CartJS.init({{ cart | json }}, {
+                "moneyFormat": "{{ shop.money_format }}",
+                "moneyWithCurrencyFormat": "{{ shop.money_format }}"
+            });
+        });
+        
+        $(function(){
+          $(document).on('cart.requestComplete', function(event, cart) {
+              $('.off-canvas-menu').css('right', '0px');
+          });
+        });
+    </script>
+
+
+<!--##### NSG Seal #####-->
+  <span id="_GUARANTEE_SealSpan"></span>
+  <script type="text/javascript" src="//nsg.symantec.com/Web/Seal/gjs.aspx?SN=961624719"></script>
+  <script type="text/javascript">
+    _GUARANTEE.Hash = "2BfHQuwq%2BVUTCw%2Fj0JUCWWHtpiGO5GIBd%2Bfyn0QV2diN%2FTQ2q4Ar%2Frs7YD6ai1N5r3IreUx95YDcERQDdMh7FA%3D%3D";
+    _GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");
+  </script>
+<!--##### /NSG Seal #####-->
+  {% include 'marketing-tracking' %}
+  {% include 'adwords' %}
+</body>
+</html>

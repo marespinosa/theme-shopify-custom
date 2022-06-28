@@ -1,0 +1,112 @@
+<section class="large-margin">
+  <div class="extra-margin">
+    <h2 class="text-center" style="color: #1A3665"><b>{{ collection.title }}</b></h2>
+    <br/>
+
+    <div class="text-center" style="max-width: 640px; display: block; margin: 0 auto;">
+      {{ collection.description }}
+      <div class="desktop-only" style="margin-top: 20px;">
+        <p class="plus-two-font">Use promocode
+        <span class="white-font" style="background: #1266CC; font-size: 24px;padding: 12px 25px; margin-left: 10px;"><b>HOMEOFFICE</b></span></p>
+        <p class="smallest-font" style="margin-top: 15px; margin-left: 130px;">active from Apr 15 to Apr 30 only</p>
+      </div>
+
+      <div class="mobile-only">
+        <p class="plus-two-font">Use promocode</p>
+        <p class="white-font" style="background: #1266CC; font-size: 24px;padding: 12px 25px; width: 50%; margin: 0 auto;"><b>HOMEOFFICE</b></p>
+        <p class="smallest-font text-center" style="margin-top: 15px;">active from Apr 15 to Apr 30 only</p>
+      </div>
+    </div>
+
+    <img class="divider-img" src="{{ 'remote_work_divider.png' | asset_img_url: "master" }}">
+
+    <ul class="d-flex space-between flex-wrap essential-flex">
+      {% for product in collection.products %}
+      <li class="relative" style="background: #F2F5F7; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; width: 218px; margin-top: 45px;">
+        <span class="absolute white-font" style="margin-left: auto; font-size: 10px; background: #1A3665; border-radius: 2px; padding: 5px 15px; top: -10px; right: -20px">Remote work essentials</span>
+        <div style="padding: 24px 20px;">
+          <p style="color: #1480C8; font-size: 10px;">Expires in 10 days</p>
+          <p class="plus-two-font font-medium" style="line-height: 25px; height: 100px;">{{ product.title }}</p>
+          <progress class="sb-progress" value="15" max="100"></progress>
+          <p class="font-medium" style="font-size: 10px;">34% sold</p>
+          <ul class="d-flex align-center">
+            <li style="flex: 0 0 45%;">
+              {% if product.compare_at_price != blank %}
+              <span class="white-font" style="background: #FF8300; font-size: 10px; padding: 4px 8px;">Save
+                {% if product.compare_at_price_max > product.price %}{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0'}}%{% endif %}
+              </span>
+              {% endif %}
+              <p class="smallest-font" style="text-decoration: line-through; color: #999999; margin-top: 10px;">{{ product.compare_at_price | money_with_currency}}</p>
+              <p style="width: 135%;"><b>{{ product.price | money_with_currency }}</b></p>
+            </li>
+            <li>
+              <img src="{{ product.featured_image | img_url: "125x125" }}">
+            </li>
+          </ul>
+        </div>
+        <a href="{{ product.selected_or_first_available_variant.url }}"><button class="white-font"
+        style="background: #29C27F; padding: 16px; width: 100%; font-size: 16px; border-radius: 0px 0px 10px 10px;">Buy and download now</button></a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <!--##### promocode banner #####-->
+
+    <ul class="d-flex space-between align-center promo-blue">
+      <li>
+        <h4 class="white-font mobile-txt-center"><b>Ahhhhhmazing Sales for work from home days</b></h4>
+        <p class="plus-two-font white-font mobile-txt-center">Use promocode at checkout for
+          <span class="font-medium" style="color: #FEF200; font-size: 24px;">12% off</span>
+          storewide</p>
+      </li>
+      <li>
+        <div style="background: #FEF200; color: #1A3665; font-size: 24px; padding: 14px 28px; text-align: center;"><b>HOMEOFFCE</b></div>
+        <p class="smallest-font white-font" style="margin-top: 10px;">active from April 15 to April 30 only</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+  <div style="margin-top: 40px;">{% section "best-sellers" %}</div>
+
+<style>
+.extra-margin {
+  margin: 0;
+}
+.divider-img {
+  display: block;
+  margin: -20px auto 0;
+  width: 100%;
+}
+.essential-flex {
+  flex-direction: column;
+  align-items: center;
+}
+.promo-blue {
+  margin-top: 50px;
+  background: #1A3665;
+  padding: 40px;
+  flex-direction: column;
+}
+.mobile-txt-center {
+  text-align: center;
+}
+@media screen and (min-width: 960px){
+  .extra-margin {
+    margin: 0 62px;
+  }
+  .divider-img {
+    margin: -150px auto 0;
+  }
+  .essential-flex {
+    flex-direction: unset;
+  }
+  .promo-blue {
+    padding: 50px 70px;
+    flex-direction: unset;
+  }
+  .mobile-txt-center {
+    text-align: left;
+  }
+}
+</style>

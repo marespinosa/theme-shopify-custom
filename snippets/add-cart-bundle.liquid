@@ -1,0 +1,46 @@
+<label>
+  <input  type="checkbox" value="Add to cart" class="add_to_cart_one"> Add USB Backup for $39.99    
+   </label>
+
+    <p> We'll backup your software onto a USB and send it right to your doorstep.</p>
+ {% unless product.url contains 'mac' %}
+<label><input type="checkbox" value="Add to cart" class="add_to_cart_two" />Add windows 10 Home For $99.99 (45% off MSRP)</label>
+   <p>Upgrade to the latest and best version of Windows</p>
+{% endunless %}
+   
+
+<script>
+
+$(document).on('click','.add_to_cart_one',function(){
+   var id="42668467159259";
+   $.ajax({
+     type: 'POST', 
+     url: '/cart/add.js',
+     dataType: 'json', 
+     data: {id:id,quantity:1},
+     success: function(){
+           location.reload="/cart";
+     }
+     
+  });
+})
+
+</script>
+
+<script>
+
+$(document).on('click','.add_to_cart_two',function(){
+   var id="42671073034459";
+   $.ajax({
+     type: 'POST', 
+     url: '/cart/add.js',
+     dataType: 'json', 
+     data: {id:id,quantity:1},
+     success: function(){
+           location.reload="/cart";
+     }
+  });
+})
+
+</script>
+

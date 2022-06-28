@@ -1,0 +1,75 @@
+<div class="container-lg center-block desktop-only">
+  <div class="large-margin tabdescrp">
+      <div class="tab">
+      <button class="tablinks despbtn" onclick="featuresdescp(event, 'Description')">Description</button>
+      <button class="tablinks" onclick="featuresdescp(event, 'Features')">Features</button>
+      <button class="tablinks" onclick="featuresdescp(event, 'Requirements')">System Requirements</button>
+      </div>
+
+      <div id="Description" class="tabcontent activebtn">
+      <h3>{{ product.title }}</h3>
+      <p>{{ description[1] }}</p>
+      </div>
+
+      <div id="Features" class="tabcontent">
+          <h3>{{ product.title }}</h3>
+      <p>{{ description[2] }}</p> 
+      </div>
+
+      <div id="Requirements" class="tabcontent">
+      <h3>System Requirements</h3>
+      <p>{{ description[3] }}</p>
+      </div>
+ </div>
+</div>
+<div class="slideshow-container mobile-only">
+
+  <div class="descSlides">
+    <div class="titlesidebar"><h3>{{ product.title }}</h3></div>
+    <div class="slidecontentdespt">{{ description[1] }}</div>
+  </div>
+
+  <div class="descSlides">
+    <div class="titlesidebar"><h3>{{ product.title }}</h3></div>
+    <div class="slidecontentdespt">{{ description[2] }}</div>
+  </div>
+
+  <div class="descSlides">
+    <div class="titlesidebar"><h3>System Requirements</h3></div>
+    <div class="slidecontentdespt">{{ description[3] }}</div>
+  </div>
+
+  <a class="prevSlide" onclick="plusSlides(-1)">❮</a>
+  <a class="nextSlide" onclick="plusSlides(1)">❯</a>
+
+</div>
+
+
+<script>
+var slideContent = 1;
+showSlides(slideContent);
+
+function plusSlides(n) {
+  showSlides(slideContent += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideContent = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("descSlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideContent = 1}    
+  if (n < 1) {slideContent = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" activebtn", "");
+  }
+  slides[slideContent-1].style.display = "block";  
+  dots[slideContent-1].className += " activebtn";
+}
+</script>

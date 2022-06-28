@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.1 (72631) - https://sketchapp.com -->
+    <title>Icon_Products</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="69.53125%" x2="100%" y2="30.46875%" id="linearGradient-1">
+            <stop stop-color="#1480C8" offset="0%"></stop>
+            <stop stop-color="#04A3FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Atoms-/-icons-/-Navbar/-Color-/-Products" transform="translate(-2.000000, -2.000000)">
+            <g id="Icon_Products">
+                <rect id="矩形" fill-rule="nonzero" x="0" y="0" width="28" height="28"></rect>
+                <path d="M3.5,19.8333333 L3.5,6.41666667 C3.5,4.80583615 4.80583615,3.5 6.41666667,3.5 L21.5833333,3.5 C23.1941639,3.5 24.5,4.80583615 24.5,6.41666667 L24.5,21.5833333 C24.5,23.1941639 23.1941639,24.5 21.5833333,24.5 L5.83333333,24.5" id="路径" stroke="#042338" stroke-width="2.33333333" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M18.6666667,8.16666667 L18.6666667,9.33333333 C18.6666667,11.8159233 16.5778955,14 14,14 C11.4226712,14 9.33333333,11.813177 9.33333333,9.33333333 L9.33333333,8.16666667" id="路径" stroke="url(#linearGradient-1)" stroke-width="2.33333333" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle id="椭圆形" fill="#6D8FA0" fill-rule="nonzero" cx="14" cy="19.8333333" r="1.16666667"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

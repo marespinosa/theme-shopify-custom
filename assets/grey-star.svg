@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 55.2 (78181) - https://sketchapp.com -->
+    <title>915D7580-2B4B-4DE7-BD61-322F819FA614</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M10,15.27 L14.1510004,17.7753773 C14.6238365,18.0607621 15.238496,17.9088029 15.5238808,17.4359669 C15.6585693,17.2128101 15.7008035,16.9458833 15.6415868,16.6920461 L14.54,11.97 L18.2086056,8.79188563 C18.6260368,8.4302648 18.6712801,7.79871834 18.3096593,7.38128712 C18.1389779,7.18426379 17.8981093,7.06167547 17.6383695,7.03963914 L12.81,6.63 L10.9207179,2.17236998 C10.7052005,1.66387153 10.1182696,1.42636349 9.60977115,1.64188094 C9.37079768,1.74316532 9.18056648,1.93339651 9.0792821,2.17236998 L7.19,6.63 L2.36163046,7.03963914 C1.81132267,7.08632728 1.40305828,7.57028811 1.44974643,8.1205959 C1.47178276,8.38033562 1.59437108,8.62120425 1.7913944,8.79188563 L5.46,11.97 L4.35841315,16.6920461 C4.23294189,17.2298893 4.56723546,17.767612 5.10507876,17.8930833 C5.35891596,17.9523 5.6258428,17.9100658 5.84899958,17.7753773 L10,15.27 Z" id="path-1"></path>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UI-/-Product_Page-/-A" transform="translate(-1045.000000, -967.000000)">
+            <g id="Store-Reviews" transform="translate(150.000000, 875.000000)">
+                <g id="UI-/-Elements-/-Mobile-/-Ratings-Copy-2" transform="translate(780.000000, 60.000000)">
+                    <g id="UI-/-Elements-/-Mobile-/-Ratings">
+                        <g id="Rating" transform="translate(42.000000, 32.000000)">
+                            <g id="#5">
+                                <g transform="translate(74.447060, 0.000000)">
+                                    <g id="Group" transform="translate(-2.023529, -1.166667)">
+                                        <mask id="mask-2" fill="white">
+                                            <use xlink:href="#path-1"></use>
+                                        </mask>
+                                        <use id="Mask" fill-opacity="0.7" fill="#000000" xlink:href="#path-1"></use>
+                                        <g id="↪🎨" mask="url(#mask-2)" fill="#C2D1D9">
+                                            <g transform="translate(-2.000000, -3.000000)" id="Atoms-/-Colors-/-Black">
+                                                <rect x="0" y="0" width="24" height="24"></rect>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

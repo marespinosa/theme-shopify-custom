@@ -1,0 +1,758 @@
+{{ 'compare-office-2019-editions.css' | asset_url | stylesheet_tag }}
+{% assign win10home32  = all_products['microsoft-windows-10-home-edition-32-bit'] %}
+{% assign win10pro32  = all_products['microsoft-windows-10-pro-edition-32-bit'] %}
+{% assign win10ent = all_products['windows-10-enterprise'] %}
+
+<div class="page-compare-office-2019-editions">
+    <div class="bg bg-banners-tabs">
+        <div class="tab-1 tab-content current" data-target="tab-1">
+            {{ 'banner-home.png' | asset_url | img_tag }}
+        </div>
+        <div class="tab-2 tab-content" data-target="tab-2">
+            {{ 'banner-professional.png' | asset_url | img_tag }}
+        </div>
+        <div class="tab-3 tab-content" data-target="tab-3">
+            {{ 'banner-enterprise.png' | asset_url | img_tag }}
+        </div>
+    </div>
+    <div class="container-tabs">
+        <div class="tab-1 tab-content current" data-target="tab-1">
+            <h2>Microsoft Windows 10 Home</h2>
+        </div>
+        <div class="tab-2 tab-content" data-target="tab-2">
+            <h2>Microsoft Windows 10 Professional</h2>
+        </div>
+        <div class="tab-3 tab-content" data-target="tab-3">
+            <h2>Microsoft Windows 10 Enterprise</h2>
+        </div>
+        <span>Choose your Edition</span>
+        <ul class="tabs">
+            <li class="tab-link current" data-target="tab-1">Home</li>
+            <li class="tab-link" data-target="tab-2">Professionial</li>
+            <li class="tab-link" data-target="tab-3">Enterprise</li>
+        </ul>
+    </div>
+    <div class="tab-1 tab-content current" data-target="tab-1">
+        <div class="bg bg-texts-works">
+            <div class="content">
+                <p>A successful fusion of Windows' greatest traits with new capabilities, enhanced security, and touch-friendly functionality.</p>
+            </div>
+        </div>
+        <div class="bg bg-box-info-product">
+            <div class="content">
+                <div class="actions-info-product">
+                    <div class="price-info-product">
+                        <div class="pc-prices current">
+                            <span class="prices">
+                                <span class="retail-price">Retail Price:</span>
+                                <span class="old-price">{{ win10home32.compare_at_price | money }}</span>
+                                {% assign discount = 0.0 %}
+                                {% assign discount = win10home32.compare_at_price | minus: win10home32.price | times: 100.0 | divided_by: win10home32.compare_at_price | round %}
+                                <span class="tag-discount">Save {{ discount }}%</span>
+                            </span>
+                            <strong>{{ win10home32.price | money }}</strong>
+                            <a href="/products/{{ win10home32.handle }}">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-actions-products">
+                    <div class="lists">
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-device.svg' | file_url }}" alt="icon" />For 1 Device</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" alt="icon" />Buy now use forever</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" alt="icon" />24/7 support at no extra cost</li>
+                        </ul>
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-delivery.svg' | file_url }}" alt="icon" />Delivery Via Email</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" alt="icon" />Digital download</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" alt="icon" />Genuine Return Policy</li>
+                        </ul>
+                    </div>
+                    <div class="seals-info-product">
+                        <img src="{{ 'page-compare-office-2019-editions_seals.png' | file_url }}" alt="seals" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-features">
+            <h3>Main Features</h3>
+            <p>Windows 10 is the best way to get a stable, easy-to use and stylish operating system for your computer. The new features allow you maximize all that's inside while also taking full advantage!</p>
+            <ul>
+                <li>
+                    <div class="img">
+                      	{{ 'icon-powe.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Powerful Start Menu</h4>
+                    <p>Windows 10 brings back the Start Menu, a much-loved feature that provides users with easy access and quick search features. It also comes equipped with Cortana — your new virtual assistant built right in!</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-multitask.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Multitasking</h4>
+                    <p>With the new quadrant layout, you can have up to four apps open at once! Other programs will be displayed for additional snapping and Windows even provides intelligent suggestions about how best to use your screen space.</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-task.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Task View</h4>
+                    <p>With the new Task View button in Windows 10, users can see all their open programs and files at one time. This makes it easy for rapid switching between desktops without having to search through countless items one by one!</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-multiple.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Multiple Desktops</h4>
+                    <p>Windows 10 makes it simple to create and change between separate desktops, whether for business, personal usage, or both. Instead of having too many programs and data overlapping on a single desktop, you can now create a new, fresh desktop for each part of your life.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="other-features">
+            <div class="content-other-features">
+                <h3>Other Features</h3>
+                <p>Windows 10 brings together the finest elements of previous operating systems into one united experience, bridging the gap between PCs and tablets.</p>
+                <ul>
+                    <li>
+                        <div class="img">
+                            {{ 'icon-ink.svg' | asset_url | img_tag }}
+                        </div>
+                        <h4>Windows Ink</h4>
+                        <p>The Windows Ink Workspace is a convenient way to access the latest ideas and notes, no matter where you are. With just one tap or click on your digital pen screen it's right there for quick easy viewing!</p>
+                    </li>
+                    <li>
+                        <div class="img">
+                            {{ 'icon-access.svg' | asset_url | img_tag }}
+                        </div>
+                        <h4>Accessibility</h4>
+                        <p>With Windows 10 you can enjoy a more accessible Windows experience with several exciting new features. Narrator allows those with visual impairment to read aloud what is on the screen. Magnifier enlarges specific areas of your screen for better viewing pleasure.</p>
+                    </li>
+                    <li>
+                        <div class="img">
+                            {{ 'icon-store.svg' | asset_url | img_tag }}
+                        </div>
+                        <h4>Windows Store</h4>
+                        <p>Windows 10's new Windows Store is a full makeover! With additional applications, improved control over your purchases and downloads — not to mention the sleek design that will keep you coming back for more.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="security-features">
+            <h3>Security Features</h3>
+            <p>Got security on the brain? Windows 10 comes equipped with Windows Defender for virus protection, SmartScreen to block conflicting applications and Windows Hello to secure your screen!</p>
+            <ul>
+                <li>
+                    <div class="img">
+                        {{ 'icon-copy.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Built-in Protection</h4>
+                        <p>Windows Defender is a smart virus protection system that helps you to stay protected from complex attacks. It has many features, including automatic updates and threat identification processes for ransomware prevention!</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-copy.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Windows Hello</h4>
+                        <p>Bypass the need for passwords and PINs, and start taking advantage of Windows Hello to simplify the authentication process. Use biometrics such as fingerprint or facial recognition for Windows-secured applications, programs and websites.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="product-specification">
+            <h3>Product Specification</h3>
+            <table>
+                <thead>
+                    <td>Feature</td>
+                    <td>Description</td>
+                </thead>
+                <tr>
+                    <td>INCLUDED PROGRAMS</td>
+                    <td>Microsoft Windows 10 Home</td>
+                </tr>
+                <tr>
+                    <td>LICENSE DETAILS</td>
+                    <td>Instant License / Retail Box</td>
+                </tr>
+                <tr>
+                    <td>INSTALLATIONS INCLUDED</td>
+                    <td>1 Installation</td>
+                </tr>
+                <tr>
+                    <td>USERS SUPPORTED</td>
+                    <td>1 User</td>
+                </tr>
+                <tr>
+                    <td>DEVICES SUPPORTED</td>
+                    <td>1 Device</td>
+                </tr>
+                <tr>
+                    <td>LICENSING TYPE</td>
+                    <td>Perpetual</td>
+                </tr>
+                <tr>
+                    <td>BRAND</td>
+                    <td>Microsoft</td>
+                </tr>
+                <tr>
+                    <td>MANUFACTURER PART NUMBER</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>GTIN</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DELIVERY METHOD</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="bg bg-box-info-product bg-box-info-product-bottom">
+            <div class="content">
+                <div class="actions-info-product">
+                    <div class="price-info-product">
+                        <div class="pc-prices current">
+                            <span class="prices">
+                                <span class="retail-price">Retail Price:</span>
+                                <span class="old-price">{{ win10home32.compare_at_price | money }}</span>
+                                {% assign discount = 0.0 %}
+                                {% assign discount = win10home32.compare_at_price | minus: win10home32.price | times: 100.0 | divided_by: win10home32.compare_at_price | round %}
+                                <span class="tag-discount">Save {{ discount }}%</span>
+                            </span>
+                            <strong>{{ win10home32.price | money }}</strong>
+                            <a href="/products/{{ win10home32.handle }}">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-actions-products">
+                    <div class="lists">
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-device.svg' | file_url }}" />For 1 Device</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Buy now use forever</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />24/7 support at no extra cost</li>
+                        </ul>
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-delivery.svg' | file_url }}" />Delivery Via Email</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Digital download</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Genuine Return Policy</li>
+                        </ul>
+                    </div>
+                    <div class="seals-info-product">
+                        <img src="{{ 'page-compare-office-2019-editions_seals.png' | file_url }}" alt="Seals" />
+                    </div>
+                </div>
+            </div>
+        </div>
+      	<div class="accordions-system-faqs">
+            <div class="system-accordion-win">
+                <h5>System Requirements</h5>
+                <div class="text-system-accordion-win">
+                    <ul>
+                        <li>1 GHz processor (CPU) or better</li>
+                        <li>Memory: 1GB RAM for the Windows 10 Home Edition 32-bit version</li>
+                        <li>Hard Disk: 16GB available disk space</li>
+                        <li>Computer Processor: 1 Ghz or greater</li>
+                        <li>Graphics: DirectX 9 or later with WDDM 1.0 driver.</li>
+                        <li>Display: 800x600</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faqs-accordion-win">
+                <h5>FAQs</h5>
+                <div class="text-faq-accordion-win">
+					{% include 'faqs' %}
+                </div>
+            </div>
+          
+      	</div>
+    </div>
+
+    <div class="tab-2 tab-content" data-target="tab-2">
+        <div class="bg bg-texts-works">
+            <div class="content">
+                <p>Windows 10 Pro includes all of the competencies required by small businesses and power users that want improved efficiency. With built-in features like inking, tablet mode, and touchscreen, the user experience is simple and straightforward.</p>
+            </div>
+        </div>
+        <div class="bg bg-box-info-product">
+            <div class="content">
+                <div class="actions-info-product">
+                    <div class="price-info-product">
+                        <div class="pc-prices current">
+                            <span class="prices">
+                                <span class="retail-price">Retail Price:</span>
+                                <span class="old-price">{{ win10pro32.compare_at_price | money }}</span>
+                                {% assign discount = 0.0 %}
+                                {% assign discount = win10pro32.compare_at_price | minus: win10pro32.price | times: 100.0 | divided_by: win10pro32.compare_at_price | round %}
+                                <span class="tag-discount">Save {{ discount }}%</span>
+                            </span>
+                            <strong>{{ win10pro32.price | money }}</strong>
+                            <a href="/products/{{ win10pro32.handle }}">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-actions-products">
+                    <div class="lists">
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-device.svg' | file_url }}" />For 1 Device</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Buy now use forever</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />24/7 support at no extra cost</li>
+                        </ul>
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-delivery.svg' | file_url }}" />Delivery Via Email</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Digital download</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Genuine Return Policy</li>
+                        </ul>
+                    </div>
+                    <div class="seals-info-product">
+                        <img src="{{ 'page-compare-office-2019-editions_seals.png' | file_url }}" alt="Seal" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-features">
+            <h3>Main Features</h3>
+            <p>Windows 10 Pro gives you the ability to perform different tasks fast. It offers strong security features so your data is safe, while also utilizing cloud integration to manage your devices accessible at all times.</p>
+            <ul>
+                <li>
+                    <div class="img">
+                        {{ 'icon-powe.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Start Menu</h4>
+                    <p>The central location where you can access applications, files and websites with a single click. The Start menu makes it’s return with live tiles for instant access to all your favorite apps, as well as news, forecasts, stocks, and more.</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-multitask.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Windows 10 Continuum</h4>
+                    <p>Your choice between mobility, touch and desktop peripherals is now a thing of the past. Continuum allows you to run Windows 10 Pro on different devices seamlessly with an easy transition that will have your work flowing in no time!</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-autopilot.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Windows Autopilot</h4>
+                    <p>Use Windows Autopilot to easily set up your Windows 10 Pro devices without the need for IT assistance. From the start, you'll be able to control all of your devices in a straightforward and versatile manner.</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-ink.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Windows Ink</h4>
+                    <p>Your touch devices just became easier to use. With the click of a digital pen or directly from your taskbar, you can enter the Windows Ink Workspace — even before signing in!</p>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-edge.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Microsoft Edge</h4>
+                    <p>The quickest browser for Windows 10 Pro, which comes pre-installed on your computer. To increase your productivity, use Microsoft Edge and browse quickly, manage bookmarks, and create collections.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="security-features">
+            <h3>Security Features</h3>
+            <p>A powerful system is nothing if it’s not protected. Windows 10 Pro makes you feel at ease with cutting-edge technology against malicious attacks, cyber crime, and malware of all types.</p>
+            <ul>
+                <li>
+                    <div class="img">
+                        {{ 'icon-hello.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Windows Hello</h4>
+                        <p>The new, innovative way to sign in to Windows with enterprise-level security. Instant access is provided via facial or fingerprint identification, and you may always save a PIN as a backup.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'ionc-bitlocker.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>BitLocker</h4>
+                        <p>The best way to keep your information safe. Bitlocker extends protection with ease of use for portable storage devices. Now, you can access enterprise software without sacrificing any private space on either end!</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                        {{ 'icon-built.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Built-in Protection</h4>
+                        <p>Windows 10 Pro protects you and your data against viruses, ransomware, phishing scams and other malicious attacks through the built-in Windows Defender.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="product-specification">
+            <h3>Product Specification</h3>
+            <table>
+                <thead>
+                    <td>Feature</td>
+                    <td>Description</td>
+                </thead>
+                <tr>
+                    <td>INCLUDED PROGRAMS</td>
+                    <td>Microsoft Windows 10 Professional</td>
+                </tr>
+                <tr>
+                    <td>LICENSE DETAILS</td>
+                    <td>Instant License / Retail Box</td>
+                </tr>
+                <tr>
+                    <td>INSTALLATIONS INCLUDED</td>
+                    <td>1 Installation</td>
+                </tr>
+                <tr>
+                    <td>USERS SUPPORTED</td>
+                    <td>1 User</td>
+                </tr>
+                <tr>
+                    <td>DEVICES SUPPORTED</td>
+                    <td>1 Device</td>
+                </tr>
+                <tr>
+                    <td>LICENSING TYPE</td>
+                    <td>Perpetual</td>
+                </tr>
+                <tr>
+                    <td>BRAND</td>
+                    <td>Microsoft</td>
+                </tr>
+                <tr>
+                    <td>MANUFACTURER PART NUMBER</td>
+                    <td>FQC-08930</td>
+                </tr>
+                <tr>
+                    <td>GTIN</td>
+                    <td>885370903904</td>
+                </tr>
+                <tr>
+                    <td>DELIVERY METHOD</td>
+                    <td>E-mail</td>
+                </tr>
+            </table>
+        </div>
+        <div class="bg bg-box-info-product bg-box-info-product-bottom">
+            <div class="content">
+                <div class="actions-info-product">
+                    <div class="price-info-product">
+                        <div class="pc-prices current">
+                            <span class="prices">
+                                <span class="retail-price">Retail Price:</span>
+                                <span class="old-price">{{ win10pro32.compare_at_price | money }}</span>
+                                {% assign discount = 0.0 %}
+                                {% assign discount = win10pro32.compare_at_price | minus: win10pro32.price | times: 100.0 | divided_by: win10pro32.compare_at_price | round %}
+                                <span class="tag-discount">Save {{ discount }}%</span>
+                            </span>
+                            <strong>{{ win10pro32.price | money }}</strong>
+                            <a href="/products/{{ win10pro32.handle }}">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-actions-products">
+                    <div class="lists">
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-device.svg' | file_url }}" />For 1 Device</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Buy now use forever</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />24/7 support at no extra cost</li>
+                        </ul>
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-delivery.svg' | file_url }}" />Delivery Via Email</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Digital download</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Genuine Return Policy</li>
+                        </ul>
+                    </div>
+                    <div class="seals-info-product">
+                        <img src="{{ 'page-compare-office-2019-editions_seals.png' | file_url }}" alt="Seals" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordions-system-faqs">
+            <div class="system-accordion-win">
+                <h5>System Requirements</h5>
+                <div class="text-system-accordion-win">
+                    <ul>
+                        <li>1 GHz processor (CPU) or better</li>
+                        <li>Memory: 1GB RAM for the Windows 10 Home Edition 32-bit version</li>
+                        <li>Hard Disk: 16GB available disk space</li>
+                        <li>Computer Processor: 1 Ghz or greater</li>
+                        <li>Graphics: DirectX 9 or later with WDDM 1.0 driver.</li>
+                        <li>Display: 800x600</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faqs-accordion-win">
+                <h5>FAQs</h5>
+                <div class="text-faq-accordion-win">
+					{% include 'faqs' %}
+                </div>
+            </div>
+          
+      	</div>
+    </div>
+
+    <div class="tab-3 tab-content" data-target="tab-3">
+        <div class="bg bg-texts-works">
+            <div class="content">
+                <p>Windows 10 Enterprise is a perfect fit for today’s businesses. Get all the features included in Windows 10 Pro combined with advanced ones that are tailored to suit your productivity needs.</p>
+            </div>
+        </div>
+        <div class="bg bg-box-info-product">
+            <div class="content">
+                <div class="actions-info-product">
+                    <div class="price-info-product">
+                        <span class="prices">
+                            <span class="retail-price">Retail Price:</span>
+                            <span class="old-price">{{ win10ent.compare_at_price | money }}</span>
+                            {% assign discount = 0.0 %}
+                            {% assign discount = win10ent.compare_at_price | minus: win10ent.price | times: 100.0 | divided_by: win10ent.compare_at_price | round %}
+                            <span class="tag-discount">Save {{ discount }}%</span>
+                        </span>
+                        <strong>{{ win10ent.price | money }}</strong>
+                        <a href="/products/{{ win10ent.handle }}">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="list-actions-products">
+                    <div class="lists">
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-device.svg' | file_url }}" />For 1 Device</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Buy now use forever</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />24/7 support at no extra cost</li>
+                        </ul>
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-delivery.svg' | file_url }}" />Delivery Via Email</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Digital download</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Genuine Return Policy</li>
+                        </ul>
+                    </div>
+                    <div class="seals-info-product">
+                        <img src="{{ 'page-compare-office-2019-editions_seals.png' | file_url }}" alt="Seals" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-features">
+            <h3>Main Features</h3>
+            <p>Windows 10 Enterprise offers a number of features that are only accessible through this version.</p>
+            <ul>
+                <li>
+                    <div class="img">
+                         {{ 'icon-virtual.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Virtual desktop infrastructure (VDI)</h4>
+                    <p>Make RemoteApps seem more like local programs, alter screen resolution and orientation on demand, and reconnect to your desktop rapidly over any kind of network (LAN or WAN) for VDI situations thanks to enhancements in Windows 10 Enterprise.</p>
+                </li>
+                <li>
+                    <div class="img">
+                         {{ 'icon-granular.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Granular UX Control</h4>
+                    <p>In order to execute a given activity, IT may tailor and lock down the user experience of a Windows device for task workers, kiosks, IoT/embedded-type tasks (including education settings for education companies) using device management rules.</p>
+                </li>
+                <li>
+                    <div class="img">
+                         {{ 'icon-powe.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>Control your start screen</h4>
+                    <p>Through centrally managed Group Policies, IT may govern the Start screen layout that users view.</p>
+                </li>
+                <li>
+                    <div class="img">
+                         {{ 'icon-branch.svg' | asset_url | img_tag }}
+                    </div>
+                    <h4>BranchCache for Windows 10 Enterprise</h4>
+                    <p>Cache files, webpages, and other material from central servers on your PC. Prevent your system from being downloaded across the wide area network (WAN) several times.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="security-features">
+            <h3>Security Features</h3>
+            <p>Your enterprise needs enterprise-level protection to keep sensitive information safe at all times. Windows 10 provides state-of-the-art solutions against malware, cybercriminals, and other dangers.</p>
+            <ul>
+                <li>
+                    <div class="img">
+                         {{ 'icon-device.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Device Guard</h4>
+                        <p>Trusting your computer to protect you is a big deal. Device Guard protects against malware by limiting your device's ability to run executable code (such as.exe and.dll) that hasn’t been signed by a trustworthy authority.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                         {{ 'icon-applocker.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>AppLocker</h4>
+                        <p>Through centrally controlled but flexible Group Policies, AppLocker allows IT to decide what software is permitted to execute on a user's PCs.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                         {{ 'icon-direct.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Direct Access</h4>
+                        <p>DirectAccess enables remote users to access resources within a business network without the need for a separate VPN connection.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                         {{ 'icon-credencial.svg' | asset_url | img_tag }}
+                    </div>
+                    <div class="text-security-features">
+                        <h4>Credential Guard</h4>
+                        <p>Even if the Windows kernel is entirely infiltrated, Credential Guard offers hardware-based isolation and security of derived credentials, preventing them from being stolen or abused.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="product-specification">
+            <h3>Product Specification</h3>
+            <table>
+                <thead>
+                    <td>Feature</td>
+                    <td>Description</td>
+                </thead>
+                <tr>
+                    <td>INCLUDED PROGRAMS</td>
+                    <td>Microsoft Windows 10 Professional</td>
+                </tr>
+                <tr>
+                    <td>LICENSE DETAILS</td>
+                    <td>Instant License / Retail Box</td>
+                </tr>
+                <tr>
+                    <td>INSTALLATIONS INCLUDED</td>
+                    <td>1 Installation</td>
+                </tr>
+                <tr>
+                    <td>USERS SUPPORTED</td>
+                    <td>1 User</td>
+                </tr>
+                <tr>
+                    <td>DEVICES SUPPORTED</td>
+                    <td>1 Device</td>
+                </tr>
+                <tr>
+                    <td>LICENSING TYPE</td>
+                    <td>Perpetual</td>
+                </tr>
+                <tr>
+                    <td>BRAND</td>
+                    <td>Microsoft</td>
+                </tr>
+                <tr>
+                    <td>MANUFACTURER PART NUMBER</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>GTIN</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DELIVERY METHOD</td>
+                    <td>E-mail</td>
+                </tr>
+            </table>
+        </div>
+        <div class="bg bg-box-info-product bg-box-info-product-bottom">
+            <div class="content">
+                <div class="actions-info-product">
+                    <div class="price-info-product">
+                        <span class="prices">
+                            <span class="retail-price">Retail Price:</span>
+                            <span class="old-price">{{ win10ent.compare_at_price | money }}</span>
+                            {% assign discount = 0.0 %}
+                            {% assign discount = win10ent.compare_at_price | minus: win10ent.price | times: 100.0 | divided_by: win10ent.compare_at_price | round %}
+                            <span class="tag-discount">Save {{ discount }}%</span>
+                        </span>
+                        <strong>{{ win10ent.price | money }}</strong>
+                        <a href="/products/{{ win10ent.handle }}">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="list-actions-products">
+                    <div class="lists">
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-device.svg' | file_url }}" />For 1 Device</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Buy now use forever</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />24/7 support at no extra cost</li>
+                        </ul>
+                        <ul>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-delivery.svg' | file_url }}" />Delivery Via Email</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Digital download</li>
+                            <li><img src="{{ 'page-compare-office-2019-editions_icon-check.svg' | file_url }}" />Genuine Return Policy</li>
+                        </ul>
+                    </div>
+                    <div class="seals-info-product">
+                        <img src="{{ 'page-compare-office-2019-editions_seals.png' | file_url }}" alt="Seals" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordions-system-faqs">
+            <div class="system-accordion-win">
+                <h5>System Requirements</h5>
+                <div class="text-system-accordion-win">
+                    <ul>
+                        <li>1 GHz processor (CPU) or better</li>
+                        <li>Memory: 1GB RAM for the Windows 10 Home Edition 32-bit version</li>
+                        <li>Hard Disk: 16GB available disk space</li>
+                        <li>Computer Processor: 1 Ghz or greater</li>
+                        <li>Graphics: DirectX 9 or later with WDDM 1.0 driver.</li>
+                        <li>Display: 800x600</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faqs-accordion-win">
+                <h5>FAQs</h5>
+                <div class="text-faq-accordion-win">
+					{% include 'faqs' %}
+                </div>
+            </div>
+          
+      	</div>
+    </div>
+</div>
+<script type="text/javascript">
+    let waitJQueryInit = setInterval(function() {
+        if (typeof $ === "function") {
+            clearInterval(waitJQueryInit);
+
+            $('.tabs .tab-link').on('click', function(e) {
+                $('.tabs .tab-link').removeClass('current');
+                $(e.currentTarget).addClass('current');
+                let target = $(e.currentTarget).attr('data-target');
+                $('.tab-content').removeClass('current');
+                $(`.tab-content[data-target="${target}"]`).addClass('current');
+            });
+          
+			$('.accordions-system-faqs .system-accordion-win h5').on('click', function(e) {
+              $('.text-system-accordion-win').slideToggle();                                             
+            });
+          
+          	$('.accordions-system-faqs .faqs-accordion-win h5').on('click', function(e) {
+              $('.text-faq-accordion-win').slideToggle();                                             
+            });
+          
+            $('.choose-os ul li').unbind('click').on('click', function(e) {
+                $('.choose-os ul li').removeClass('current');
+                let target = $(e.currentTarget).attr('data-target');
+                $('.pc-prices').removeClass('current');
+                $('.mac-prices').removeClass('current');
+                if (target == 'pc') {
+                    $('.pc-prices').addClass('current');
+                    $(`.choose-os ul li[data-target="${target}"]`).addClass('current');
+                }
+                if (target == 'mac') {
+                    $('.mac-prices').addClass('current');
+                    $(`.choose-os ul li[data-target="${target}"]`).addClass('current');
+                }
+            });
+        }
+    }, 300);
+</script>

@@ -1,0 +1,56 @@
+{% assign blog = blogs[section.settings.blog] %}
+
+<section>
+<div class="container-lg center-block">
+<div class="large-margin">
+<h3 class="desktop-only">Insider Info from Softwaredepot</h3>
+<h3 class="mobile-only" style="margin: 30px 0; padding-left: 22px;">Softwaredepot News</h3>
+<ul class="custom-blog-container d-flex space-between">
+{% for article in blog.articles limit: 2 %}
+
+<li class="blog-block-item light-grey">
+<div class="blog-block-image bg-cover no-repeat lazy" style="background-image: url('{{ article.image.src | img_url: 'master' }}')">
+<div class="date-badge"><p>{{ article.published_at | time_tag: '%b %d, %Y' }}<p></div>
+</div>
+<div class="blog-block-content">
+<h4 class="black-font">{{ article.title }}</h4>
+<p class="black-font desktop-only">
+{% if article.excerpt.size > 0 %}
+{{ article.excerpt }}
+{% else %}
+{{ article.content | strip_html | truncate: 150 }}
+{% endif %}</p>
+<a href="{{ article.url }}" class="see-more desktop-only">See more</a>
+<a href="{{ article.url }}" class="see-more mobile-only" style="font-size: 14px;">Read more</a>
+</div>
+</li>
+
+{% endfor %}
+</ul>
+
+<a href="/blogs/news">
+<button class="white-font mobile-only" style="width: 100%; background-color: #6D8FA0; padding: 22px 0; margin-bottom: 176px;">
+<b>SEE ALL NEWS</b></button></a>
+
+</div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom blog",
+    "settings": [
+      {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog"
+      }
+    ],
+    "presets": [
+        {
+            "name": "Custom blog",
+            "category": "Blog"
+        }
+    ]
+  }
+{% endschema %}

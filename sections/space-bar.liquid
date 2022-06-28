@@ -1,0 +1,30 @@
+<div class="separator" >
+     {% if section.settings.section-separator != blank %}
+  <span class="spacer-{{ section.settings.section-separator }}"></span>
+    {% endif %}
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Separator",
+    "settings": [{
+"id": "separator",
+"type": "text",
+"label": "Padding"
+}],
+  "presets": [
+{
+"name": "Separator",
+"category": "Custom Layout"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

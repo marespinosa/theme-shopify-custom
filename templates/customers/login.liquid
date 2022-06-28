@@ -1,0 +1,164 @@
+<div class="account-container container-lg center-block light-grey">
+  <div class="large-margin">
+
+    <div>
+
+<ul id="CustomerLoginForm" class="d-flex">
+
+  <div class="bg-cover no-repeat desktop-only" style="background-image: url('{{ 'login-bg.png' | asset_img_url: 'master' }}');">
+    <div style="width: 488px;">
+      <h2 class="white-font" style="font-size: 300; margin-bottom: 15px;">Are you member of GetMsOffice Family?</h2>
+      <p class="white-font underline">If not, no worries. Create you account and get 5% Off entire store.</p>
+    </div>
+  </div>
+
+      <div class="white-bg">
+
+        <div class="center-block" style="width: 322px;">
+        <img src="{{ 'getmsoffice_logo.svg' | asset_url }}" class="center-block desktop-only" style="height: 35px; margin-bottom: 98px;">
+
+        <h4 class="dark-blue text-center mobile-only" style="font-size: 24px; line-height: 35px; margin-bottom: 24px;">Are you member of GetMsOffice Family?</h4>
+
+        {% form 'customer_login', novalidate: 'novalidate' %}
+
+          {% if form.errors %}
+            <div class="form-message form-message--error" style="margin-bottom: 30px; outline: none;">
+              <h4 class="h3 form-message__title " tabindex="-1" data-form-status>{{ 'contact.form.error_heading' | t }}</h4>
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <div class="form-message form-message--success hide" id="ResetSuccess" tabindex="-1" style="margin-bottom: 25px;">
+            <p>{{ 'customer.recover_password.success' | t }}</p>
+          </div>
+
+          <p class="sm-font light-grey-font">{{ 'customer.login.email' | t }}</p>
+          <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px; margin-bottom: 40px;"
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            {% if form.errors contains 'form' %}
+              class="input--error"
+              aria-invalid="true"
+            {% endif %}
+            >
+
+          {% if form.password_needed %}
+            <p class="sm-font light-grey-font">{{ 'customer.login.password' | t }}</p>
+            <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px;"
+              type="password"
+              value=""
+              name="customer[password]"
+              id="CustomerPassword"
+              {% if form.errors contains 'form' %}
+                class="input--error"
+                aria-invalid="true"
+              {% endif %}
+            >
+          {% endif %}
+
+            {% if form.password_needed %}
+            <a href="#recover" id="RecoverPassword">
+              <p class="sm-font light-grey-font underline" style="margin-bottom: 45px;">{{ 'customer.login.forgot_password' | t }}</p></a>
+            {% endif %}
+
+            <button type="submit" class="pbutton linear-orange uppercase" value="login" style="width: 100%; margin-bottom: 25px;">login</button>
+
+            <a href="/account/register">
+              <p class="sm-font light-grey-font underline center-block text-center">New customer? Create your account</p>
+            </a>
+
+        {% endform %}
+      </div>
+
+      </div>
+</ul>
+      <!---##### Forgot password #####--->
+      <ul id="RecoverPasswordForm"  class="d-flex hide">
+
+        <div class="bg-cover no-repeat desktop-only" style="flex: 0 0 60.7%; background-image: url('{{ 'reset-pw-bg.png' | asset_img_url: 'master' }}');
+        box-sizing: border-box; padding-top: 458px; padding-left: 68px; padding-bottom: 60px;">
+          <div style="width: 488px;">
+            <h2 class="white-font" style="font-size: 300; margin-bottom: 15px;">Forgot Password?</h2>
+            <p class="white-font underline">Enter the e-mail address associated with your account.</p>
+          </div>
+        </div>
+
+      <div id="forgetForm" class="white-bg">
+
+        <div class="center-block" style="width: 322px;">
+        <img src="{{ 'getmsoffice_logo.svg' | asset_url }}" class="center-block desktop-only"
+        style="height: 35px; margin-bottom: 98px;">
+
+        <h4 class="dark-blue text-center mobile-only" style="font-size: 24px; line-height: 35px; margin-bottom: 24px;">Forgot Password?</h4>
+        <p class="text-center mobile-only" style="padding: 0 10%; margin-bottom: 24px; line-height: 25px;">Enter the e-mail address associated with your account.</p>
+
+        <div class="form-vertical">
+          {% form 'recover_customer_password' %}
+
+            {% comment %}
+              Add a hidden span to indicate the form was submitted succesfully.
+            {% endcomment %}
+            {% if form.posted_successfully? %}
+              <span class="hide reset-password-success"></span>
+            {% endif %}
+
+            {% if form.errors %}
+              <p id="RecoverEmail-email-error" class="input-error-message" style="color: red; margin-bottom: 25px;">
+                {{ form.errors.messages['form'] }}
+              </p>
+            {% endif %}
+
+            <p class="sm-font light-grey-font">{{ 'customer.recover_password.email' | t }}</p>
+            <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px; margin-bottom: 84px;"
+              type="email"
+              value=""
+              name="email"
+              id="RecoverEmail"
+              class="input-full{% if form.errors %} input--error{% endif %}"
+              autocorrect="off"
+              autocapitalize="off"
+              {% if form.errors %}
+                aria-invalid="true"
+                aria-describedby="RecoverEmail-email-error"
+              {% endif %}
+              >
+
+
+                <button type="submit" class="pbutton linear-orange uppercase" style="width: 100%; margin-bottom: 164px; ">send reset link to my email</button>
+
+              {% comment %}
+              <a href="#LoginHeading" id="HideRecoverPasswordLink">{{ 'customer.recover_password.cancel' | t }}</a>
+              {% endcomment %}
+
+              <a href="/account/login"><p class="text-center sm-font light-grey-font underline">Already have an account? Please Sign in.</p></a>
+
+          {% endform %}
+        </div>
+
+      </div>
+      </div>
+
+    </ul>
+
+      {% comment %}
+        If accounts are set as optional, the following will be shown as an option
+        during checkout, not on the default /login page.
+      {% endcomment %}
+      {% if shop.checkout.guest_login %}
+        <div class="text-center">
+          <hr class="hr--invisible">
+          <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+          {% form 'guest_login' %}
+            <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

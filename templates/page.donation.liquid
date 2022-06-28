@@ -1,0 +1,176 @@
+<section class="container-lg center-block">
+  <div class="large-margin">
+
+    <!--##### title + description #####-->
+    {{ page.content }}
+
+    <!--##### donation #####-->
+    <div class="bg-cover desktop-only"
+      style="background-image:url('{{ "covid-banner.png" | asset_img_url: "master" }}');
+           padding: 100px 95px 95px;">
+      <div style="width: 550px;">
+        <h3 class="font-medium" style="color: #1A3665; margin-bottom: 10px;">Mask Donation</h3>
+        <p style="color: #1A3665">Today, we’ve committed to the initial purchase of 15,000 medical masks that will be donated to Australian organizations most in need.
+          <br/><br/>
+          Along with this initial donation,
+          the profits from every sale of {{ shop.name | remove: 'co' | capitalize }} will go to purchasing additional PPE to donate on your behalf,
+          we are happy to add your name to each box you will help purchase for our community heros.</p>
+      </div>
+    </div>
+
+    <div class="mobile-only bg-cover relative"
+      style="background-image:url('{{ "covid-banner-mobile.png" | asset_img_url: "master" }}');
+           padding: 155px 25px 35px;">
+      <img class="absolute" src="{{ 'mask-sign.png' | asset_img_url: 'master' }}" style="top: 5px; right: 0; width: 215px;">
+      <div>
+        <h3 class="font-medium" style="color: #1A3665; margin-bottom: 10px;">Mask Donation</h3>
+        <p style="color: #1A3665">Today, we’ve committed to the initial purchase of 15,000 medical masks that will be donated to Australian organizations most in need.
+          <br/><br/>
+          Along with this initial donation,
+          the profits from every sale of {{ shop.name | remove: 'co' | capitalize }} will go to purchasing additional PPE to donate on your behalf,
+          we are happy to add your name to each box you will help purchase for our community heros.</p>
+      </div>
+    </div>
+
+      <!--##### payment #####-->
+      <div>
+        <img class="center-block" src="{{ 'give-back.png' | asset_img_url: "master" }}" style="margin-top: -30px;">
+        <div class="center-block" style="max-width: 800px;">
+          <h3 class="text-center font-medium" style="margin-top: -50px;">Choose how you can give back</h3>
+          <p class="text-center" style="margin-top: 15px;color: #1A3665">We’ve launched a Choose What you Pay initiative of up to 15% off. Depending on your selection, the proceeds will contribute to the additional purchases of medical masks.</p>
+        </div>
+        <ul class="payment-flex" style="margin-top: 45px;">
+
+          <li class="border-box payment-block" style="background: #00488D;padding: 40px;">
+            <p class="white-font bigger-font text-center" style="margin-bottom: 10px"><span class="h4"><b>15</span>% OFF</b></p>
+            <p class="sm-font text-center white-font">It's been a tough few weeks and we won't hold that against you.
+              You can get your software today at 15% off - the biggest discount we can offer to hopefully brighten up your day.</p>
+            <div class="d-flex center-block space-center align-center" style="margin-top: 20px;">
+              <p class="white-font font-medium">USE CODE:</p>
+              <span class="font-medium plus-two-font" style="background: #FFF873; color: #1A3665; margin-left: 10px; padding: 10px 20px;">THANKYOU</span>
+            </div>
+          </li>
+
+          <li class="border-box payment-block" style="background: #1266CC; padding: 40px;">
+            <p class="white-font bigger-font text-center" style="margin-bottom: 10px"><span class="h4"><b>12</span>% OFF + 80 masks donation</b></p>
+            <p class="sm-font text-center white-font">If you have a bit more to give at this time,
+              you can get your software at 12% off + help us purchase 80 medical masks to donate to our healthcare communities.</p>
+            <div class="d-flex center-block space-center align-center" style="margin-top: 20px;">
+              <p class="white-font font-medium">USE CODE:</p>
+              <span class="font-medium plus-two-font" style="background: #FFF873; color: #1A3665; margin-left: 10px; padding: 10px 20px;">SUPERHERO</span>
+            </div>
+          </li>
+
+          <li class="border-box payment-block" style="background: #F2F5F7; padding: 40px;">
+            <p class="white-font bigger-font text-center" style="margin-bottom: 10px; color: #1480C8;"><b>Donate 110 masks</b></p>
+            <p class="sm-font text-center white-font" style="color: #1480C8;">Thank you for your generosity.
+              You can purchase your software at full price and help us donate 110 medical masks to healthcare communities in need.</p>
+            <p class="font-medium text-center" style="color: #1480C8; margin-top: 20px;">NO CODE REQUIRED</p>
+          </li>
+        </ul>
+
+        <ul class="d-flex space-between" style="margin-top: 40px;">
+          <li style="background: #29C27F; padding: 15px 0; flex: 0 0 49.5%;">
+            <a href="/collections/microsoft-office-2019">
+              <p class="white-font font-medium text-center">SHOP FOR OFFICE 2019</p>
+            </a>
+          </li>
+          <li style="background: #29C27F; padding: 15px 0; flex: 0 0 49.5%;">
+            <a href="/collections/windows-10">
+              <p class="white-font font-medium text-center">SHOP FOR WINDOWS 10</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!--##### support #####-->
+      <div style="margin-top: 50px;">
+        <img class="center-block" src="{{ "package.png" | asset_img_url: "master" }}">
+        <h3 class="font-medium text-center">On-ground support</h3>
+        <ul class="space-between payment-flex" style="margin-top: 45px;">
+          <li>
+            <div class="space-between payment-flex">
+              <img src="{{ "mask-support-1.png" | asset_img_url: "master"}}" style="max-width: 100%;">
+              <img class="mask-margin" src="{{ "mask-support-2.png" | asset_img_url: "master"}}" style="max-width: 100%;">
+            </div>
+            <div class="space-between payment-flex" style="margin-top: 20px;">
+              <img src="{{ "mask-support-3.png" | asset_img_url: "master"}}" style="max-width: 100%;">
+              <img class="mask-margin" src="{{ "mask-support-4.png" | asset_img_url: "master"}}" style="max-width: 100%;">
+            </div>
+          </li>
+          <img class="gif" src="{{ 'mask-delivery.gif' | asset_url }}" width="355" height="540">
+        </ul>
+      </div>
+
+      <!--##### faq #####-->
+      <h3 class="text-center font-medium" style="margin-top: 50px;">FAQs</h3>
+        <ul id="faqAccordion" style="margin-bottom: 50px;">
+          <li>
+            <div class="q-container d-flex space-between align-center">
+              <h4 class="dark-blue">How do you decide which organizations have the most need for masks?</h4>
+              <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+            </div>
+            <ul class="menu-list-item a-container">
+              <p class="dark-blue">We're turning to the experts for this and discussing it with the proper healthcare distribution authorities and governing bodies.
+                We want to make sure we are following their instructions, and will donate to wherever they see fit.</p>
+            </ul>
+          </li>
+
+          <li>
+            <div class="q-container d-flex space-between align-center">
+              <h4 class="dark-blue">What types of masks are you donating?</h4>
+              <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+            </div>
+            <ul class="menu-list-item a-container">
+              <p class="dark-blue">We've chosen to donate FDA approved 3 ply surgical masks.
+                This type of protective equipment is something that has been much requested by healthcare governing bodies.
+                The shortage is pretty vast, and so we wanted to make sure we could find a way to make the biggest impact possible.</p>
+            </ul>
+          </li>
+
+          <li>
+            <div class="q-container d-flex space-between align-center">
+              <h4 class="dark-blue">Are you making up the cost of the masks?</h4>
+              <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+            </div>
+            <ul class="menu-list-item a-container">
+              <p class="dark-blue">Not at all! We're keeping everything at the exact price we will be buying them at,
+                and are using the funds you'll help us collect to purchase as many units as we possibly can.</p>
+            </ul>
+          </li>
+      </ul>
+  </div>
+</section>
+
+<style>
+  .payment-flex {
+    flex-direction: column;
+  }
+
+  .payment-block {
+    flex: 0 0 100%
+  }
+  .mask-margin {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  .gif {
+    margin-top: 15px;
+  }
+  @media screen and (min-width: 960px){
+    .payment-flex {
+      display: flex;
+      flex-direction: unset;
+    }
+    .payment-block {
+      flex: 0 0 33.33333%
+    }
+    .mask-margin {
+      margin-left: 15px;
+      margin-top: 0;
+    }
+    .gif {
+      margin-top: 0;
+    }
+  }
+</style>

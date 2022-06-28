@@ -1,0 +1,92 @@
+<div class="account-container container-lg center-block light-grey">
+  <div class="large-margin">
+
+    <ul id="registerForm" class="d-flex">
+
+      <div class="bg-cover no-repeat desktop-only" style="background-image: url('{{ 'create-account-bg.png' | asset_img_url: 'master' }}');">
+        <div style="width: 488px;">
+          <h2 class="white-font" style="font-size: 300; margin-bottom: 15px;">Create your and get 5% Off entire store</h2>
+          <p class="white-font underline">Already have an account? Please Sign in.</p>
+        </div>
+      </div>
+
+      <div class="white-bg">
+
+        <h4 class="dark-blue text-center mobile-only" style="font-size: 24px; line-height: 35px; margin-bottom: 24px; padding: 0 10%;">Be a member of Softwaredepot Family.</h4>
+        <p class=" text-center mobile-only">Get 5% Off creating an account</p>
+
+        <div class="center-block" style="width: 322px;">
+
+        {% assign formId = 'RegisterForm' %}
+        {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
+          {% include 'form-status', form_id: formId %}
+
+          <p class="sm-font light-grey-font" style="margin-top: 25px;">{{ 'customer.register.first_name' | t }}</p>
+          <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px; margin-bottom: 20px;"
+          type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
+
+          <p class="sm-font light-grey-font">{{ 'customer.register.last_name' | t }}</p>
+          <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px; margin-bottom: 20px;"
+          type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name">
+
+          {% comment %}
+          {% if form.errors contains 'email' %}
+            <p id="{{ formId }}-email-error" class="input-error-message" style="margin-bottom: 25px;">
+            {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</p>
+          {% endif %}
+          {% endcomment %}
+
+          <p class="sm-font light-grey-font">{{ 'customer.register.email' | t }}</p>
+          <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px; margin-bottom: 20px;"
+            type="email"
+            name="customer[email]"
+            id="{{ formId }}-email"
+            class="{% if form.errors contains 'email' %} input--error{% endif %}"
+            {% if form.email %} value="{{ form.email }}"{% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              class="input--error"
+              aria-invalid="true"
+              aria-describedby="{{ formId }}-email-error"
+            {% endif %}
+          >
+
+          {% comment %}
+          {% if form.errors contains 'password' %}
+            <p id="{{ formId}}-password-error" class="input-error-message" style="margin-bottom: 25px;">
+              {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</p>
+          {% endif %}
+          {% endcomment %}
+
+          <p class="sm-font light-grey-font">{{ 'customer.register.password' | t }}</p>
+          <input style="width: 100%; height: 44px; border-bottom: 1px solid #F5F6F9; font-size: 16px; margin-bottom: 55px;"
+            type="password"
+            name="customer[password]"
+            id="{{ formId }}-password"
+            class="{% if form.errors contains 'password' %} input--error{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'password' %}
+              class="input--error"
+              aria-invalid="true"
+              aria-describedby="{{ formId }}-password-error"
+            {% endif %}
+          >
+
+          <button type="submit" class="pbutton linear-orange uppercase" style="width: 100%; margin-bottom: 25px;">
+            {{ 'customer.register.submit' | t }} your account</button>
+
+            <a href="/account/login">
+              <p class="sm-font light-grey-font underline center-block text-center">Already a member? Log in now</p>
+            </a>
+
+        {% endform %}
+      </div>
+      </div>
+
+    </ul>
+
+  </div>
+</div>

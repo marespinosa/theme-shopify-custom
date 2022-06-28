@@ -1,0 +1,185 @@
+
+
+<div class="switchmenu">
+    {% if product.tags contains 'os_pc_ms_office_2021_home_student' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'os_mac_ms_office_2021_home_student' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Excel_2016' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-for-windows-pc-only' }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Excel_2016_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}-for-windows-pc-only" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Powerpoint_2019' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-for-pc' }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Powerpoint_2019_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}-for-pc" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Powerpoint_2019_Open_License' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-open-license' }}-for-mac-open-license" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Powerpoint_2019_For_Mac_Open_License' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Excel_2019' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-for-pc' }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Excel_2019_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}-for-pc" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Excel_2019_Open_Academic' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-open-academic' }}-for-mac-open-academic" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Excel_2019_For_Mac_Open_Academic' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Excel_2019_Open_License' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-open-license' }}-for-mac-open-license" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Excel_2019_For_Mac_Open_License' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Office_2019_Home_And_Business' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Office_2019_Home_And_Business_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Office_Home_And_Business_For_Windows' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-2016-home-and-business-windows' }}-home-and-business-2016-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Office_Home_And_Business_2016_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-home-and-business-2016-for-mac' }}-2016-home-and-business-windows" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Word_2019_Open_License' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-open-license' }}-for-mac-open-license" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Word_2019_For_Mac_Open_License' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Word_2019' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-for-pc' }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Word_2019_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}-for-pc" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Word_2016' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-for-windows-pc-only' }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Word_2016_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}-for-windows-pc-only" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Outlook_2016' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: 'office-outlook-2016-for-windows' }}outlook-2016-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Outlook_2016_For_Mac' %}
+
+        <a href="{{ product.url | remove: 'outlook-2016-for-mac' }}office-outlook-2016-for-windows" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  {% if product.tags contains 'Microsoft_Outlook_2019' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-for-pc' }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Outlook_2019_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}-for-pc" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+    {% if product.tags contains 'Microsoft_Office_2016_Home_And_Student' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-2016-home-and-student-for-windows' }}-home-and-student-2016-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Office_2016_Home_And_Student_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-home-and-student-2016-for-mac' }}-2016-home-and-student-for-windows" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+    {% if product.tags contains 'Microsoft_Office_Home_And_Business_2016_Retail_Box' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Office_Home_And_Business_2016_For_Mac_Retail_Box' %}
+
+        <a href="{{ product.url | remove: '-home-and-student-2016-for-mac' }}-2016-home-and-student-for-windows" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+  
+    {% if product.tags contains 'Microsoft_Excel_2021' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Excel_2021_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+    {% if product.tags contains 'Microsoft_Word_2021' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url }}-for-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Word_2021_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-for-mac' }}" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+    {% if product.tags contains 'Microsoft_Office_Home_And_Student_2021' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-pc'}}-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Office_Home_And_Student_2021_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-mac' }}-pc" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %}
+    {% if product.tags contains 'Microsoft_Office_Home_And_Business_2021' %}
+    <a href="{{ product.url }}" class="windows selected"><span>Windows</span></a>
+        <a href="{{ product.url | remove: '-pc'}}-mac" class="mac"><span>Mac</span></a> 
+  {% endif %} 
+  {% if product.tags contains 'Microsoft_Office_Home_And_Business_2021_For_Mac' %}
+
+        <a href="{{ product.url | remove: '-mac' }}-pc" class="windows"><span>Windows</span></a>
+        <a href="{{ product.url }}" class="mac selected"><span>Mac</span></a> 
+  {% endif %} 
+</div>

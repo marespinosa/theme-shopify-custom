@@ -1,0 +1,60 @@
+{% assign ss = section.settings %}
+<section>
+<div class="container-lg center-block">
+<div class="large-margin">
+<div class="d-flex space-between category-block-container">
+
+<div class="category-block lazy" style="background-image: url('{{ ss.block-1-bg | img_url: 'master' }}')">
+<div class="center-block text-center">
+<h1>Office 2016</h1>
+<h4>Mac & PC</h4>
+<a href="/collections/microsoft-office-2016"><button class="pbutton desktop-only center-block linear-orange">LEARN MORE</button></a>
+<a class="underline white-font mobile-only" href="/collections/microsoft-office-2016">Shop now</a>
+</div>
+</div>
+
+<div class="category-block lazy" style="background-image: url('{{ ss.block-2-bg | img_url: 'master' }}')">
+<div class="center-block text-center">
+<h1>Windows 10</h1>
+<h4 style="margin-bottom: 226px;">Power your PC with the<br>latest version of Windows </h4>
+<a href="/collections/windows-10"><button class="pbutton desktop-only center-block linear-orange">LEARN MORE</button></a>
+<a class="underline white-font mobile-only" href="/collections/windows-10">Shop now</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Category block",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Category block 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "block-1-bg",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "block-2-bg"
+      },
+      {
+        "type": "image_picker",
+        "id": "block-2-bg",
+        "label": "Background image"
+      }
+    ],
+    "presets": [
+        {
+            "name": "Category block",
+            "category": "Collection"
+        }
+    ]
+  }
+{% endschema %}

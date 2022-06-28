@@ -1,0 +1,100 @@
+{% if template contains 'product' %}
+{% assign manual_collection = false %}
+{% assign smart_collection = false %}
+{% if product.collections %}
+{% for collection in product.collections %}
+{% if collection.rules %}
+{% if smart_collection == false %}{% assign smart_collection = collection %}{% endif %}
+{% else %}
+{% if manual_collection == false %}{% assign manual_collection = collection %}{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{{ 'globo.alsobought.css' | asset_url | stylesheet_tag }}{{ 'globo.alsobought.js' | asset_url | script_tag }}<script>
+  var globoAlsoBought = new globoAlsoBought({
+    apiUrl: "https://related-products.globosoftware.net/api",
+    shop: "{{ shop.permanent_domain }}",
+    {% if product %}
+    product: {
+      vendor: {{ product.vendor | json }},
+      product_type: {{ product.type | json }},
+      collection: {% if collection %}{{ collection.id }}{% elsif manual_collection %}{{ manual_collection.id }}{% elsif smart_collection %}{{smart_collection.id}}{% else %}null{% endif %}    },
+    {% endif %}
+    shuffle: {
+      recommendations: false,
+      bought_together: false,
+  	},
+    recommendations_product_enable: true,
+    bought_together_enable: false,
+    recommendations_cart_enable: false,
+    moneyFormat: "{{ shop.money_format | replace:'"',"'" }}",
+    page: "{% if template contains 'product' %}product{% elsif template contains 'cart' %}cart{% endif %}",
+    productIds: [{% if template contains 'product' %}{{ product.id }}{% elsif template contains 'cart' %}{% for item in cart.items %}{{item.product_id}}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}],
+    no_image_url: "https://cdn.shopify.com/s/images/admin/no-image-large.gif",
+    redirect: true,
+    trans: {
+        'added': "Added to cart",
+        'added_selected_to_cart': "Added selected to cart",
+        'sale': "Sale",
+        'this_item': "This item",
+    }
+  });
+  globoAlsoBought.init();
+</script>
+{% raw %}
+
+<script id="RecommendationsTemplate" type="template/html">
+  <div id="recommendations" class="ga-products-box ga-products-box_1">
+        <h2 class="text-left">Recommended Products</h2>
+        <div class="ga-products-carousel-wrapper">
+      <ul class="ga-products-carousel owl-carousel">{{productItems}}</ul>
+    </div>
+  </div>
+</script>
+<script id="RecommendationsItem" type="template/html">
+<li class="ga-product" data-product-id="{{productId}}">
+  <a target="_blank" href="{{productUrl}}">
+        <div class="ga-product_image" style="background-image: url({{productImage}});"></div>
+  </a>
+  <p class="ga-product_title">{{productTitle}}</p>
+    <select name="id" class="ga-product_variant_select {{selectClass}}">
+  	{{productOptions}}  </select>
+    <span class="ga-product_price-container">
+    {{productPrice}}    {{productComparePrice}}  </span>
+      <button class="ga-product_addtocart" type="button">Add to cart</button>
+  </li>
+</script>
+
+<script id="BoughtTogetherTemplate" type="template/html">
+  <div id="bought_together" class="ga-products-box ga-products-box_3 no-description {{boxClass}}">
+        <h2 class="text-left">Recommended Products</h2>
+        <ul class="ga-products-table">
+      {{productItems}}    </ul>
+    <div class="ga-product-form">
+      Total Price: <span class="ga-product_price ga-product_totalprice">{{totalPrice}}</span>
+      <button class="ga-addalltocart" type="button">Add selected to cart</button>
+    </div>
+  </div>
+</script>
+
+<script id="BoughtTogetherItem" type="template/html">
+<li data-product-id="{{productId}}">
+  <div class="product_main">
+    <input class="selectedItem" type="checkbox" checked value="{{productId}}">
+    <a target="_blank" href="{{productUrl}}">
+      <img class="lazyload" src="{{productImage}}" alt="{{productTitle}}">
+      <p class="ga-product_title">{{productTitle}}</p>
+            <span class="ga-product_price-container visible-narrow">
+        {{productPrice}}        {{productComparePrice}}      </span>
+          </a>
+  </div>
+  <div class="ga-product_variants-container {{selectClass}}">
+    <select name="id[]" class="ga-product_variant_select">
+    	{{productOptions}}  	</select>
+  </div>
+      <span class="ga-product_price-container hidden-narrow">
+    {{productPrice}}    {{productComparePrice}}  </span>
+  </li>
+</script>
+{% endraw %}
+{% endif %}

@@ -1,0 +1,67 @@
+{% assign ss = section.settings %}
+<section class="promo-banner-container">
+<div class="container-lg center-block">
+
+<!---##### Desktop promo #####--->
+<a href="{{ ss.button-link }}">
+<div class="banner-background large-margin bg-cover no-repeat desktop-only lazy">
+{{ ss.promo-text }}
+</div>
+</a>
+
+<!---##### Mobile promo #####--->
+
+<a href="{{ ss.button-link }}">
+<div class="mobile-promo-banner large-margin bg-cover no-repeat mobile-only lazy">
+{{ ss.promo-text }}
+</div>
+</a>
+
+</div>
+</section>
+
+<style>
+.banner-background{
+      background-image: url('{{ section.settings.banner-bg | img_url: 'master' }}');
+      padding: 32% 0 8%;
+}
+
+.mobile-promo-banner {
+    background-image: url('{{ section.settings.mobile-banner-bg | img_url: 'master' }}');
+    padding: 67.5% 0;
+ }
+</style>
+
+{% schema %}
+  {
+    "name": "Promo banner",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner-bg",
+          "label": "Desktop banner image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile-banner-bg",
+          "label": "Mobile banner image"
+        },
+      {
+        "type": "textarea",
+        "id": "promo-text",
+        "label": "Promo text"
+      },
+      {
+        "type": "url",
+        "id": "button-link",
+        "label": "Button link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promo banner",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

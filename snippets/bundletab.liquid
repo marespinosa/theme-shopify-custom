@@ -1,0 +1,75 @@
+<div class="formcol3">
+  <form action="/cart/add" method="post" enctype="multipart/form-data" data-cart-submit>
+  
+    
+       {% include 'add-cart-bundle'  %}	
+   
+  
+    {% unless product.has_only_default_variant %}
+      {% for option in product.options_with_values %}
+  
+        <div class="selector-wrapper js">
+  
+          <select
+            id="SingleOptionSelector-{{ forloop.index0 }}"
+            data-single-option-selector
+            data-index="option{{ option.position }}">
+            {% for value in option.values %}
+              <option
+                value="{{ value | escape }}"
+                {% if option.selected_value == value %}selected="selected"{% endif %}>
+                  {{ value }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endfor %}
+    {% endunless %}
+  
+  
+    <select name="id" class="no-js" data-product-select style="display: none;">
+      {% for variant in product.variants %}
+        <option
+          {% if variant == current_variant %}selected="selected"{% endif %}
+          {% unless variant.available %}disabled="disabled"{% endunless %}
+          value="{{ variant.id }}">
+            {{ variant.title }}
+        </option>
+      {% endfor %}
+    </select>
+  
+    <input type="hidden" id="Quantity" name="quantity" value="1" min="1">
+  
+    <button class="bluebtn" type="submit" name="add" value="{{ 'products.product.add_to_cart' | t }}"> <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+  
+    
+    {% if additional_checkout_buttons %}
+      <div class="additional-checkout-buttons">
+          <h6>Instant Checkout</h6>
+        {{ content_for_additional_checkout_buttons }}
+      </div>
+    {% endif %}
+    
+    <img src="{{ "mslogos.png" | asset_img_url: "master" }}" alt="Software" class="mslogos">
+
+    <p class="deliverclass">  <img src="{{ "email.png" | asset_img_url: "master" }}" alt="email"><span>Delivery via Email in 15- 30 mins after checkout</span></p>
+    
+    <small class="smallinstallation">*The installation requires a minimum installation configuration. <a href="#">See system requirements.</a></small>
+  </form>
+  
+  </div>
+
+<script>
+$(document).on('click','.add_to_cart',function(){
+    var id="7594121068763";
+    $.ajax({
+      type: 'POST', 
+      url: '/cart/add',
+      dataType: 'json', 
+      data: {id:id,quantity:1},
+      success: function(){
+            location.href="/cart";
+      }
+   });
+})
+</script>

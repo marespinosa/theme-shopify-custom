@@ -1,0 +1,276 @@
+<button id="filtermobbutton" class="mobilefilterby">Filter By</button>
+
+
+<div id="fitermob" class="filterbox">
+  <div class="filterbox-content">
+    <span class="shutmodal">&times;</span>
+   
+  
+<h3>Filter By</h3>
+<a href="/collections/{{ collection.handle }}/" class="clearall">Clear All Filters</a>
+  
+
+<form id="filterbyformMob" action="/collections/{{ collection.handle }}">
+  <ul class="clearfix filter-category">
+    <li>
+      <h4>Operating System</h4>
+      
+      {% assign ostags = 'pc, mac' | split: ',' %}
+      {% for os in ostags %}
+      {% assign ostag = os | strip %}
+
+      {% if current_tags contains ostag %}
+        <label class="labelfilter" id="labelsm{{ ostag | handle }}">
+          <input type="checkbox" id="inputsm{{ ostag | handle }}" class="coll-filter" name="{{ ostag | handle }}" value="{{ ostag | handle }}" checked />
+          {{ ostag }}
+        </label>
+      {% else %}
+      <label class="labelfilter" id="labelsm{{ ostag | handle }}">
+        <input type="checkbox" id="inputsm{{ ostag | handle }}" class="coll-filter" name="{{ ostag | handle }}" value="{{ ostag | handle }}" />
+        {{ ostag }}
+      </label>
+      {% endif %}
+      {% endfor %}
+
+      
+    </li>
+    
+    
+    <li class="pricetag">
+      <h4>Price</h4>
+      {% assign ptags = '99below' | split: ',' %}
+      {% for p in ptags %}
+      {% assign ptag = p | strip %}
+      {% if current_tags contains ptag %}
+        <label class="labelfilter" id="labelsm{{ ptag | handle }}">
+          <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" checked />
+          {{ ptag |  replace: "99below", "1-99" }}
+        </label>
+      {% else %}
+      <label class="labelfilter " id="labelsm{{ ptag | handle }}">
+        <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" />
+        {{ ptag |  replace: "99below", "1 - 99" }}
+      </label>
+      {% endif %}
+      {% endfor %}
+      {% assign ptags = '199below' | split: ',' %}
+      {% for p in ptags %}
+      {% assign ptag = p | strip %}
+      {% if current_tags contains ptag %}
+        <label class="labelfilter" id="labelsm{{ ptag | handle }}">
+          <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" checked />
+          {{ ptag |  replace: "199below", "100-199" }}
+        </label>
+      {% else %}
+      <label class="labelfilter " id="labelsm{{ ptag | handle }}">
+        <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" />
+        {{ ptag |  replace: "199below", "100-199" }}
+      </label>
+      {% endif %}
+      {% endfor %}
+      {% assign ptags = '399below' | split: ',' %}
+      {% for p in ptags %}
+      {% assign ptag = p | strip %}
+      {% if current_tags contains ptag %}
+        <label class="labelfilter" id="labelsm{{ ptag | handle }}">
+          <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" checked />
+          {{ ptag |  replace: "399below", "200-400" }}
+        </label>
+      {% else %}
+      <label class="labelfilter " id="labelsm{{ ptag | handle }}">
+        <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" />
+        {{ ptag |  replace: "399below", "200-400" }}
+      </label>
+      {% endif %}
+      {% endfor %}
+      {% assign ptags = '599below' | split: ',' %}
+      {% for p in ptags %}
+      {% assign ptag = p | strip %}
+      {% if current_tags contains ptag %}
+        <label class="labelfilter" id="labelsm{{ ptag | handle }}">
+          <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" checked />
+          {{ ptag |  replace: "599below", "400-599" }}
+        </label>
+      {% else %}
+      <label class="labelfilter " id="labelsm{{ ptag | handle }}">
+        <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" />
+        {{ ptag |  replace: "599below", "400-599" }}
+      </label>
+      {% endif %}
+      {% endfor %}
+      {% assign ptags = '600up' | split: ',' %}
+      {% for p in ptags %}
+      {% assign ptag = p | strip %}
+      {% if current_tags contains ptag %}
+        <label class="labelfilter" id="labelsm{{ ptag | handle }}">
+          <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" checked />
+          {{ ptag |  replace: "600up", "600+" }}
+        </label>
+      {% else %}
+      <label class="labelfilter " id="labelsm{{ ptag | handle }}">
+        <input type="checkbox" id="inputsm{{ ptag | handle }}" class="coll-filter" name="{{ ptag | handle }}" value="{{ ptag | handle }}" />
+        {{ ptag |  replace: "600up", "600+" }}
+      </label>
+      {% endif %}
+      {% endfor %}
+
+    </li>
+    
+    
+    <li>
+      <h4>Year</h4>
+      {% assign ytags = '2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019' | split: ',' %}
+      {% for y in ytags %}
+      {% assign ytag = y | strip %}
+
+      {% if current_tags contains ytag %}
+        <label class="labelfilter" id="labelsm{{ ytag | handle }}">
+          <input type="checkbox" id="inputsm{{ ytag | handle }}" class="coll-filter" name="{{ ytag | handle }}" value="{{ ytag | handle }}" checked />
+          {{ ytag }}
+        </label>
+      {% else %}
+      <label class="labelfilter " id="labelsm{{ ytag | handle }}">
+        <input type="checkbox" id="inputsm{{ ytag | handle }}" class="coll-filter" name="{{ ytag | handle }}" value="{{ ytag | handle }}" />
+        {{ ytag }}
+      </label>
+      {% endif %}
+      {% endfor %}
+    </li>
+
+  </ul>
+</form>
+
+
+
+<script type="text/javascript">
+    $('#filterbyformMob').click(function(event) {
+      event.preventDefault();
+      var filterUrlmob = '';
+      var datamob = $(this).serializeArray();
+      for (var x = 0; x < datamob.length; x++) {
+        filterUrlmob += datamob[x].value;
+        if (x !== (datamob.length - 1)) {
+          filterUrlmob += '+';
+        }
+      }
+      document.location.href = '/collections/{{ collection.handle }}/' + filterUrlmob;
+    });
+
+    $('#pricetage input').click(function(){
+       if(!$(this).hasClass("active")){
+                 $(".active").removeClass("active");
+                 $(this).addClass("active");
+        }else{
+            return false;
+       }
+ });
+
+
+</script>
+
+
+    
+    
+    
+  </div>
+
+</div>
+ 
+
+
+<script>
+    var filterbox = document.getElementById("fitermob");
+    var btnshut = document.getElementById("filtermobbutton");
+    var span = document.getElementsByClassName("shutmodal")[0];
+    btnshut.onclick = function() {
+      filterbox.style.display = "block";
+    }
+    span.onclick = function() {
+      filterbox.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == filterbox) {
+        filterbox.style.display = "none";
+      }
+    }
+    
+    
+    
+
+  $('#labelsmpc').on('click', function(e){
+    var $checkbox = $('#inputsmpc');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+
+  $('#labelsmmac').on('click', function(e){
+    var $checkbox = $('#inputsmmac');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm99below').on('click', function(e){
+    var $checkbox = $('#inputsm99below');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm199below').on('click', function(e){
+    var $checkbox = $('#inputsm199below');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm399below').on('click', function(e){
+    var $checkbox = $('#inputsm399below');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm599below').on('click', function(e){
+    var $checkbox = $('#inputsm599below');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm600up').on('click', function(e){
+    var $checkbox = $('#inputsm600up');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+
+  $('#labelsm2008').on('click', function(e){
+    var $checkbox = $('#inputsm2008');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2010').on('click', function(e){
+    var $checkbox = $('#inputsm2010');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2011').on('click', function(e){
+    var $checkbox = $('#inputsm2011');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2012').on('click', function(e){
+    var $checkbox = $('#inputsm2012');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2013').on('click', function(e){
+    var $checkbox = $('#inputsm2013');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2014').on('click', function(e){
+    var $checkbox = $('#inputsm2014');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2015').on('click', function(e){
+    var $checkbox = $('#inputsm2015');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2016').on('click', function(e){
+    var $checkbox = $('#inputsm2016');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2019').on('click', function(e){
+    var $checkbox = $('#inputsm2019');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+
+  $('#labelsm2020').on('click', function(e){
+    var $checkbox = $('#inputsm2020');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+  $('#labelsm2021').on('click', function(e){
+    var $checkbox = $('#inputsm2021');
+     $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+
+</script>

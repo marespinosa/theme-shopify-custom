@@ -1,0 +1,68 @@
+<!---##### Desktop #####-->
+<div class="container-lg center-block desktop-only" style="margin-top: 78px;">
+  <div class="large-margin" style="margin-bottom: 100px;">
+    <div style="margin-bottom: 45px;">
+      <h3 class="dark-blue middleblue">{{ section.settings.heading | escape }}</h3>
+    </div>
+  <ul class="d-flex flex-wrap space-between recomm-container">
+    {% for product in collections[section.settings.collection].products %}
+      <li class="recomm-item" style="margin-top: 60px;">
+        {% include 'product-grid' %}
+        <a href="#" data-cart-add="{{ product.selected_or_first_available_variant.id }}">
+          <button class="pbutton addcartbtn-blue" style="width: 100%; margin-top: 15px;"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button></a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+</div>
+
+<!---##### Mobile #####--->
+
+<section class="three-col-width blueg-bg mobile-only sliderreviewsection homepageslider">
+  <div class="title-header">
+    <h2 class="section-heading">{{ section.settings.heading | escape }}</h2>
+    <p>Our all-time best sellers loved by many customers and our staff.</p>
+  </div>
+<div class="sliderreview">
+  <input type="radio" name="sliderreview" title="slide1" checked="checked" class="sliderreview__nav"/>
+  <input type="radio" name="sliderreview" title="slide2" class="sliderreview__nav"/>
+  <input type="radio" name="sliderreview" title="slide3" class="sliderreview__nav"/>
+  <div class="sliderreview__inner homepageproductview">
+         {% for product in collections[section.settings.collection].products %}
+    <div class="sliderreview__contents">
+      <div class="productsliders">{% include 'product-grid' %}
+      <a href="#" data-cart-add="{{ product.selected_or_first_available_variant.id }}">
+        <button class="pbutton addcartbtn-blue" style="width: 100%; margin-top: 15px;"> <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></a>
+      </div>
+    </div>
+      {% endfor %}
+  </div>
+</div>
+</section>
+
+
+
+{% schema %}
+{
+  "name": "Best sellers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "label",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+   {
+     "name": "Best sellers",
+     "category": "Product"
+   }
+  ]
+}
+{% endschema %}

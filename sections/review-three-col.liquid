@@ -1,0 +1,102 @@
+<section class="three-col-width">
+<div class="title-header">
+     {% if section.settings.section-heading-review != blank %}
+        <h2 class="section-heading">{{ section.settings.section-heading-review }}</h2>
+    {% endif %}
+</div>
+
+<div class="large-margin">
+<div class="review-block-container d-flex space-between">
+    <div class="review-block-three light-grey">
+        <ul class="d-flex space-between">
+            {% include 'review-stars' %}
+      </ul>
+        {% if section.settings.col-one-rev != blank %}
+          <h6 class="name-rev">{{ section.settings.col-one-rev }}</h6>
+         {% endif %}
+         {% if section.settings.col-one-rev-desc != blank %}
+          <p class="testimonial-rev">{{ section.settings.col-one-rev-desc }}</p>
+         {% endif %}
+    </div>
+    <div class="review-block-three light-grey">
+      <ul class="d-flex space-between">
+            {% include 'review-stars' %}
+      </ul>
+       {% if section.settings.col-two-rev != blank %}
+          <h6 class="name-rev">{{ section.settings.col-two-rev }}</h6>
+         {% endif %}
+         {% if section.settings.col-two-rev-desc != blank %}
+          <p class="testimonial-rev">{{ section.settings.col-two-rev-desc }}</p>
+         {% endif %}
+    </div>
+    <div class="review-block-three light-grey">
+    <ul class="d-flex space-between">
+            {% include 'review-stars' %}
+      </ul>
+        {% if section.settings.col-three-rev != blank %}
+         <h6 class="name-rev">{{ section.settings.col-three-rev }}</h6>
+         {% endif %}
+         {% if section.settings.col-three-rev-desc != blank %}
+          <p class="testimonial-rev">{{ section.settings.col-three-rev-desc }}</p>
+         {% endif %}
+    </div>
+    </div>
+
+</section>
+
+
+{% schema %}
+{
+"name": "Review 3 Columns", // Section name
+"settings": [
+{
+"id": "section-heading-review",
+"type": "text",
+"label": "Review Title"
+},
+{
+"id": "col-one-rev",
+"type": "text",
+"label": "Reviewer Name"
+},
+{
+"id": "col-one-rev-desc",
+"type": "textarea",
+"label": "Testimonial"
+},
+{
+"id": "col-two-rev",
+"type": "text",
+"label": "Reviewer Name"
+},
+{
+"id": "col-two-rev-desc",
+"type": "textarea",
+"label": "Testimonial"
+},
+{
+"id": "col-three-rev",
+"type": "text",
+"label": "Reviewer Name"
+},
+{
+"id": "col-three-rev-desc",
+"type": "textarea",
+"label": "Testimonial"
+}
+],
+"presets": [
+{
+"name": "Review 3 Columns",
+"category": "Custom Layout"
+}
+]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+{% javascript %}
+{% endjavascript %}
+
+
+

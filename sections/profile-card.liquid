@@ -1,0 +1,100 @@
+{% assign ss = section.settings %}
+<section style="margin-bottom: 65px;">
+<div class="container-lg center-block">
+<div class="large-margin">
+<h3 class="profile-card-header">Shop by profile</h3>
+
+<!------##### Desktop profile card #####------->
+
+<ul class="d-flex space-between desktop-only">
+<li class="profile-card lazy" style="background-image: url('{{ ss.card-1-bg | img_url: 'master' }}')">
+<div class="profile-content">
+<h3 style="margin-top:68px; margin-bottom: 22px;">Home &<br>Student</h3>
+<a href="/collections/microsoft-office-home-and-student"><p class="learn-more">Learn more</p></a>
+</div>
+</li>
+<li class="profile-card lazy" style="background-image: url('{{ ss.card-2-bg | img_url: 'master' }}')">
+<div class="profile-content">
+<h3 style="margin-top: 68px; margin-bottom: 22px;">Best for<br>Solopreneurs</h3>
+<a href="/collections/microsoft-office"><p class="learn-more">Learn more</p></a>
+</div>
+</li>
+<li class="profile-card lazy" style="background-image: url('{{ ss.card-3-bg | img_url: 'master' }}')">
+<div class="profile-content">
+<h3 style="margin-top: 52px;">Business?</h3>
+<p class="white-font" style="font-size: 20px; margin-bottom: 15px; line-height: 30px;">Buy in bulk and get<br>a special price.</p>
+<a href="/collections/microsoft-office-home-and-business"><p class="learn-more">Learn more</p></a>
+</div>
+</li>
+</ul>
+
+</div>
+</div>
+</section>
+
+<!-------##### Mobile profile card #####------>
+
+<div style="margin-left: 10px; margin-bottom: 80px;">
+<ul class="d-flex space-between" id="profile-card-slider">
+<li class="profile-card lazy" style="background-image: url('{{ ss.card-1-bg | img_url: 'master' }}')">
+<div class="profile-content">
+<h3 style="margin-top:58px; margin-bottom: 22px;">Home &<br>Student</h3>
+<a href=""><p class="learn-more">Learn more</p></a>
+</div>
+</li>
+<li class="profile-card lazy" style="background-image: url('{{ ss.card-2-bg | img_url: 'master' }}')">
+<div class="profile-content">
+<h3 style="margin-top: 58px; margin-bottom: 22px;">Best for<br>Solopreneurs</h3>
+<p class="learn-more">Learn more</p>
+</div>
+</li>
+<li class="profile-card lazy" style="background-image: url('{{ ss.card-3-bg | img_url: 'master' }}')">
+<div class="profile-content">
+<h3 style="margin-top: 42px;">Business?</h3>
+<p class="white-font" style="font-size: 14px; margin-bottom: 15px; line-height: 30px;">Buy in bulk and<br>get a special price.</p>
+<p class="learn-more">Learn more</p>
+</div>
+</li>
+</ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Profile card",
+    "settings": [
+        {
+          "type": "header",
+          "content": "Card 1"
+        },
+      {
+        "type": "image_picker",
+        "id": "card-1-bg",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "Card 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "card-2-bg",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "Card 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "card-3-bg",
+        "label": "Background image"
+      }
+    ],
+    "presets":[
+        {
+            "name": "Profile card",
+            "category": "Collection"
+        }
+    ]
+  }
+{% endschema %}

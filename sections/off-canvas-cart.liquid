@@ -1,0 +1,222 @@
+<section data-cart-view="data-cart-view" class="off-canvas-menu light-grey relative" id="off-canvas-menu">
+
+{% include 'icon-close' %}
+<div class="light-grey" style="padding: 40px 20px 8px; box-sizing: border-box;">
+
+<div rv-hide="cart.item_count | lt 1">
+  <h4 class="dark-blue" style="margin-bottom: 34px;">Hey, this is your Shopping Cart</h4>
+  <form action="/cart" method="post" novalidate style="width: 100%;">
+
+    <div rv-each-item="cart.items" class="white-bg d-flex cart-item relative" style="padding-right: 28px; margin-bottom: 30px;">
+
+      <img rv-src="item.image | product_image_size '165x165'"/>
+
+      <div class="cart-item-content" style="padding-top: 20px;">
+
+        <p rv-text="item.title" class="sm-font dark-blue" style="margin-bottom: 10px;"></p>
+        <p class="light-blue smallest-font" style="margin-bottom: 15px;">Brand: <span rv-text="item.vendor"></span></p>
+
+        <div class="d-flex align-center space-between absolute " style="bottom: 25px; width: 50%;">
+
+          <div class="d-flex align-center white-bg number-spinner" style="width: 65px; margin-right: 0;">
+          <a style="color: #1480c8" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | minus 1">-</a>
+          <p class="text-center" style="color: #505D68; font-weight: 700; width: 28px;" rv-text="item.quantity"></p>
+          <a style="color: #1480c8" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | plus 1">+</a>
+          </div>
+
+          <h4 class="black-font" style="font-size: 26px;" rv-html="item.price | money Currency.currentCurrency"></h4>
+        </div>
+      </div>
+
+    </div>
+
+    {% comment %}{% include 'section-freebie' %} {% endcomment %}
+
+    <!--##### Discount code
+    <div class="d-flex code-flex flex-wrap">
+      <input type="text" class="discountCode" placeholder="Discount code">
+      <a href="#" class="discountApply">Apply</a>
+    </div> #####-->
+
+
+    <!-- Add on -->
+    <div style="margin-bottom: 40px;">
+      <h4 class="dark-blue" style="margin-top: 45px; margin-bottom: 40px; line-height: 35px;">Add-ons</h4>
+
+      <div class="d-flex space-between flex-wrap">
+
+      {% assign product = all_products[section.settings.add-on-1] %}
+      {% assign variant = product.selected_or_first_available_variant %}
+        <div id="upsell-item-container" class="white-bg d-flex" style="flex: 0 0 100%; margin-bottom: 20px;">
+
+        <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+          <div class="cart-item-content relative" style="flex: 0 0 52%;">
+            <p class="sm-font dark-blue" style="height: 50px; margin-bottom: 28px; line-height: 20px;">{{ product.title }}<br/>
+              <span class="black-font smallest-font">*Not available for Windows OS/Server purchase.</span>
+            </p>
+
+            <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+              <h4 class="black-font upsell-price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</h4>
+              <button data-cart-add="{{ product.selected_or_first_available_variant.id }}" data-cart-quantity="1" class="pbutton linear-blue uppercase"
+              style="width: 115px; height: 35px; padding: 10px 0; margin-left: 5px;">Add to cart</button>
+            </div>
+          </div>
+        </div>
+
+      {% assign product = all_products[section.settings.add-on-2] %}
+      {% assign variant = product.selected_or_first_available_variant %}
+        <div id="upsell-item-container" class="white-bg d-flex" style="flex: 0 0 100%;">
+
+        <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+        <div class="cart-item-content relative" style="flex: 0 0 52%;">
+          <p class="sm-font dark-blue" style="height: 50px; margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+
+          <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+            <h4 class="black-font upsell-price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</h4>
+            <button data-cart-add="{{ product.selected_or_first_available_variant.id }}" data-cart-quantity="1" class="pbutton linear-blue uppercase"
+            style="width: 115px; height: 35px; padding: 10px 0; margin-left: 5px;">Add to cart</button>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--##### Upsell #####-->
+    <div style="margin-bottom: 40px;">
+      <h4 class="dark-blue" style="margin-top: 45px; margin-bottom: 40px; line-height: 35px;">Get fully protected</h4>
+
+      <div class="d-flex space-between flex-wrap">
+		{% comment %}
+      		{% assign product = all_products[section.settings.upsell-product-1] %}
+      	{% endcomment %}
+      {% assign variant = product.selected_or_first_available_variant %}
+        <div id="upsell-item-container" class="white-bg d-flex"  style="flex: 0 0 100%; margin-bottom: 20px;">
+
+        <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+          <div class="cart-item-content relative" style="flex: 0 0 54%;">
+            <p class="sm-font dark-blue" style="height: 50px; margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+            {% if product.vendor != blank %}
+            <p class="light-blue smallest-font" style="margin-bottom: 15px;">Brand: {{ product.vendor }}</p>
+             {% endif %}
+
+            <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+              <h4 class="black-font upsell-price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</h4>
+              <button data-cart-add="{{ product.selected_or_first_available_variant.id }}" data-cart-quantity="1" class="pbutton linear-blue uppercase" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+            </div>
+          </div>
+        </div>
+
+      {% assign product = all_products[section.settings.upsell-product-2] %}
+      {% assign variant = product.selected_or_first_available_variant %}
+        <div id="upsell-item-container" class="white-bg d-flex" style="flex: 0 0 100%;">
+
+        <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+        <div class="cart-item-content relative" style="flex: 0 0 54%;">
+          <p class="sm-font dark-blue" style="height: 50px; margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+          {% if product.vendor != blank %}
+          <p class="light-blue smallest-font" style="margin-bottom: 15px;">Brand: {{ product.vendor }}</p>
+           {% endif %}
+          <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+            <h4 class="black-font upsell-price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</h4>
+            <button data-cart-add="{{ product.selected_or_first_available_variant.id }}" data-cart-quantity="1" class="pbutton linear-blue uppercase" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!------##### Checkout #####------>
+    <div class="d-flex" style="position: sticky; bottom: 0;">
+      <div class="white-bg" style="flex: 0 0 34%; padding: 22px 18px; box-sizing: border-box;">
+        <p class="smallest-font dark-blue">Cart Subtotal:</p>
+        <p class="dark-blue subTotal" style="font-weight: 500;" rv-value="cart.total_price" rv-html="cart.total_price | money"></p>
+      </div>
+    <button type="submit" name="checkout" class="pbutton linear-orange uppercase checkout" style="width: 100%; height: 75px;">checkout</button>
+    </div>
+
+  </form>
+    </div>
+</div>
+
+  <!--##### Empty cart #####-->
+
+  <div rv-show="cart.item_count | lt 1">
+    <h4 class="dark-blue text-center" style="font-size: 25px; margin-bottom: 96px;">Your cart is empty</h4>
+
+    <img class="empty-cart-img center-block" src="{{ 'empty-cart.png' | asset_img_url: 'master' }}" style="width: 270px; height: 220px;">
+
+    <ul>
+    <li class="text-center dark-blue" style="font-size: 15px; line-height: 25px;">You have no item in your shopping cart.</li>
+    </ul>
+
+    <a href="/"><button class="pbutton linear-blue start-shopping center-block" style="width: 270px; margin-top: 42px;">START SHOPPING</button></a>
+  </div>
+
+</section>
+
+<style>
+    input[type=number]{
+        width: 2.6ch!important;
+        color: #505D68;
+        font-size: 16px;
+        font-weight: 700;
+    }
+</style>
+
+<script>
+$(function(){
+  function progress(timeleft, timetotal, $element) {
+    var progressBarWidth = timeleft * $element.width() / timetotal;
+    $element.find('div').animate({ width: progressBarWidth }, 500).html(Math.floor(timeleft/30) + ":"+ timeleft%60);
+    if(timeleft > 0) {
+        setTimeout(function() {
+            progress(timeleft - 1, timetotal, $element);
+        }, 1000);
+    }
+};
+
+progress(600, 600, $('#progressBar'));
+})
+</script>
+
+{% schema %}
+  {
+    "name": "Off canvas cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Add ons"
+      },
+      {
+        "type": "product",
+        "id": "add-on-1",
+        "label": "Add on product"
+      },
+      {
+        "type": "product",
+        "id": "add-on-2",
+        "label": "Add on product"
+      },
+      {
+        "type": "header",
+        "content": "Upsell products"
+      },
+      {
+        "type": "product",
+        "id": "upsell-product-1",
+        "label": "Upsell product"
+      },
+      {
+        "type": "product",
+        "id": "upsell-product-2",
+        "label": "Upsell product"
+      }
+    ]
+  }
+{% endschema %}

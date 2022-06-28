@@ -1,0 +1,377 @@
+{% comment %}
+  In order to avoid showing "success" message when we post comments
+  with invalid format (eg. blank fields), we added logic to make sure it doesn't show.
+
+  Comment help page:
+  http://docs.shopify.com/themes/liquid-variables/comment
+{% endcomment %}
+
+
+{% assign new_comment = false %}
+{% assign number_of_comments = article.comments_count %}
+
+{% if comment and comment.created_at %}
+  {% assign new_comment = true %}
+  {% assign new_comment_id = comment.id %}
+{% endif %}
+
+{% if new_comment %}
+
+
+  {% assign duplicate_comment = false %}
+  {% for comment in article.comments %}
+    {% if comment.id == new_comment_id %}
+      {% assign duplicate_comment = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% unless duplicate_comment %}
+    {% assign number_of_comments = article.comments_count | plus: 1 %}
+  {% endunless %}
+{% endif %}
+
+{% comment %}
+
+<article role="article">
+
+  {% if article.image %}
+    <div class="hero-banner hero-banner--article lazyload" data-bgset="{% include 'responsive-bg-image', image: article.image %}"></div>
+
+    <noscript>
+      {% assign image_size = article.image.width | append: 'x' %}
+      <div class="hero-banner hero-banner--article" style="background-image: {{ article.image | img_url: image_size }}"></div>
+    </noscript>
+  {% endif %}
+
+  <header role="banner">
+    <h1>{{ article.title }}</h1>
+    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+    <p>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
+  </header>
+
+  <div class="rte">
+    {{ article.content }}
+  </div>
+
+  {% if article.tags.size > 0 %}
+    <ul>
+      {% for tag in article.tags %}
+        <li>
+          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if settings.social_sharing_blog %}
+    {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+  {% endif %}
+
+  {% if blog.comments_enabled? %}
+    <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+
+    {% paginate article.comments by 5 %}
+
+    <div id="comments">
+      {% if comment and comment.status and comment.id != blank and paginate.current_page == 1 %}
+        <p class="form-success">
+          {% if blog.moderated? and comment.status != 'published' %}
+            {{ 'blogs.comments.success_moderated' | t }}
+          {% else %}
+            {{ 'blogs.comments.success' | t }}
+          {% endif %}
+        </p>
+      {% endif %}
+
+      {% if number_of_comments > 0 %}
+        <ul>
+
+
+
+          {% if comment and comment.status != 'published' and comment.id != blank %}
+            <li id="{{ comment.id }}">
+              <div class="rte">
+                {{ comment.content }}
+              </div>
+              {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+              <p>{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
+            </li>
+          {% endif %}
+
+          {% for comment in article.comments %}
+            <li id="{{ comment.id }}">
+              <div class="rte">
+                {{ comment.content }}
+              </div>
+              {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+              <p>{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% endpaginate %}
+
+    {% form 'new_comment', article %}
+      <h3>{{ 'blogs.comments.title' | t }}</h3>
+
+      {{ form.errors | default_errors }}
+
+      <label for="CommentAuthor" class="label-hidden">
+        {{ 'blogs.comments.name' | t }}
+      </label>
+      <input type="text"
+             name="comment[author]"
+             id="CommentAuthor"
+             class="{% if form.errors contains 'author' %}input-error{% endif %}"
+             placeholder="{{ 'blogs.comments.name' | t }}"
+             value="{{ form.author }}"
+             autocapitalize="words">
+
+      <label for="CommentEmail" class="label-hidden">
+        {{ 'blogs.comments.email' | t }}
+      </label>
+      <input type="email"
+             name="comment[email]"
+             id="CommentEmail"
+             class="{% if form.errors contains 'email' %}input-error{% endif %}"
+             placeholder="{{ 'blogs.comments.email' | t }}"
+             value="{{ form.email }}"
+             spellcheck="false"
+             autocomplete="off"
+             autocapitalize="off">
+
+      <label for="CommentBody" class="label-hidden">
+        {{ 'blogs.comments.message' | t }}
+      </label>
+      <textarea
+        name="comment[body]"
+        id="CommentBody"
+        class="{% if form.errors contains 'body' %}input-error{% endif %}"
+        placeholder="{{ 'blogs.comments.message' | t }}">
+        {{- form.body -}}
+      </textarea>
+
+      {% if blog.moderated? %}
+        <p>{{ 'blogs.comments.moderated' | t }}</p>
+      {% endif %}
+
+      <input type="submit" class="button" value="{{ 'blogs.comments.post' | t }}">
+    {% endform %}
+
+  {% endif %}
+
+</article>
+
+{% endcomment %}
+
+<article role="article">
+
+<!-----##### Desktop blog #####------>
+
+<div class="container-lg center-block desktop-only" margin-top: 63px;>
+<div class="large-margin">
+
+<ul class="d-flex space-between" style="margin-bottom: 50px;">
+<a href="/blogs/news">
+<li class="d-flex underline align-center light-blue">
+<div style="transform: rotate(-90deg); margin-right: 10px;">{% include 'icon-bright-blue-arrow' %}</div>Read more articles</li></a>
+<li style="padding-right: 22px;">{{ article.published_at | time_tag: '%b %d, %Y' }}</li>
+</ul>
+
+<ul class="d-flex" style="margin-bottom: 114px;">
+
+<li class="bg-cover no-repeat lazy" style="width: 548px; height: 548px; background-image: url('{{ article.image | img_url: 'master' }}')"></li>
+
+<li class="light-grey border-box relative" style="flex: 0 0 50%; height: 431px; margin-top: 50px; padding: 98px 38px 70px 98px;">
+<div class="blog-category-badge linear-grey white-font" style="margin-top: 0;">{{ blog.title }}</div>
+<h2 class="dark-blue" style="font-size: 42px;">{{ article.title }}</h2>
+</li>
+
+</ul>
+
+<!-----##### Article content #####---->
+
+<ul class="d-flex">
+<p class="dark-blue smallest-font underline" style="transform-origin: -16% 1%; transform: rotate(90deg);">softwaredepot.com</p>
+
+<ul style="flex: 0 0 22%;">
+
+  <li style="margin-bottom: 40px;">
+      <a href="https://www.facebook.com/share?url=https://softwaredepotco.myshopify.com{{ article.url }}">
+        <img src="{{ 'facebook-share.svg' | asset_url }}" loading="lazy">
+      </a>
+  </li>
+
+
+  <li style="margin-bottom: 40px;">
+    <a href="https://twitter.com/share?url=https://softwaredepotco.myshopify.com{{ article.url }}">
+        <img src="{{ 'twitter-share.svg' | asset_url }}" loading="lazy">
+    </a>
+  </li>
+
+  <li style="margin-bottom: 40px;">
+    <a href="https://linkedin.com/share?url=https://softwaredepotco.myshopify.com{{ article.url }}">
+      <img src="{{ 'linkedin-share.svg' | asset_url }}" loading="lazy">
+    </a>
+  </li>
+
+</ul>
+
+<div class="rte" style="flex: 0 0 52.1%; padding-top: 30px;" >
+  {{ article.content }}
+
+</ul>
+
+</div>
+
+<!----##### Article navigation #####---->
+
+<div class="linear-blue" style="padding-left: 106px; margin-top: 180px;">
+<ul class="d-flex relative" style="padding-top: 55px; padding-bottom: 126px;">
+
+<li class="absolute" style="top: -18%;">
+<div class="bg-cover lazy" style="background-image: url('{{ blog.previous_article.image | img_url: 'master' }}'); width: 352px; height: 310px; margin-bottom: 25px;"></div>
+<a href="/blogs/news" class="d-flex align-center white-font">
+  <div style="transform: rotate(-90deg); margin-right: 18px;">{% include 'icon-white-arrow' %}</div>
+  Back to all articles</a>
+</li>
+
+<li style="margin-left: 32%; width: 740px;">
+<a href="{{ blog.previous_article }}" class="d-flex align-center" style="margin-bottom: 35px;">
+  <p class="white-font">Next</p>
+  <div style="transform: rotate(90deg); margin-left: 18px;">{% include 'icon-white-arrow' %}</div>
+</a>
+<p class="white-font" style="opacity: 0.5; margin-bottom: 24px;">{{ blog.title }}</p>
+<h3 class="white-font" style="line-height: 50px;">{{ blog.previous_article.title }}</h3>
+</li>
+</ul>
+</div>
+
+</div>
+
+<!----##### Mobile blog #####---->
+
+<div class="container-lg mobile-only">
+
+<div style="margin: -9px 42px 34px;">
+<h3 style="line-height: 35px;">{{ article.title }}</h3>
+<div class="d-flex space-between" style="align-items: flex-end;">
+<ul class="d-flex" style="margin-top: 30px;">
+<li>
+  <img alt="reviewer photo" src="{{ 'reviewer.png' | asset_img_url: 'master' }}" loading="lazy"
+  style="margin-top: -3%; margin-right: 5px;">
+</li>
+<li>
+<p class="smallest-font dark-blue" style="margin-bottom: 5px;">Softwaredepot</p>
+<p class="smallest-font">Editorial Director</p>
+</li>
+</ul>
+<div class="blog-category-badge linear-grey" style="margin-top: 0;">
+<p class="white-font smallest-font">{{ blog.title }}<p>
+</div>
+</div>
+</div>
+
+<div class="bg-cover lazy" style="background-image: url('{{ article.image | img_url: 'master' }}'); height: 375px;"></div>
+
+<div class="rte mobile-article-container" style="padding: 0 12px; margin-top: 50px;">
+  {{ article.content }}
+</div>
+
+<div style="width: 355px; box-sizing: border-box; border: 0.5px solid #6D8FA0; opacity: 0.5; margin:90px auto 52px;"></div>
+<div style="padding: 0 52px;">
+<img alt="reviewer photo" src="{{ 'reviewer.png' | asset_img_url: 'master' }}" loading="lazy" style="margin: 0 auto 30px;">
+  <p class="text-center" style="color: #042338; margin-bottom: 26px;">By Andre Santos</p>
+  <p class="sm-font text-center" style="line-height: 25px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+<div style="width: 355px; box-sizing: border-box; border: 0.5px solid #6D8FA0; opacity: 0.5; margin:60px auto 174px;"></div>
+</div>
+
+<!---##### Article navigation #####--->
+
+<div class="linear-blue-grey mobile-only" style="margin-bottom: 22%;">
+  <div class="relative" style="padding: 242px 11% 50px;">
+
+  <div class="bg-cover absolute lazy"
+  style="background-image: url('{{ blog.previous_article.image | img_url: 'master' }}');
+  width: 300px; height: 264px; top: -23.5%; right: 10%; margin-bottom: 25px;">
+  </div>
+
+  <p class="white-font" style="opacity: 0.5; margin-bottom: 5px;">{{ blog.title }}</p>
+  <h4 class="white-font" style="font-size: 24px; line-height: 40px; margin-bottom: 56px;">{{ article.title }}</h4>
+
+  <ul class="d-flex space-between align-center">
+    <a href="/blogs/news" class="d-flex align-center white-font">
+      <div style="transform: rotate(-90deg); margin-right: 18px;">{% include 'icon-white-arrow' %}</div>
+      Back to all articles</a>
+
+      <a href="{{ blog.previous_article }}" class="d-flex align-center">
+        <p class="white-font">Next</p>
+        <div style="transform: rotate(90deg); margin-left: 18px;">{% include 'icon-white-arrow' %}</div>
+      </a>
+
+  </ul>
+
+  </div>
+</div>
+
+</article>
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "articleBody": "{{ article.content | strip_html }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ shop.url }}{{ page.url }}"
+  },
+  "headline": "{{ article.title }}",
+  {% if article.excerpt != blank %}
+    "description": "{{ article.excerpt | strip_html }}",
+  {% endif %}
+  {% if article.image %}
+    {% assign image_size = article.image.width | append: 'x' %}
+    "image": [
+      "https:{{ article | img_url: image_size }}"
+    ],
+  {% endif %}
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+  "dateCreated": "{{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ article.author }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    {% if settings.share_image %}
+      {% assign image_size = settings.share_image.width | append: 'x' %}
+      "logo": {
+        "@type": "ImageObject",
+        "height": "{{ settings.share_image.height }}",
+        "url": "https:{{ settings.share_image | img_url: image_size }}",
+        "width": "{{ settings.share_image.width }}"
+      },
+    {% elsif article.image %}
+      {% assign image_size = article.image.width | append: 'x' %}
+      "logo": {
+        "@type": "ImageObject",
+        "height": "{{ article.image.height }}",
+        "url": "https:{{ article.image | img_url: image_size }}",
+        "width": "{{ article.image.width }}"
+      },
+    {% endif %}
+    "name": "{{ shop.name }}"
+  }
+}
+</script>

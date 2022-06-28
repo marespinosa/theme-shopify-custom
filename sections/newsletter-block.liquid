@@ -1,0 +1,65 @@
+<section>
+<div class="newsletter-block-container">
+<div class="newsletter-block">
+<ul class="d-flex space-between align-center">
+<h2 class="white-font" >Be Part of GetMSOffice Family and get 10% Off</h2>
+<div>
+  {% form 'customer' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+      <p class="white-font">{{ 'general.newsletter_form.confirmation' | t }}</p>
+    {% else %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input class="white-font" type="email;              name="contact[email]"
+        id="Email"
+        value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+        autocorrect="off"
+        autocapitalize="off">
+      <button type="submit" name="commit" id="submit">
+        <span class="dark-blue"><b>{{ 'general.newsletter_form.submit' | t }}</b></span>
+      </button>
+    {% endif %}
+  {% endform %}
+</div>
+</ul>
+</div>
+</div>
+</section>
+
+<style>
+form{
+      width: 450px;
+      max-width: 100%;
+}
+
+@media screen and (max-width: 425px){
+
+  form{
+    width: 300px;
+  }
+}
+
+input[type=email]{
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  opacity: 0.5;
+  width: 450px;
+  max-width: 100%;
+}
+
+</style>
+
+{% schema %}
+  {
+    "name": "Newsletter block",
+    "settings": [
+
+    ],
+    "presets": [
+        {
+            "name": "Newsletter block",
+            "category": "Promotional"
+        }
+    ]
+  }
+{% endschema %}

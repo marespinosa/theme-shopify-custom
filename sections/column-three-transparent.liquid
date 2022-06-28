@@ -1,0 +1,145 @@
+<section class="three-col-width">
+<div class="container-lg center-block">
+<div class="title-header">
+    {% if section.settings.section-heading != blank %}
+        <h2 class="section-heading">{{ section.settings.section-heading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.section-large-heading != blank %}
+     <h4 class="section-large-heading">{{ section.settings.section-large-heading }}</h4>
+    {% endif %}
+</div>
+  
+ 
+
+<div class="large-margin">
+	<div class="review-block-container d-flex space-between">
+  	  <div class="review-block-three transp-col-descp">
+    	 <div class="featured-image-col">{% if section.settings.image-featured-one != blank %}
+          {{ section.settings.image-featured-one | image_url: width: 270 | image_tag }}
+       {% endif %}</div>
+        <div class="numbers">
+        <p class="number-step">1</p>
+           <span class="line-border"></span>
+      </div>
+        <div class="section-cols-span">
+        {% if section.settings.col-one != blank %}
+          <h6>{{ section.settings.col-one }}</h6>
+         {% endif %}
+         {% if section.settings.col-one-desc != blank %}
+          <p>{{ section.settings.col-one-desc }}</p>
+         {% endif %}
+        </div>
+    </div>
+    <div class="review-block-three transp-col-descp">
+     <div class="featured-image-col paddingtop-img"> {% if section.settings.image-featured-two != blank %}
+          {{ section.settings.image-featured-two | image_url: width: 270 | image_tag }}
+       {% endif %}</div>
+      <div class="numbers">
+        <p class="number-step">2</p>
+         <span class="line-border2"></span>
+      </div>
+       <div class="section-cols-span">
+     {% if section.settings.col-two != blank %}
+          <h6>{{ section.settings.col-two }}</h6>
+         {% endif %}
+         {% if section.settings.col-two-desc != blank %}
+          <p>{{ section.settings.col-two-desc }}</p>
+         {% endif %}
+         
+      </div>
+    </div>
+    <div class="review-block-three transp-col-descp">
+      <div class="featured-image-col paddingtop-img">{% if section.settings.image-featured-three != blank %}
+          {{ section.settings.image-featured-three | image_url: width: 270 | image_tag }}
+        {% endif %}</div>
+      <div class="numbers">
+        <p class="number-step">3</p>
+      </div>
+       <div class="section-cols-span">
+        {% if section.settings.col-three != blank %}
+          <h6>{{ section.settings.col-three }}</h6>
+         {% endif %}
+         {% if section.settings.col-three-desc != blank %}
+          <p>{{ section.settings.col-three-desc }}</p>
+         {% endif %}
+      </div>
+    </div>
+</div>
+ 
+</div>
+</section>
+
+
+{% schema %}
+{
+"name": "Three Col Clr Background", // Section name
+"settings": [
+{
+"id": "section-heading",
+"type": "text",
+"label": "Heading 1"
+},
+{
+"id": "section-large-heading",
+"type": "text",
+"label": "Heading 2"
+},
+{
+     "type": "image_picker",
+        "id": "image-featured-one",
+        "label": "Image One"
+     },
+{
+"id": "col-one",
+"type": "text",
+"label": "Column One Title"
+},
+{
+"id": "col-one-desc",
+"type": "textarea",
+"label": "Description Col 1"
+},
+{
+     "type": "image_picker",
+        "id": "image-featured-two",
+        "label": "Image Two"
+     },
+{
+"id": "col-two",
+"type": "text",
+"label": "Column Two Title"
+},
+{
+"id": "col-two-desc",
+"type": "textarea",
+"label": "Description Col 2"
+},
+{
+     "type": "image_picker",
+        "id": "image-featured-three",
+        "label": "Image Three"
+     },
+{
+"id": "col-three",
+"type": "text",
+"label": "Column Three Title"
+},
+{
+"id": "col-three-desc",
+"type": "textarea",
+"label": "Description Col 3"
+}
+],
+"presets": [
+{
+"name": "Three Col Clr Background",
+"category": "Custom Layout"
+}
+]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+{% javascript %}
+{% endjavascript %}

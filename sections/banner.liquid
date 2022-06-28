@@ -1,0 +1,82 @@
+{% assign ss = section.settings %}
+
+<section>
+<div class="container-lg center-block">
+
+<!-----##### Desktop banner #####---->
+
+<div class="desktop-banner large-margin lazy">
+{{ ss.desktop-promo-text }}
+<a href="{{ ss.button-link }}"><button class="pbutton linear-orange">Learn more</button></a>
+</div>
+
+<!-----##### Mobile banner #####---->
+<div class="mobile-banner large-margin lazy">
+<h3>Shop by category</h3>
+<div class="mobile-banner-bg">
+{{ ss.mobile-promo-text }}
+<a class="underline white-font" href="{{ ss.button-link }}">Shop now</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<style>
+.desktop-banner{
+    background-image: url('{{ ss.desktop-banner-bg | img_url: 'master' }}');
+}
+
+.mobile-banner-bg{
+  background-image: url('{{ ss.mobile-banner-bg | img_url: 'master' }}')
+}
+
+h1, h4{
+    color: {{ ss.font-color }};
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop-banner-bg",
+          "label": "Desktop banner background image"
+        },
+        {
+            "type": "color",
+            "id": "font-color",
+            "label": "Font color",
+            "default": "#FFFFFF"
+        },
+      {
+        "type": "textarea",
+        "id": "desktop-promo-text",
+        "label": "Desktop promo text"
+      },
+        {
+          "type": "image_picker",
+          "id": "mobile-banner-bg",
+          "label": "Mobile banner background image"
+        },
+        {
+          "type": "textarea",
+          "id": "mobile-promo-text",
+          "label": "Mobile promo text"
+        },
+      {
+        "type": "url",
+        "id": "button-link",
+        "label": "Button link"
+      }
+    ],
+    "presets":[
+        {
+            "name": "Banner",
+            "category": "Image"
+        }
+    ]
+  }
+{% endschema %}

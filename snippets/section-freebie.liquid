@@ -1,0 +1,71 @@
+<div id="freebie-container" style="width: 100%;">
+  <h4 class="dark-blue" style="margin-top: 45px; margin-bottom: 40px; line-height: 35px;">Choose your freebie</h4>
+
+  <div class="d-flex space-between flex-wrap">
+
+    <!--##### USB Backup #####-->
+    {% comment %}
+    {% assign product = all_products[section.settings.usb-backup] %}
+    {% assign variant = product.selected_or_first_available_variant %}
+
+
+    <div id="freebie-block" class="white-bg d-flex">
+
+    <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+      <div class="cart-item-content relative">
+        <p class="sm-font dark-blue" style="margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+        <p class="smallest-font dark-blue" style="margin-bottom: 10px;">a physical copy of your software</p>
+        <p class="light-blue sm-font" style="margin-bottom: 15px;">( GBP£39.99 value )</p>
+
+        <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+          <button data-cart-add="{{ product.selected_or_first_available_variant.id }}"
+          data-cart-quantity="1" class="pbutton linear-blue uppercase add-freebie" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+        </div>
+      </div>
+    </div>
+    {% endcomment %}
+    <!--##### Software Installation #####-->
+
+    {% assign product = all_products[section.settings.software-install] %}
+    {% assign variant = product.selected_or_first_available_variant %}
+
+    <div id="freebie-block" class="white-bg d-flex">
+
+    <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+      <div class="cart-item-content relative">
+        <p class="sm-font dark-blue" style="margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+        <p class="smallest-font dark-blue" style="margin-bottom: 10px;">1 consult time</p>
+        <p class="light-blue sm-font" style="margin-bottom: 15px;">( GBP£44.99 value )</p>
+
+        <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+          <button data-cart-add="{{ product.selected_or_first_available_variant.id }}"
+          data-cart-quantity="1" class="pbutton linear-blue uppercase add-freebie" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!--##### Software insurance #####-->
+
+    {% assign product = all_products[section.settings.software-insurance] %}
+    {% assign variant = product.selected_or_first_available_variant %}
+
+    <div id="freebie-block" class="white-bg d-flex">
+
+    <img src="{{ product.featured_image | img_url: '165x165' }}">
+
+      <div class="cart-item-content relative">
+        <p class="sm-font dark-blue" style="margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+        <p class="smallest-font dark-blue" style="margin-bottom: 10px;">1 year coverage</p>
+        <p class="light-blue sm-font" style="margin-bottom: 15px;">( GBP£49.99 value )</p>
+
+        <div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+          <button data-cart-add="{{ product.selected_or_first_available_variant.id }}"
+          data-cart-quantity="1" class="pbutton linear-blue uppercase add-freebie" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

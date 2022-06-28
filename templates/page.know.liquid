@@ -1,0 +1,201 @@
+<section>
+
+<div class=" know-container linear-orange">
+  <h1 class="white-font text-center">{{ page.title }}</h1>
+
+  <ul class="d-flex space-between align-center flex-wrap">
+    <ul class="d-flex space-between" style="width: 385px; max-width: 100%; margin-top: 30px;">
+      <li class="flex: 0 0 22%;">
+        <div class="border-box" style="border: 1px solid #fff; padding: 30px 28px 22px;">
+          <img src="{{ 'know-installation.svg' | asset_url }}" loading="lazy" class="center-block" style="margin-bottom: 20px;">
+          <p class="plus-two-font white-font text-center">Installation</p>
+        </div>
+      </li>
+
+      <li class="flex: 0 0 22%;">
+        <div class="border-box" style="border: 1px solid #fff; padding: 27px 32px 9px;">
+          <img src="{{ 'know-os.svg' | asset_url }}" loading="lazy" class="center-block" style="margin-bottom: 20px;">
+          <p class="plus-two-font white-font text-center">Operating<br/>System</p>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="d-flex space-between" style="width: 385px; max-width: 100%; margin-top: 30px;">
+      <li class="flex: 0 0 22%;">
+        <div class="border-box" style="border: 1px solid #fff; padding: 27px 34px 7px;">
+          <img src="{{ 'know-msoffice.svg' | asset_url }}" loading="lazy" class="center-block" style="margin-bottom: 20px;">
+          <p class="plus-two-font white-font text-center">Microsoft<br/>Office</p>
+        </div>
+      </li>
+
+      <li class="flex: 0 0 22%;">
+        <div class="border-box" style="border: 1px solid #fff; padding: 27px 34px 8px;">
+          <img src="{{ 'know-msapps.svg' | asset_url }}" loading="lazy" class="center-block" style="margin-bottom: 20px;">
+          <p class="plus-two-font white-font text-center">Microsoft<br/>Apps</p>
+        </div>
+      </li>
+    </ul>
+  </ul>
+
+</div>
+
+<div class="container-lg center-block light-grey">
+  <div class="large-margin" style="padding: 114px 0 140px;">
+
+    <!----##### Installation #####---->
+
+    <ul id="accordion">
+      <li>
+        <div class="d-flex space-between align-center  q-container">
+          <h4 class="dark-blue">What should I do if I cannot complete a download?</h4>
+          <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+        </div>
+
+        <ul class="menu-list-item a-container">
+          <p class="dark-blue"><strong>Clear Cache</strong>
+            <br/>
+            If you cannot complete a download, you may need to clear the cache in Internet Explorer.
+            <br/>
+            Follow the steps below to clear the browser's cache
+            (note that this procedure will vary slightly depending on the version of Internet Explorer you have installed):
+            <br/>
+            On the Tools menu in Internet Explorer, click Internet Options, then the General tab.
+            <br/>
+            In the Browsing history section, click Delete.
+            <br/>
+            At the Delete Browsing History dialog box under the Temporary Internet Files section, click Delete files,
+            then choose the option for Yes if you would like to empty your entire cache of temporary Internet files.
+            <br/>
+            In the Delete Browsing History dialog box, under the History section, click Delete history.
+            When asked if you would like to delete the history of websites you have visited, choose Yes. When you are done, click Close.
+            <br/>
+            Under the General tab, in the Browsing history section, click Settings.
+            At the Settings dialog box, select Every time I visit the webpage.
+            Set the disc space to use for the Temporary Internet Files folder to a size larger than your intended download.
+            Next, click the View Files button.
+            <br/>
+            At the Temporary Internet Files window that opens, open the Edit menu and click Select All.
+            Press Delete. When you are asked if you would like to delete all cookies you have selected, click Yes.
+            Click the OK button until you return to the General tab, and then click OK to close the dialog box.
+            <br/><br/>
+            <strong>Disable Automatic Termination</strong>
+            <br/>
+            Another possible reason you are unable to complete a download is that your Internet service provider
+            (ISP) may be automatically terminating your Internet connection after being idle for a specific number of minutes.
+            Contact your ISP to disable the automatic termination of your connection when downloading files.</p>
+          </ul>
+
+      </li>
+    </ul>
+
+    <!----##### Operating System #####---->
+
+    <ul id="accordion">
+      <li>
+        <div class="d-flex space-between align-center q-container">
+          <h4 class="dark-blue">What is the difference between 32-bit and 64-bit versions of Windows?</h4>
+          <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+        </div>
+
+        <ul class="menu-list-item a-container" style="padding: 35px 25px 35px 64px;">
+          <p class="dark-blue">The terms 32-bit and 64-bit refer to the way a computer's processor
+            (also called a CPU) handles information.
+            The 64-bit version of Windows handles large amounts of random access memory
+            (RAM) more effectively than a 32-bit system. Not all devices can run the 64-bit versions of Windows.</p>
+          </ul>
+
+      </li>
+    </ul>
+
+    <ul id="accordion">
+      <li>
+        <div class="d-flex space-between align-center q-container">
+          <h4 class="dark-blue">How to check if computer has 32-bit or 64-bit?</h4>
+          <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+        </div>
+
+        <ul class="menu-list-item a-container">
+            <p class="dark-blue"><strong>In Windows 10, Windows 8, Windows 7 or Windows Vista:</strong>
+            <br/>
+            Click Start, right click Computer, then click Properties.
+            <br/>
+            Under System, you can view the system type your computer is running.
+            <br/><br/>
+            <strong>In Windows XP:</strong>
+            <br/>
+            Click Start, right click My Computer, then click Properties.
+            <br/>
+            If you don't see "x64 Edition" listed, then you are running the 32-bit version of Windows XP.
+            <br/>
+            If you see "x64 Edition" listed under System, you are running 64-bit version.
+            <br/>
+            Note: You may not necessarily be using a 64-bit version of Microsoft Office even if you are using a 64-bit version of Windows Vista or Windows 7/8.</p>
+        </ul>
+
+      </li>
+    </ul>
+
+    <!----##### Microsoft Office #####---->
+
+    <ul id="accordion">
+      <li>
+        <div class="d-flex space-between align-center q-container">
+          <h4 class="dark-blue" style="line-height: 35px;">What is the difference between Office Home & Student 2016, Office Home & Business 2016, and Office Professional 2016?</h4>
+          <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+        </div>
+
+        <ul class="menu-list-item a-container">
+          <p class="dark-blue">All Office 2016 suites come with Word, Excel, PowerPoint, and OneNote.
+            Office Home & Business 2016 also includes Outlook. Office Professional 2016 includes Outlook, Publisher and Access.
+            Each suite can be installed on 1 PC.</p>
+          </ul>
+
+      </li>
+    </ul>
+
+    <!----##### Microsoft Apps #####---->
+
+    <ul id="accordion">
+      <li>
+        <div class="d-flex space-between align-center q-container">
+          <h4 class="dark-blue">What is Microsoft Office Visio?</h4>
+          <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+        </div>
+
+        <ul class="menu-list-item a-container">
+          <p class="dark-blue">Microsoft Office Visio is a diagramming and vector graphics application and is part of the Microsoft Office family.</p>
+          </ul>
+
+      </li>
+    </ul>
+
+    <ul id="accordion">
+      <li>
+        <div class="d-flex space-between align-center q-container">
+          <h4 class="dark-blue">What is Microsoft Office Project?</h4>
+          <div style="transform: rotate(180deg)">{% include 'icon-bright-blue-arrow' %}</div>
+        </div>
+
+        <ul class="menu-list-item a-container">
+          <p class="dark-blue">Microsoft Project is a project management software product,
+            developed and sold by Microsoft. It is designed to assist a project manager in developing a plan,
+            assigning resources to tasks, tracking progress, managing the budget, and analyzing workloads.</p>
+          </ul>
+
+      </li>
+    </ul>
+
+    </div>
+  </div>
+
+  <!----##### Contact #####---->
+
+  <div class="contact-banner large-margin">
+    <h2 class="dark-blue">Can’t find your answer? We are here to help.<br/>
+      Chat with us</h2>
+      <button class="pbutton linear-orange uppercase" style="margin-top: 20px;">chat with us</button>
+  </div>
+
+  <div class="desktop-only">{% include "newsletter-subscription" %}</div>
+
+</section>

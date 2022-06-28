@@ -1,0 +1,73 @@
+<section>
+<div class="container-lg center-block">
+<div class="large-margin">
+<ul class="review-block-container d-flex space-between">
+
+<li class="review-block light-grey">
+<div class="review-content center-block">
+
+<ul class="d-flex space-between align-center" style="margin-bottom: 15px;">
+<li class="d-flex align-center">
+<div class="reviewer-info align-center">
+<p class="sm-font dark-blue">Myre</p>
+</div>
+</li>
+</ul>
+
+<ul class="d-flex space-between">
+{% include 'review-stars' %}
+</ul>
+
+<p class="review-block-text">
+"Extremely good prices and their customer support team never seems to sleep!"
+</p>
+
+</div>
+</li>
+
+<li class="review-block light-grey">
+<div class="review-content center-block">
+
+<ul class="d-flex space-between align-center" style="margin-bottom: 15px;">
+<li class="d-flex align-center">
+<div class="reviewer-info align-center">
+<p class="sm-font dark-blue">Terra</p>
+</div>
+</li>
+</ul>
+
+<ul class="d-flex space-between">
+{% include 'review-stars' %}
+</ul>
+
+<p class="review-block-text">
+"Have purchased products more than once and highly recommend”
+</p>
+
+</div>
+</li>
+
+</ul>
+</div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Review block",
+    "settings": [
+    {
+    "id": "reviewer-name",
+    "type": "text",
+    "label": "Name"
+    }
+
+    ],
+    "presets": [
+        {
+            "name": "Review block",
+            "category": "Text"
+        }
+    ]
+  }
+{% endschema %}

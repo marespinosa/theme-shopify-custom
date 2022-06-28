@@ -1,0 +1,79 @@
+{% assign ga4TAGID = 'G-2EVNB7MZCP' %}
+<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id={{ga4TAGID}}"></script>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', "{{ga4TAGID}}");
+
+    window.parseAmountForGA4 = function (value) {
+        return parseFloat(value).toFixed(2);
+
+    };
+    window.queueGA4 = function(func) {
+        let keyIntervalQueueGTAG = setInterval(() => {
+            if (typeof gtag == "function") {
+                clearInterval(keyIntervalQueueGTAG);
+                func();
+            }
+        }, 300);
+    };
+</script>
+
+{% if request.page_type == 'product' %}
+    {% if product %}
+        <script type="text/javascript">
+            {% assign currentProduct = product.variants.first %}
+            {% if currentProduct %}
+                let data = {
+                    currency: "{{cart.currency.iso_code}}",
+                    value: parseAmountForGA4({{product.price | money_without_currency }}),
+                    items: [{
+                        index: 0,
+                        item_id: "{{currentProduct.sku}}",
+                        item_name: "{{product.title}}",
+                        affiliation: "{{shop.name}}",
+                        currency: "{{cart.currency.iso_code}}",
+                        quantity: 1,
+                        price: parseAmountForGA4({{product.price | money_without_currency }})
+                    }]
+                };
+
+                queueGA4(() => {
+                    gtag('event', 'view_item', data);
+                });
+            {% endif %}
+        </script>
+    {% endif %}
+{% endif %}
+
+{% if request.page_type == 'collection' %}
+    {% if collection %}
+        <script type="text/javascript">
+                let data = {
+                    item_list_id: "{{collection.id}}",
+                    item_list_name: "{{collection.title}}",
+                    items: []
+                };
+
+                {% for currentProduct in collection.products %}
+                    {% assign currentVariant = currentProduct.variants.first %}
+                    {% if currentVariant %}
+                        data.items.push({
+                            index: {{forloop.index}},
+                            item_id: "{{currentVariant.sku}}",
+                            item_name: "{{currentProduct.title}}",
+                            affiliation: "{{shop.name}}",
+                            currency: "{{cart.currency.iso_code}}",
+                            quantity: 1,
+                            price: parseAmountForGA4({{currentProduct.price | money_without_currency }})
+                        });
+                    {% endif %}
+                {% endfor %}
+
+                queueGA4(() => {
+                    gtag('event', 'view_item_list', data);
+                });
+        </script>
+    {% endif %}
+{% endif %}

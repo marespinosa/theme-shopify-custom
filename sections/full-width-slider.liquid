@@ -1,0 +1,115 @@
+{% assign ss = section.settings %}
+
+<div class="container-lg center-block desktop-only">
+      <h3 id="slider-header" class="container-lg large-margin">Why choose getmsoffice?</h3>
+  <div class="large-margin center-block">
+    <ul class="d-flex space-between" style="margin-top: 45px; margin-bottom: 74px;">
+
+    {% comment %}
+    <li class="why-choose-block" style="background-image: url('https://cdn.shopify.com/s/files/1/0244/3614/6228/files/BBB-Bg.png?4682')">
+    <div class="why-choose-content">
+    <img alt="Better Business Bureau logo" src="{{ 'bbb.svg' | asset_url }}" style="margin-bottom: 36px;">
+    <h3 class="white-font" style="margin-bottom: 28px;">Acreditated<br>Business</h3>
+    <a href="" class="bigger-font white-font underline">Read more</a>
+    </div>
+    </li>
+    {% endcomment %}
+
+    <li class="why-choose-block" style="background-image: url('https://cdn.shopify.com/s/files/1/0244/3614/6228/files/U-Rewards-Bg.png?5985')">
+    <div class="why-choose-content">
+    <img alt="urewards logo" src="{{ 'u-rewards.png' | asset_img_url: 'master' }}" style="margin-bottom: 41px;">
+    <h3 style="margin-bottom: 28px;">The only software<br>company that<br>takes you to Hawaii.</h3>
+    {% comment %}<a href="" class="bigger-font dark-blue underline">Read more</a>{% endcomment %}
+    </div>
+    </li>
+
+    <li class="why-choose-block bg-cover" style="background-image: url('{{ 'microsoft_building.jpg' | asset_img_url: 'master' }}')">
+    <div class="why-choose-content">
+    <h3 class="white-font" style="padding-top: 60px; margin-bottom: 28px;">We are Microsoft<br>Reseller Certified</h3>
+    {% comment %}<a href="" class="bigger-font white-font underline">Read more</a>{% endcomment %}
+    </div>
+    </li>
+
+    </ul>
+  </div>
+</div>
+
+<!----##### Mobile slider #####----->
+<section class="mobile-only">
+<div>
+<div>
+<h3 id="slider-header" class="container-lg large-margin">Why choose softwaredepot?</h3>
+<div id="slider-container">
+
+<div class="slider" style="background-image: url('{{ ss.slider-1-bg | img_url: 'master' }}');">
+<div class="slider-content">
+<img class="bbb-logo" src="{{ 'bbb.svg' | asset_url }}">
+<h1>Acreditated<br>Business</h1>
+<button class="pbutton linear-blue desktop-only">SEE MORE</button>
+<a class="underline white-font mobile-only" href="">Read more</a>
+</div>
+</div>
+
+<div class="slider slide-two">
+<div class="slider-content">
+<img class="u-rewards-logo" src="{{ 'u-rewards.png' | asset_img_url: 'master' }}">
+<h2 class="dark-blue">The only software<br>company that takes<br>you to Hawaii.</h2>
+<button class="pbutton linear-blue desktop-only">SEE MORE</button>
+<a class="underline dark-blue mobile-only" href="">Read more</a>
+</div>
+</div>
+
+<div class="slider" style="background-image: url(' {{ ss.slider-3-bg | img_url: 'master' }}');background-color: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.82) 100%);">
+<div class="slider-content">
+<h2 class="white-font desktop-only" style="margin-top: 122px;">We are Microsoft<br>Reseller Certified</h2>
+<h2 class="white-font mobile-only" style="margin-top: 32px; font-size: 30px; line-height: 40px;">Microsoft<br>Certified</h2>
+<button class="pbutton linear-blue desktop-only">SEE MORE</button>
+<a class="underline white-font mobile-only" href="">Read more</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full width slider",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slider 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "slider-1-bg",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "Slider 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "slider-2-bg",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "Slider 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "slider-3-bg",
+        "label": "Background image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full width slider",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

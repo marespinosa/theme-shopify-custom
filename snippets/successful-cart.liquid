@@ -1,0 +1,25 @@
+<div class="successful-cart light-grey" style="display: none;">
+
+  <div class="white-bg center-block">
+
+    <div class="center-block">
+
+    <div class="d-flex relative">
+      <h3 class="dark-blue">Product added to Shopping cart</h3>
+      <img class="absolute success-cart-remove" src="{{ 'dark-blue-cross.svg' | asset_url }}" loading="lazy"
+      style="top: 32%; left: 100%; cursor: pointer;">
+    </div>
+
+    <img class="center-block" src="{{ 'success-cart.png' | asset_img_url: 'master' }}" loading="lazy"
+    style="margin-top: 70px; margin-bottom: 90px;">
+
+    <div class="d-flex space-between flex-wrap center-block" style="padding: 0 0 0 4%;">
+      <button class="pbutton white-font uppercase success-cart-remove" style="background-color: #C2D1D9; width: 260px; height: 50px;">continue shopping</button>
+      <a href="/cart"><button class="pbutton white-font linear-blue uppercase" style="width: 260px; height: 50px;">proceed to checkout</button></a>
+    </div>
+
+  </div>
+
+  </div>
+
+</div>

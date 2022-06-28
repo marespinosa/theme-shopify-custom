@@ -1,0 +1,503 @@
+.microsoft-365-pricing-page > h1 {
+	 display: block;
+	 width: 1200px;
+	 max-width: 100%;
+	 margin: 20px auto;
+	 padding: 0;
+	 text-align: center;
+	 font-size: 30px;
+	 font-weight: 700;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page > h1 {
+		 font-size: 40px;
+		 margin: 30px auto 40px;
+	}
+}
+ .microsoft-365-pricing-page .product-list-container {
+	 display: block;
+	 width: 100%;
+	 margin: 0;
+	 padding: 0;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner {
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content: center;
+	 align-items: center;
+	 width: 1200px;
+	 max-width: 100%;
+	 margin: 10px auto 0;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .product-list-container .product-list-container--inner {
+		 flex-flow: row nowrap;
+		 margin: 0 auto;
+	}
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box {
+	 position: relative;
+	 width: calc(100% - 40px);
+	 min-height: 1050px;
+	 background-color: #FFF;
+	 border-radius: 5px;
+	 border: 2px solid #FFF;
+	 padding: 45px 20px;
+	 box-sizing: border-box;
+	 margin: 10px auto;
+	 box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+	 transition: border 0.4s ease;
+	 order: 2;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box:nth-child(2) {
+	 order: 1;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box {
+		 max-width: 30%;
+		 width: 390px;
+		 margin: 40px 15px 70px 0;
+		 order: unset;
+	}
+	 .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box:nth-child(2) {
+		 order: unset;
+	}
+	 .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box:last-child {
+		 margin-right: 0;
+	}
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box:hover {
+	 border-color: #1266CC;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--recommended {
+	 position: absolute;
+	 display: block;
+	 width: 100%;
+	 top: 20px;
+	 left: 0;
+	 right: 0;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--recommended span {
+	 display: block;
+	 width: 200px;
+	 text-align: center;
+	 background-color: #F5AB2C;
+	 color: #FFF;
+	 margin: 0 auto;
+	 font-size: 16px;
+	 font-weight: 400;
+	 border-radius: 50px;
+	 padding: 4px 10px;
+	 box-sizing: border-box;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--image {
+	 display: flex;
+	 flex-flow: row nowrap;
+	 justify-content: center;
+	 align-items: center;
+	 width: 180px;
+	 height: 180px;
+	 margin: 0 auto;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--title {
+	 display: block;
+	 width: 100%;
+	 min-height: 105px;
+	 font-size: 34px;
+	 font-weight: 700;
+	 color: #1E1E1E;
+	 text-align: center;
+	 margin: 5px 0 20px;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--action {
+	 display: block;
+	 width: 100%;
+	 color: #FFF;
+	 padding: 15px 0;
+	 font-size: 24px;
+	 font-weight: 700;
+	 text-align: center;
+	 background-color: #1266CC;
+	 border: 2px solid #1266CC;
+	 cursor: pointer;
+	 transition: all 0.4s ease;
+	 text-decoration: none;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--action:hover {
+	 background-color: #FFF;
+	 color: #1266CC;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--offer-timer {
+	 display: flex;
+	 flex-flow: row nowrap;
+	 justify-content: center;
+	 width: 100%;
+	 margin: 20px 0;
+	 text-align: center;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--offer-timer span {
+	 font-size: 26px;
+	 font-weight: 400;
+	 color: #1E1E1E;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--offer-timer span.offer-timer--time-left {
+	 color: #DDA412;
+	 font-size: 30px;
+	 font-weight: 700;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--price-box {
+	 display: flex;
+	 flex-flow: row nowrap;
+	 justify-content: center;
+	 align-items: flex-end;
+	 width: 100%;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--price-box .price-box--price {
+	 font-size: 40px;
+	 font-weight: 700;
+	 color: #1E1E1E;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--price-box .price-box--info {
+	 font-size: 20px;
+	 font-weight: 400;
+	 padding-left: 10px;
+	 padding-bottom: 3px;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--msrp {
+	 display: block;
+	 font-size: 24px;
+	 font-weight: 400;
+	 color: #6D8FA0;
+	 text-align: center;
+	 margin: 10px 0 45px;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--msrp .msrp--price {
+	 text-decoration: line-through;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--no-msrp {
+	 display: block;
+	 min-height: 85px;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--features {
+	 display: block;
+	 width: 100%;
+	 margin: 0;
+	 padding: 0;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--features li {
+	 position: relative;
+	 width: 100%;
+	 margin: 0 0 20px;
+	 font-size: 18px;
+	 font-weight: 400;
+	 text-align: left;
+	 color: #1D1D1D;
+	 padding-left: 20px;
+	 box-sizing: border-box;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--features li::before {
+	 content: "";
+	 position: absolute;
+	 width: 5px;
+	 height: 5px;
+	 top: 10px;
+	 left: 0;
+	 background-color: #1D1D1D;
+	 border-radius: 100%;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--office-apps {
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content: center;
+	 align-items: flex-start;
+	 list-style: none;
+	 padding: 0;
+	 margin: 30px 0 20px;
+	 box-sizing: border-box;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--office-apps li {
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content: flex-start;
+	 align-items: center;
+	 padding: 0;
+	 margin-bottom: 15px;
+	 box-sizing: border-box;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--office-apps li.skype {
+	 display: none;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--office-apps li .icon {
+	 margin: 0 auto;
+	 width: 25px;
+	 height: 25px;
+}
+ .microsoft-365-pricing-page .product-list-container .product-list-container--inner .product-list-container--product-box .product-box--office-apps li .label {
+	 display: block;
+	 width: 100%;
+	 font-size: 16px;
+	 font-weight: 500;
+	 text-align: left;
+	 color: #181840;
+	 text-align: center;
+	 margin-top: 10px;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription {
+	 background-color: #F4F4F4;
+	 display: block;
+	 width: 100%;
+	 padding: 40px 0;
+	 box-sizing: border-box;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .compare-lifetime-vs-subscription {
+		 padding: 85px 0;
+	}
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner {
+	 display: block;
+	 width: 1200px;
+	 max-width: 100%;
+	 margin: 0 auto;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner h3 {
+	 display: block;
+	 margin: 0;
+	 padding: 0;
+	 font-size: 30px;
+	 font-weight: 700;
+	 text-align: center;
+	 color: #000;
+	 margin-bottom: 20px;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner h3 {
+		 font-size: 40px;
+		 margin-bottom: 50px;
+	}
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container {
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content: center;
+	 align-items: center;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item {
+	 width: 380px;
+	 padding: 35px 25px;
+	 box-sizing: border-box;
+	 background-color: #FFF;
+	 border-radius: 5px;
+	 border: 2px solid #1266CC;
+	 box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item .compare-item--img {
+	 position: relative;
+	 display: flex;
+	 flex-flow: row nowrap;
+	 justify-content: center;
+	 align-items: center;
+	 width: 180px;
+	 height: 180px;
+	 max-width: 100%;
+	 margin: 0 auto 10px;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item .compare-item--img img {
+	 max-width: 100%;
+	 max-height: 100%;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item .compare-item--title {
+	 display: block;
+	 width: 100%;
+	 font-size: 30px;
+	 font-weight: 500;
+	 color: #1E1E1E;
+	 text-align: center;
+	 margin-bottom: 15px;
+	 min-height: 70px;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item .compare-item--price {
+	 display: block;
+	 width: 100%;
+	 text-align: center;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item .compare-item--price span {
+	 margin: 0;
+	 padding: 0;
+	 font-size: 30px;
+	 font-weight: 400;
+	 color: #000;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item .compare-item--price span .compare-item--price-big {
+	 font-size: 50px;
+	 font-weight: 700;
+	 color: #1266CC;
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item-vs {
+	 margin: 20px auto;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item-vs {
+		 margin: 0 15px;
+	}
+}
+ .microsoft-365-pricing-page .compare-lifetime-vs-subscription .compare-lifetime-vs-subscription--inner .compare-container .compare-item-vs .vs {
+	 font-size: 60px;
+	 font-weight: 700;
+	 margin: 0;
+	 padding: 0;
+	 color: #04A3FF;
+}
+ .microsoft-365-pricing-page .free-consultancy {
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content: center;
+	 align-items: center;
+	 width: 1200px;
+	 max-width: calc(100% - 20px);
+	 margin: 30px auto;
+	 border-radius: 10px;
+	 border: 2px solid #1266CC;
+	 background-color: #F4F4F4;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy {
+		 flex-flow: row nowrap;
+		 margin: 65px auto;
+		 max-width: 100%;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--left-image {
+	 width: 100%;
+	 display: flex;
+	 flex-flow: row nowrap;
+	 justify-content: flex-start;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy .free-consultancy--left-image {
+		 width: 444px;
+		 justify-content: flex-end;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--left-image img {
+	 height: 100%;
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content {
+	 width: 100%;
+	 padding: 45px 35px;
+	 box-sizing: border-box;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content {
+		 width: calc(100% - 444px);
+		 padding: 40px 56px;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content > h4 {
+	 display: block;
+	 width: 100%;
+	 color: #1E1E1E;
+	 font-size: 30px;
+	 font-weight: 700;
+	 margin: 0;
+	 padding: 0;
+	 text-align: center;
+	 margin-bottom: 15px;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content > h4 {
+		 font-size: 40px;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content > p {
+	 font-size: 20px;
+	 color: #767676;
+	 text-align: left;
+	 margin-bottom: 20px;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content > p {
+		 font-size: 22px;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container {
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content: space-between;
+	 align-items: center;
+	 width: 100%;
+	 box-sizing: border-box;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container {
+		 flex-flow: row nowrap;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box {
+	 width: 296px;
+	 max-width: 100%;
+	 background-color: 100%;
+	 padding: 35px;
+	 min-height: 240px;
+	 box-sizing: border-box;
+	 background-color: #FFF;
+	 border-radius: 5px;
+	 border: 1px solid #1266CC;
+	 margin-bottom: 20px;
+}
+ @media screen and (min-width: 1200px) {
+	 .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box {
+		 margin-bottom: 0;
+	}
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box .contact-container--box-image {
+	 display: flex;
+	 flex-flow: row nowrap;
+	 justify-content: center;
+	 align-items: center;
+	 width: 35px;
+	 height: 35px;
+	 margin: 0 auto 8px;
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box .contact-container--box-image img {
+	 max-width: 100%;
+	 max-height: 100%;
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box .contact-container--box-title {
+	 font-size: 24px;
+	 color: #1266CC;
+	 display: block;
+	 width: 100%;
+	 text-align: center;
+	 margin: 10px 0;
+	 padding: 0;
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box .contact-container--box-subtitle {
+	 font-size: 18px;
+	 color: #000;
+	 display: block;
+	 width: 100%;
+	 text-align: center;
+	 margin: 10px 0 20px;
+	 padding: 0;
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box .contact-container--box-action {
+	 display: block;
+	 width: 100%;
+	 color: #FFF;
+	 padding: 15px 0;
+	 font-size: 14px;
+	 font-weight: 400;
+	 text-align: center;
+	 background-color: #1266CC;
+	 border: 2px solid #1266CC;
+	 cursor: pointer;
+	 transition: all 0.4s ease;
+	 text-decoration: none;
+}
+ .microsoft-365-pricing-page .free-consultancy .free-consultancy--right-content .contact-container .contact-container--box .contact-container--box-action:hover {
+	 background-color: #FFF;
+	 color: #1266CC;
+}
+ 
+.microsoft-365-pricing-page img { max-width: 100%; max-height: 100%; }

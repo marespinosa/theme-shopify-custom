@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="5px" viewBox="0 0 8 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.1 (72631) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1.70710678,1.70710678 L4.29289322,4.29289322 C4.68341751,4.68341751 5.31658249,4.68341751 5.70710678,4.29289322 L8.29289322,1.70710678 C8.68341751,1.31658249 8.68341751,0.683417511 8.29289322,0.292893219 C8.10535684,0.10535684 7.85100293,-1.1589425e-15 7.58578644,-1.11022302e-15 L2.41421356,0 C1.86192881,1.01453063e-16 1.41421356,0.44771525 1.41421356,1 C1.41421356,1.26521649 1.5195704,1.5195704 1.70710678,1.70710678 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Atoms-/-icons-/-System-/-Dropdown" transform="translate(-8.000000, -10.000000)">
+            <g id="Group" transform="translate(7.000000, 10.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#C2D1D9" xlink:href="#path-1"></use>
+                <g id="Atoms-/-Colors-/-Gray-#2" mask="url(#mask-2)" fill="#C2D1D9">
+                    <g transform="translate(-7.000000, -10.000000)" id="Atoms-/-Colors-/-Black">
+                        <rect x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

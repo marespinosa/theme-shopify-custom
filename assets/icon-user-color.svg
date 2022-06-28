@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.1 (72631) - https://sketchapp.com -->
+    <title>Atoms / icons / Navbar/ Color / User</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7,21 L7,23 C7,23.5522847 6.55228475,24 6,24 C5.44771525,24 5,23.5522847 5,23 L5,21 C5,17.9352916 9.83098067,16 14,16 C18.1690193,16 23,17.9352916 23,21 L23,23 C23,23.5522847 22.5522847,24 22,24 C21.4477153,24 21,23.5522847 21,23 L21,21 C21,19.5399072 17.1559994,18 14,18 C10.8440006,18 7,19.5399072 7,21 Z" id="path-1"></path>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#1480C8" offset="0%"></stop>
+            <stop stop-color="#04A3FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Atoms-/-icons-/-Navbar/-Color-/-User" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#042338" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <path d="M19,9 C19,11.7622847 16.7622847,14 14,14 C11.2377153,14 9,11.7622847 9,9 C9,6.23771525 11.2377153,4 14,4 C16.7622847,4 19,6.23771525 19,9 Z M17,9 C17,7.34228475 15.6577153,6 14,6 C12.3422847,6 11,7.34228475 11,9 C11,10.6577153 12.3422847,12 14,12 C15.6577153,12 17,10.6577153 17,9 Z" id="Combined-Shape" fill="url(#linearGradient-3)" fill-rule="nonzero"></path>
+    </g>
+</svg>

@@ -1,0 +1,249 @@
+{% comment %}
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+      <div class="section-header text-center">
+        <h1>{{ page.title }}</h1>
+      </div>
+
+      {% if page.content.size > 0 %}
+        <div class="rte">
+          {{ page.content }}
+        </div>
+      {% endif %}
+
+      <div class="contact-form form-vertical">
+        {% assign formId = 'ContactForm' %}
+        {% form 'contact', id: formId %}
+          {% include 'form-status', form_id: formId %}
+
+          <div class="grid grid--half-gutters">
+            <div class="grid__item medium-up--one-half">
+              <label for="{{ formId }}-name">{{ 'contact.form.name' | t }}</label>
+              <input type="text" id="{{ formId }}-name" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+            </div>
+            <div class="grid__item medium-up--one-half">
+              <label for="{{ formId }}-email">{{ 'contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="{{ formId }}-email"
+                name="contact[email]"
+                autocorrect="off"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  class="input--error"
+                  aria-invalid="true"
+                  aria-describedby="{{ formId }}-email-error"
+                {% endif %}
+                >
+              {% if form.errors contains 'email' %}
+                <span id="{{ formId}}-email-error" class="input-error-message">{% include 'icon-error' %} {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <label for="{{ formId }}-phone">{{ 'contact.form.phone' | t }}</label>
+          <input type="tel" id="{{ formId }}-phone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+          <label for="{{ formId }}-message">{{ 'contact.form.message' | t }}</label>
+          <textarea rows="10" id="{{ formId }}-message" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+          <input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endcomment %}
+
+<section class="container-lg center-block">
+
+  <!----##### Desktop #####---->
+
+  <div class="large-margin desktop-only">
+    <h2 class="dark-blue">{{ page.title }}</h2>
+    <ul class="d-flex space-between" style="margin-top: 40px; margin-bottom: 150px;">
+
+      <li class="light-grey border-box"
+      style="flex: 0 0 48.8%; height: 700px;
+      padding: 56px 108px 56px 88px;">
+
+      <h4 class="dark-blue">Contact Form</h4>
+
+        <div class="relative" style="margin-top: 145px;">
+          {% assign formId = 'ContactForm' %}
+          {% form 'contact', id: formId %}
+            {% include 'form-status', form_id: formId %}
+
+            <div>
+              <div style="margin-bottom: 32px;">
+                <label for="contact-page-name" class="smallest-font" style="color: #9EA0A5;">Name</label>
+                <input
+                type="text"
+                placeholder="Your Name"
+                id="contact-page-name"
+                class="sm-font"
+                name="contact[name]"
+                value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                style="display: block; height: 44px; width: 372px; max-width: 100%;
+                background: transparent; border-bottom: 0.5px solid #E5E8EF;">
+              </div>
+              <div style="margin-bottom: 32px;">
+                <label for="contact-page-email" class="smallest-font" style="color: #9EA0A5;">{{ 'contact.form.email' | t }}</label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  id="contact-page-email"
+                  class="sm-font"
+                  style="display: block; height: 44px; width: 372px; max-width: 100%;
+                  background: transparent; border-bottom: 0.5px solid #E5E8EF; text-align: left;"
+                  name="contact[email]"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    class="input--error"
+                    aria-invalid="true"
+                    aria-describedby="{{ formId }}-email-error"
+                  {% endif %}
+                  >
+                {% if form.errors contains 'email' %}
+                  <span id="{{ formId}}-email-error" class="input-error-message">{% include 'icon-error' %} {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="absolute" style="top: 215%;">
+              <label for="contact-message" class="smallest-font" style="color: #9EA0A5;">{{ 'contact.form.message' | t }}</label>
+              <textarea
+              rows="10"
+              id="contact-page-message"
+              class="sm-font"
+              name="contact[body]"
+              style="display: block; background: transparent;
+              border: 0.5px solid #E5E8EF; margin-top: 8px;
+              margin-bottom: 32px; width: 372px;">
+                {% if form.body %}{{ form.body }}{% endif %}
+              </textarea>
+
+              <input type="submit" class="pbutton linear-orange uppercase" value="send email">
+          </div>
+          {% endform %}
+        </div>
+      </li>
+
+      <li class="border-box" style="flex: 0 0 48.8%; padding: 58px 88px;">
+        <div style="margin-bottom: 32px;">
+          <h4 class="dark-blue">Address</h4>
+          <p class="sm-font light-blue" style="line-height: 30px;">Marmora Road, Glasgow D04 89 GR UK</p>
+          <p class="sm-font light-blue" style="line-height: 30px;">John Dalton Street, Manchester MA M2 6LN UK</p>
+        </div>
+        <div style="margin-bottom: 32px;">
+          <h4 class="dark-blue">Telephone</h4>
+          <p class="sm-font light-blue" style="line-height: 30px;">+44 800 048 8538</p>
+        </div>
+        <div>
+          <h4 class="dark-blue">Email</h4>
+          <p class="sm-font light-blue" style="line-height: 30px;">sales@getmsoffice.com</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="desktop-only">{% include 'newsletter-subscription' %}</div>
+
+  <!----##### Mobile #####---->
+<div class="mobile-only">
+  <h2 class="dark-blue" style="padding-left: 42px; font-size: 32px;">{{ page.title }}</h2>
+
+  <div class="light-grey border-box"
+  style="flex: 0 0 48.8%; height: 700px;
+  padding: 40px 50px; margin-top: 30px;">
+
+  <h4 class="dark-blue" style="font-size: 25px;">Contact Form</h4>
+
+    <div class="relative" style="margin-top: 145px; ">
+      {% assign formId = 'ContactForm' %}
+      {% form 'contact', id: formId %}
+        {% include 'form-status', form_id: formId %}
+
+        <div>
+          <div style="margin-bottom: 32px;">
+            <label for="contact-page-name" class="smallest-font" style="color: #9EA0A5;">Name</label>
+            <input
+            type="text"
+            placeholder="Your Name"
+            id="contact-page-name"
+            class="sm-font"
+            name="contact[name]"
+            value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            style="display: block; height: 44px; width: 270px; max-width: 100%;
+            background: transparent; border-bottom: 0.5px solid #E5E8EF;">
+          </div>
+          <div style="margin-bottom: 32px;">
+            <label for="contact-page-email" class="smallest-font" style="color: #9EA0A5;">{{ 'contact.form.email' | t }}</label>
+            <input
+              type="email"
+              placeholder="Your Email"
+              id="contact-page-email"
+              class="sm-font"
+              style="display: block; height: 44px; width: 270px; max-width: 100%;
+              background: transparent; border-bottom: 0.5px solid #E5E8EF; text-align: left;"
+              name="contact[email]"
+              autocorrect="off"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                class="input--error"
+                aria-invalid="true"
+                aria-describedby="{{ formId }}-email-error"
+              {% endif %}
+              >
+            {% if form.errors contains 'email' %}
+              <span id="{{ formId}}-email-error" class="input-error-message">{% include 'icon-error' %} {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="absolute" style="top: 215%;">
+          <label for="contact-message" class="smallest-font" style="color: #9EA0A5;">{{ 'contact.form.message' | t }}</label>
+          <textarea
+          rows="10"
+          id="contact-page-message"
+          class="sm-font"
+          name="contact[body]"
+          style="display: block; background: transparent;
+          border: 0.5px solid #E5E8EF; margin-top: 8px;
+          margin-bottom: 32px; width: 270px;">
+            {% if form.body %}{{ form.body }}{% endif %}
+          </textarea>
+
+          <input type="submit" class="pbutton linear-orange uppercase" value="contact us" style="width: 100%;">
+      </div>
+      {% endform %}
+    </div>
+  </div>
+
+  <div style="padding: 40px 80px 34px 34px;">
+    <div style="margin-bottom: 20px;">
+      <h4 class="dark-blue" style="margin-bottom: 18px;">Address</h4>
+      <p class="sm-font light-blue" style="line-height: 30px;">
+        Suite 178 1/60 - 80 Walker Street North Sydney NSW 2060 Australia</p>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <h4 class="dark-blue" style="margin-bottom: 18px;">Telephone</h4>
+      <p class="sm-font light-blue" style="line-height: 30px;">+61 2 8310 9283</p>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <h4 class="dark-blue" style="margin-bottom: 18px;">Email</h4>
+      <p class="sm-font light-blue" style="line-height: 30px;">sales@softwaredepot.co</p>
+    </div>
+  </div>
+
+</div>
+
+</section>

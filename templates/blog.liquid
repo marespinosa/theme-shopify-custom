@@ -1,0 +1,255 @@
+<section>
+<div class="container-lg center-block">
+<div class="large-margin">
+<h2 class="dark-blue desktop-only" style="margin-bottom: 42px;">SoftwareDepot<br>Blog</h2>
+<h3 class="dark-blue mobile-only" style="margin-bottom: 42px; margin-left: 22px; line-height: 35px;">Softwaredepot<br>Blog</h3>
+
+<ul class="d-flex space-between blog-container">
+{% for article in blog.articles limit: 1 %}
+  <a href="{{ article.url }}">
+  <li class="blog-column" style="width: 94%;">
+  <div class="featured-blog-image lazy" style="background-image: url('{{ article.image | img_url: 'master' }}');"></div>
+  <div class="blog-category-badge linear-grey white-font">{{ blog.title }}</div>
+  <h2 class="dark-blue article-title desktop-only">{{ article.title }}</h2>
+  <h3 class="dark-blue article-title mobile-only">{{ article.title }}</h3>
+  <p class="sm-font article-excerpt desktop-only">{{ article.excerpt_or_content }}</p>
+  </li>
+  </a>
+{% endfor %}
+<!-----##### Recent blog #####------>
+
+<li class="blog-column" id="recent-blog-column">
+<h4 class="dark-blue" style="margin-bottom: 45px; font-size: 25px;">Recent posts</h4>
+<ul>
+
+{% for article in blog.articles offset: 1 limit: 5 %}
+<a href="{{ article.url }}">
+<li class="d-flex space-between recent-blog-item">
+<div class="recent-blog-item-image lazy" style="background-image: url('{{ article.image | img_url: 'master' }}')"></div>
+<div class="recent-blog-content">
+<h4 class="dark-blue" style="margin-bottom: 25px;">{{ article.title }}</h4>
+</div>
+</li>
+</a>
+{% endfor %}
+
+</ul>
+</li>
+
+</ul>
+</div>
+</div>
+
+<!-----##### Right full width blog #####----->
+
+<div class="right-featured-blog light-grey relative desktop-only">
+
+<p class="dark-blue absolute" style="top: 0; left: -6%; transform: rotate(270deg);">Feature</p>
+
+  {% for article in blog.articles offset: 6 limit: 1 %}
+  <a href="{{ article.url }}">
+    <img class="absolute" src="{{ article.image | img_url: 'master' }}" loading="lazy"
+    style="top: 20%; left: -37.5%; width: 452px; height: 322px;">
+
+    <div class="center-block">
+
+      <h2 class="dark-blue" style="font-size: 42px; line-height: 50px; margin-bottom: 45px;">{{ article.title }}<h2>
+      <p class="light-blue sm-font" style="line-height: 35px; margin-bottom: 45px;">{{ article.excerpt_or_content }}</p>
+    </div>
+  </a>
+  {% endfor %}
+
+</div>
+
+</div>
+
+<!---##### Mobile version #####--->
+
+<div class="light-grey mobile-only" style="margin-top: 20px; margin-bottom: 45px;">
+{% for article in blog.articles offset: 6 limit: 1 %}
+  <div class="lazy" style="background-image: url('{{ article.image | img_url: 'master' }}'); background-size: cover; height: 254px; background-position-y: 70%;"></div>
+
+    <div style="padding: 25px 26px 68px;">
+      <a href="{{ article.url }}">
+        <h3>{{ article.title }}</h3>
+        </a>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-----##### Four blog grid #####----->
+
+<div class="container-lg center-block">
+<div class="large-margin">
+
+<ul class="d-flex space-between" style="flex-wrap: wrap;">
+
+{% for article in blog.articles offset: 7 limit: 4 %}
+<a href="{{ article.url }}" class="four-blog-grid-item">
+<li class="d-flex space-between" class="four-blog-grid-flex">
+<div class="recent-blog-item-image lazy" style="background-image: url('{{ article.image | img_url: 'master' }}')"></div>
+<div class="four-blog-grid-content">
+<h4 class="dark-blue" style="margin-bottom: 25px;">{{ article.title }}</h4>
+</div>
+</li>
+</a>
+{% endfor %}
+
+</ul>
+
+</div>
+</div>
+
+<!---##### See all blogs #####--->
+{% comment %}
+<div class="mobile-only">
+<a href=""><button class="see-all-product white-font text-center" style="margin-top: 0; margin-bottom: 142px;"><b>SEE ALL BLOGS</b></button></a>
+</div>
+
+</div>
+</div>
+{% endcomment %}
+
+<!------##### Left full width blog #####------>
+
+<div class="desktop-only">
+  {% for article in blog.articles offset: 11 limit: 1 %}
+    <a href="{{ article.url }}">
+    <div class="light-grey relative left-featured-blog">
+
+    <img class="absolute" src="{{ article.image | img_url: 'master' }}" loading="lazy"
+    style="top: 10%; right: -37.5%; width: 452px; height: 322px;">
+
+    <div class="center-block" style="padding: 66px 0 72px; width: 452px; max-width: 100%;">
+
+    <h2 class="dark-blue" style="font-size: 42px; line-height: 50px; margin-bottom: 45px;">{{ article.title }}<h2>
+    <p class="light-blue sm-font" style="line-height: 35px; margin-bottom: 45px;">{{ article.excerpt_or_content }}</p>
+
+    </div>
+
+    </div>
+    </a>
+  {% endfor %}
+</div>
+
+<!-----##### Four blog row #####----->
+
+<div class="desktop-only">
+  <div class="container-lg center-block">
+  <div class="large-margin">
+
+  <ul class="d-flex space-between" style="margin-bottom: 164px;">
+  {% for article in blog.articles offset: 12 limit: 4 %}
+  <a href="{{ article.url }}"  style="margin-bottom: 45px; flex: 0 0 23%;">
+  <li>
+  <div class="recent-blog-item-image lazy" style="margin-bottom: 24px; width: 100%; background-image: url('{{ article.image | img_url: 'master' }}')"></div>
+  <div>
+  <h4 class="dark-blue" style="margin-bottom: 25px;">{{ article.title }}</h4>
+  </div>
+  </li>
+  </a>
+  {% endfor %}
+  </ul>
+
+  </div>
+  </div>
+</div>
+
+<!-----##### Newsletter block #####----->
+
+{% section 'newsletter-block' %}
+
+
+</section>
+
+{% comment %}
+
+  {% assign blog_title = blog.title %}
+
+  {% if current_tags %}
+    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+  {% endif %}
+
+  <h1>{{ blog_title }}</h1>
+
+  {% if blog.all_tags.size > 0 %}
+    <h2>{{ 'blogs.general.categories' | t }}</h2>
+
+    <ul>
+      {% for tag in blog.all_tags %}
+
+        {% if current_tags contains tag %}
+          <li>{{ tag }}</li>
+        {% else %}
+          <li>{{ tag | link_to_tag: tag }}</li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% for article in blog.articles %}
+    <h3>
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h3>
+
+    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+
+    <p>
+      {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
+    </p>
+
+    {% if article.image %}
+      <a href="{{ article.url }}">
+        {% include 'responsive-image' with
+          image: article.image,
+          max_width: 1024,
+          max_height: 1024
+        %}
+      </a>
+    {% endif %}
+
+    <div class="rte">
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt }}
+      {% else %}
+        <p>
+          {{ article.content | strip_html | truncatewords: 100 }}
+        </p>
+      {% endif %}
+    </div>
+
+    {% if blog.comments_enabled? or article.tags.size > 0 %}
+      <ul>
+        {% if blog.comments_enabled? %}
+          <li>
+            <a href="{{ article.url }}#comments">
+              {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+            </a>
+          </li>
+        {% endif %}
+
+        {% if article.tags.size > 0 %}
+          {% for tag in article.tags %}
+            <li>
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+              {% unless forloop.last %}, {% endunless %}
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    {% endif %}
+
+    <p>
+      <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
+    </p>
+
+  {% endfor %}
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+
+  {% endcomment %}

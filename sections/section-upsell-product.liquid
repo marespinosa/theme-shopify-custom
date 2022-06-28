@@ -1,0 +1,57 @@
+<div>
+<h4 class="dark-blue" style="margin-top: 45px; margin-bottom: 40px; line-height: 35px;">Get fully protected with these suggestions</h4>
+
+<div class="d-flex space-between flex-wrap">
+
+{% assign product = all_products[section.settings.upsell-product-1] %}
+{% assign variant = product.selected_or_first_available_variant %}
+<div id="upsell-item-container" class="white-bg d-flex">
+<img src="{{ product.featured_image | img_url: '165x165' }}">
+<div class="cart-item-content relative">
+<p class="sm-font dark-blue" style="height: 50px; margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+{% if product.vendor != blank %}
+<p class="light-blue smallest-font" style="margin-bottom: 15px;">Brand: {{ product.vendor }}</p>
+ {% endif %}
+<div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+<h4 class="black-font upsell-price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</h4>
+<button data-cart-add="{{ product.selected_or_first_available_variant.id }}" data-cart-quantity="1" class="pbutton linear-blue uppercase" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+</div>
+</div>
+</div>
+
+{% assign product = all_products[section.settings.upsell-product-2] %}
+{% assign variant = product.selected_or_first_available_variant %}
+<div id="upsell-item-container" class="white-bg d-flex">
+<img src="{{ product.featured_image | img_url: '165x165' }}">
+<div class="cart-item-content relative">
+<p class="sm-font dark-blue" style="height: 50px; margin-bottom: 10px; line-height: 20px;">{{ product.title }}</p>
+{% if product.vendor != blank %}
+<p class="light-blue smallest-font" style="margin-bottom: 15px;">Brand: {{ product.vendor }}</p>
+ {% endif %}
+<div class="d-flex align-center space-between" style="bottom: -10%; height: 35px;">
+<h4 class="black-font upsell-price">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</h4>
+<button data-cart-add="{{ product.selected_or_first_available_variant.id }}" data-cart-quantity="1" class="pbutton linear-blue uppercase" style="width: 120px; height: 35px; padding: 10px 0;">Add to cart</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Upsell Product",
+    "settings": [
+      {
+        "type": "product",
+        "id": "upsell-product-1",
+        "label": "Upsell product"
+      },
+      {
+        "type": "product",
+        "id": "upsell-product-2",
+        "label": "Upsell product"
+      }
+    ]
+  }
+{% endschema %}

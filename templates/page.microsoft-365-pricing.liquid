@@ -1,0 +1,298 @@
+{{ 'page-microsoft-365-pricing.css' | asset_url | stylesheet_tag }}
+
+{% assign handles = 'microsoft-office-2019-home-and-business,microsoft-office-2021-home-and-business-pc,office365bp-month'| split : ',' %}
+{% assign phone = '+44 800 048 8538' %}
+
+<section class="microsoft-365-pricing-page">
+    <h1>Why Buy a subscription product when you can have Lifetime for Cheaper? We Save you avg $75 yearly with Lifetime Licenses.</h1>
+    <div class="product-list-container">
+        <div class="product-list-container--inner">
+            {% for handle in handles %}
+
+                {% assign isSubscription = false %}
+                {% assign item = all_products[handle] %}
+                {% assign title = '' %}
+                {% assign officeApps = false %}
+                {% assign productTag = false %}
+
+                {% if handle == 'microsoft-office-2019-home-and-business' %}
+                    {% assign productTag = 'office2019hb' %}
+                    {% assign title = 'MS Office 2019 Home and Business' %}
+                    {% assign officeApps = 'word,excel,outlook,powerpoint' | split: ',' %}
+                {% endif %}
+
+                {% if handle == 'microsoft-office-2021-home-and-business-pc' %}
+                    {% assign productTag = 'office2021hb' %}
+                    {% assign title = 'MS Office 2021 Home and Business' %}
+                    {% assign officeApps = 'word,excel,outlook,powerpoint' | split: ',' %}
+                {% endif %}
+
+                {% if handle == 'office365bp-month' %}
+                    {% assign productTag = 'office365bp-month' %}
+                    {% assign title = 'MS 365 Premium' %}
+                    {% assign officeApps = 'word,excel,outlook,powerpoint,access,onenote,publisher' | split: ',' %}
+          			{% assign isSubscription = true %}
+                {% endif %}
+
+                <div class="product-list-container--product-box">
+                    {% if productTag == 'office2021hb' %}
+                        <span class="product-box--recommended"><span>Recommended</span></span>
+                    {% endif %}
+                    <div class="product-box--image">
+                        <img src="{{ item | img_url: 'small' }}" alt="Product Image" title="{{title}}" />
+                    </div>
+                    <span class="product-box--title">{{ title }}</span>
+                    <a href="{{ item.url }}" class="product-box--action">Shop Now</a>
+                    <div class="product-box--offer-timer">
+                        <span>Offer Ends <span class="offer-timer--time-left">0d 00:00:00</span></span>
+                    </div>
+                    <div class="product-box--price-box">
+                        {% if isSubscription != true %}
+                            <span class="price-box--price">{{ item.price | money_with_currency }}</span>
+                            <span class="price-box--info">Life Time</span>
+                        {% endif %}
+                        {% if isSubscription == true %}
+                            <span class="price-box--price">{{ item.price | times: 12 | money_with_currency }}</span>
+                            <span class="price-box--info">per Year</span>
+                        {% endif %}
+                    </div>
+
+                    {% if isSubscription != true %}
+                        <div class="product-box--msrp">
+                            <span>M.S.R.P</span>
+                            <span class="msrp--price">{{ item.compare_at_price | money_with_currency }}</span>
+                        </div>
+                    {% endif %}
+
+                    {% if isSubscription != true %}
+                        <ul class="product-box--features">
+                            <li>Buy now use Forever</li>
+                            <li>Digital download.</li>
+                            <li>Lifetime support at no Extra cost.</li>
+                        </ul>
+                    {% endif %}
+
+                    {% if isSubscription == true %}
+                        <span class="product-box--no-msrp"></span>
+                        <ul class="product-box--features">
+                            <li>Subscription based.</li>
+                            <li>Digital download.</li>
+                            <li>Lifetime support at no Extra cost.</li>
+                        </ul>
+                    {% endif %}
+
+                    <ul class="product-box--office-apps">
+                        {% if officeApps %}
+                            {% for officeApp in officeApps %}
+                                <li>
+                                    <span class="icon">
+                                        <img src="{{ 'app-icon-' | append: officeApp | append: '.svg' | file_url }}" alt="Icon App" />
+                                    </span>
+                                    <span class="label">{{ officeApp | capitalize }}</span>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <section class="compare-lifetime-vs-subscription">
+        <div class="compare-lifetime-vs-subscription--inner">
+            <h3>Here's what you'll pay for Microsoft 365 Subscription in 2 years Vs Lifetime License.</h3>
+            <div class="compare-container">
+                <div class="compare-item">
+                    <div class="compare-item--img">
+                        <img src="{{'landing-page-office-365-pricing-compare-premium.png' | file_url }}" />
+                    </div>
+                    <div class="compare-item--title">
+                        <span>MS 365 Premium</span>
+                    </div>
+                    <div class="compare-item--price">
+                        <span><span class="compare-item--price-big">{{ all_products['office365bp-premium'].price | times: 12 | money_with_currency }}</span> /2 years</span>
+                    </div>
+                </div>
+                <div class="compare-item-vs">
+                    <span class="vs">VS</span>
+                </div>
+                <div class="compare-item">
+                    <div class="compare-item--img">
+                        <img src="{{ 'landing-page-office-365-pricing-compare-business.png' | file_url }}" />
+                    </div>
+                    <div class="compare-item--title">
+                        <span> Office 2021 Home & Business</span>
+                    </div>
+                    <div class="compare-item--price">
+                        <span><span class="compare-item--price-big">{{ all_products['microsoft-office-2021-home-and-business-pc'].price | money_with_currency }}</span> One Time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="product-list-container">
+        <div class="product-list-container--inner">
+            {% for handle in handles %}
+
+                {% assign isSubscription = false %}
+                {% assign item = all_products[handle] %}
+                {% assign title = '' %}
+                {% assign officeApps = false %}
+                {% assign productTag = false %}
+
+                {% if handle == 'microsoft-office-2019-home-and-business' %}
+                    {% assign productTag = 'office2019hb' %}
+                    {% assign title = 'MS Office 2019 Home and Business' %}
+                    {% assign officeApps = 'word,excel,outlook,powerpoint' | split: ',' %}
+                {% endif %}
+
+                {% if handle == 'microsoft-office-2021-home-and-business-pc' %}
+                    {% assign productTag = 'office2021hb' %}
+                    {% assign title = 'MS Office 2021 Home and Business' %}
+                    {% assign officeApps = 'word,excel,outlook,powerpoint' | split: ',' %}
+                {% endif %}
+
+                {% if handle == 'office365bp-month' %}
+                    {% assign productTag = 'office365bp-month' %}
+                    {% assign title = 'MS 365 Premium' %}
+                    {% assign officeApps = 'word,excel,outlook,powerpoint,access,onenote,publisher' | split: ',' %}
+          			{% assign isSubscription = true %}
+                {% endif %}
+
+                <div class="product-list-container--product-box">
+                    {% if productTag == 'office2021hb' %}
+                        <span class="product-box--recommended"><span>Recommended</span></span>
+                    {% endif %}
+                    <div class="product-box--image">
+                        <img src="{{ item | img_url: 'small' }}" alt="Product Image" title="{{title}}" />
+                    </div>
+                    <span class="product-box--title">{{ title }}</span>
+                    <a href="{{ item.url }}" class="product-box--action">Shop Now</a>
+                    <div class="product-box--offer-timer">
+                        <span>Offer Ends <span class="offer-timer--time-left">0d 00:00:00</span></span>
+                    </div>
+                    <div class="product-box--price-box">
+                        {% if isSubscription != true %}
+                            <span class="price-box--price">{{ item.price | money_with_currency }}</span>
+                            <span class="price-box--info">Life Time</span>
+                        {% endif %}
+                        {% if isSubscription == true %}
+                            <span class="price-box--price">{{ item.price | times: 12 | money_with_currency }}</span>
+                            <span class="price-box--info">per Year</span>
+                        {% endif %}
+                    </div>
+
+                    {% if isSubscription != true %}
+                        <div class="product-box--msrp">
+                            <span>M.S.R.P</span>
+                            <span class="msrp--price">{{ item.compare_at_price | money_with_currency }}</span>
+                        </div>
+                    {% endif %}
+
+                    {% if isSubscription != true %}
+                        <ul class="product-box--features">
+                            <li>Buy now use Forever</li>
+                            <li>Digital download.</li>
+                            <li>Lifetime support at no Extra cost.</li>
+                        </ul>
+                    {% endif %}
+
+                    {% if isSubscription == true %}
+                        <span class="product-box--no-msrp"></span>
+                        <ul class="product-box--features">
+                            <li>Subscription based.</li>
+                            <li>Digital download.</li>
+                            <li>Lifetime support at no Extra cost.</li>
+                        </ul>
+                    {% endif %}
+
+                    <ul class="product-box--office-apps">
+                        {% if officeApps %}
+                            {% for officeApp in officeApps %}
+                                <li>
+                                    <span class="icon">
+                                        <img src="{{ 'app-icon-' | append: officeApp | append: '.svg' | file_url }}" alt="Icon App" />
+                                    </span>
+                                    <span class="label">{{ officeApp | capitalize }}</span>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <section class="free-consultancy">
+        <div class="free-consultancy--left-image">
+            <img src="{{ 'landing-page-office-365-pricing-business_woman.png' | file_url }}" />
+        </div>
+        <div class="free-consultancy--right-content">
+            <h4>Get Free Consultancy on your Needs</h4>
+            <p>Feeling lost? Reach out to  our Sales Expert and they’ll  come up with the best solution for you.</p>
+            <div class="contact-container">
+                <div class="contact-container--box">
+                    <div class="contact-container--box-image">
+                        <img src="{{ 'landing-page-office-365-pricing-phone.svg' | file_url }}" alt="Temp" />
+                    </div>
+                    <span class="contact-container--box-title">Call</span>
+                    <span class="contact-container--box-subtitle">Est wait time 15mins</span>
+                    <a href="tel: {{ phone }}" class="contact-container--box-action">{{ phone }}</a>
+                </div>
+                <div class="contact-container--box">
+                    <div class="contact-container--box-image">
+                        <img src="{{ 'landing-page-office-365-pricing-chat.svg' | file_url }}" alt="Temp" />
+                    </div>
+                    <span class="contact-container--box-title">Live Chat</span>
+                    <span class="contact-container--box-subtitle">Est wait time &lt; 2mins</span>
+                    <a href="#" id="open-zendesk-action" class="contact-container--box-action">Start Conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<script type="text/javascript">
+
+    let page365PricingkeyTimerRefresh;
+
+    var offerTimerDeadline = 'March 01 2022';
+
+    clearInterval(page365PricingkeyTimerRefresh);
+
+    page365PricingkeyTimerRefresh = setInterval(() => {
+
+        let missingTime     = Date.parse(offerTimerDeadline) - Date.parse(new Date());
+        let missingSeconds  = Math.floor( (missingTime / 1000) % 60);
+        let missingMinutes  = Math.floor( (missingTime / 1000 / 60) % 60);
+        let missingHours    = Math.floor( missingTime / (1000 * 60 * 60 ) % 24);
+        let missingDays     = Math.floor( missingTime / (1000* 60 * 60 * 24));
+
+        missingHours    = missingHours < 10 ? `0${missingHours}` : missingHours;
+        missingMinutes  = missingMinutes < 10 ? `0${missingMinutes}` : missingMinutes;
+        missingSeconds  = missingSeconds < 10 ? `0${missingSeconds}` : missingSeconds;
+
+        let offerTimeLeft = `${missingDays}d ${missingHours}:${missingMinutes}:${missingSeconds}`;
+
+        console.log(offerTimeLeft);
+
+        let elements = document.querySelectorAll('.offer-timer--time-left');
+
+        console.log(elements.length);
+
+        for (let i = 0; i < elements.length; i++) {
+            let element = elements[i];
+            element.innerHTML = offerTimeLeft;
+        }
+
+    }, 1000);
+
+    document.getElementById('open-zendesk-action').addEventListener('click', function(event) {
+        event.preventDefault();
+        if (typeof zE == "function") {
+            zE.activate();
+        }
+    });
+</script>

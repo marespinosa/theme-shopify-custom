@@ -1,0 +1,160 @@
+<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+  {% assign description = product.description | split: '<!-- divider -->' %}
+
+
+  <section class="product-info-container relative">
+    <div class=" relative product-info-bg">
+      <div class="container-lg center-block white-bg">
+        
+        <div class="large-margin">
+          
+         {% include 'toogle_os' %}
+          
+
+          <div class="white-bg">
+            <p class="smallest-font"><a href="/collections">Products</a> >
+             <span class="dark-blue">{{ product.title }}</span></p>
+          </div>
+
+          <ul class="d-flex space-between">
+
+           <li class="product-page-image">
+                <img alt="{{ product.title }}"
+                src="{{ product.featured_image | img_url: 'master' }}"
+                loading="lazy">
+              </li>
+		
+
+            <li class="product-info">
+              <h3 class="product-title-middle">{{ product.title }}</h3>
+              
+              {% include 'review-stars' %}
+
+              <div class="product-price-container desktopprice">
+                {% if product.compare_at_price != blank %}
+                  <div class="compare-price">
+                  {% include 'retail-price', product: product %}
+                   <b>{{ product.compare_at_price | money_with_currency }}</b>
+                </div>
+                {% endif %}
+                </div>
+
+              <h2 class="productprize desktopprice">{{ product.price | money_with_currency }}</h2> 
+              
+
+              <p class="product-includes">This Product Includes:</p>
+
+              <ul class="pc-software-icons"> 
+                <li><img src="{{ 'Microsoft-Word-Logo1.png' | asset_url }}" />
+                <p>Word</p></li>
+                <li><img src="{{ 'Microsoft-PowerPoint-Logo1.png' | asset_url }}" />
+                <p>Powerpoint</p></li>
+                <li><img src="{{ 'edit_Microsoft_Excel-Logo1.png' | asset_url }}" />
+                <p>Excel</p></li>
+              </ul>
+              
+              <ul class="workspcs"> 
+                <li><img src="{{ 'windows.png' | asset_url }}" /> <span>Works on PC only</span></li>
+                <li> <img src="{{ '1pc.png' | asset_url }}" /> <span> For 1 Device </span></li>
+                </ul>
+
+              <ul class="checklist-small-details">
+                <li><i class="fa-solid fa-check"></i> <span>Buy once use forever </span> </li>
+                <li><i class="fa-solid fa-check"></i> <span>Free Lifetime Support </span></li>
+                <li><i class="fa-solid fa-check"></i> <span>Digital Download</span></li>
+              </ul>
+
+              <h2 class="productprize mobileonlyprice">{{ product.price | money_with_currency }}</h2> 
+
+              <div class="product-price-container mobileonlyprice">
+                {% if product.compare_at_price != blank %}
+                  <div class="compare-price">
+                  {% include 'retail-price', product: product %}
+                   <b>{{ product.compare_at_price | money_with_currency }}</b>
+                </div>
+                {% endif %}
+                </div>
+
+              
+            </li>
+
+           
+           
+            <li class="product-spec">
+              {% include 'bundletab'  %}
+            
+
+            </li>
+
+        </ul>
+
+      </div>
+    </div>
+    </div>
+
+  </section>
+</div>
+  
+  
+
+{% include 'three-colm' %}
+
+<div class="spacer50"></div>
+
+{% include 'tabledescript' %}
+
+<div class="spacer50"></div>
+
+{% include 'review-product' %}
+
+<div class="spacer50"></div>
+
+<div class="container-lg center-block">
+  <div class="large-margin"> {% include 'faq' %}</div>
+</div>
+
+
+</div>
+
+
+<script>
+$("#buy-windows-11-home-today-getmsoffice .pbutton span.d-flex").text("Pre Order");
+</script>
+
+<script>
+function featuresdescp(evt, NameFeats) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" activebtn", "");
+  }
+  document.getElementById(NameFeats).style.display = "block";
+  evt.currentTarget.className += " activebtn";
+}
+</script>
+
+
+
+<script>
+var acc = document.getElementsByClassName("accordionhoz");
+var b;
+
+for (b = 0; b < acc.length; b++) {
+  acc[b].addEventListener("click", function() {
+    this.classList.toggle("opentab");
+    var panelbox = this.nextElementSibling;
+    if (panelbox.style.display === "block") {
+      panelbox.style.display = "none";
+    } else {
+      panelbox.style.display = "block";
+    }
+  });
+}
+</script>

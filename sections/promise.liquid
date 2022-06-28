@@ -1,0 +1,65 @@
+<section>
+<div class="container-lg center-block">
+<div class="large-margin">
+
+<!-----##### Desktop promise #####----->
+
+<ul class="desktop-promise-container d-flex space-between">
+
+<li class="promise-block">
+<ul class="promise-item d-flex space-between align-center">
+<li>
+  <img src="{{ 'download.svg' | asset_url }}" loading="lazy">
+</li>
+<li class="promise-text">Instant Digital Download</li>
+</ul>
+</li>
+
+<li class="promise-block">
+<ul class="promise-item d-flex space-between align-center">
+<li>
+  <img src="{{ 'lifetime.svg' | asset_url }}" loading="lazy">
+</li>
+<li class="promise-text">Lifetime product guarantee</li>
+</ul>
+</li>
+
+<li class="promise-block">
+<ul class="promise-item d-flex space-between align-center">
+  <li>
+    <img src="{{ 'service.svg' | asset_url }}" loading="lazy">
+  </li>
+<li class="promise-text">Customer Service 24/7</li>
+</ul>
+</li>
+
+</ul>
+
+<!------##### Mobile promise #####------>
+
+<div class="mobile-promise-container center-block">
+<ul class="promise-item d-flex align-center">
+<li><img src="{{ 'truck.svg' | asset_url }}" loading="lazy"></li>
+<li class="promise-text">Buy now, and get in 15 min</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Promise",
+    "settings": [
+
+    ],
+    "presets":[
+        {
+        "name": "Promise",
+        "category": "Custom"
+        }
+    ]
+  }
+{% endschema %}

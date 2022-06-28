@@ -1,0 +1,72 @@
+<section class="main-2-column">
+     <div class="large-margin">
+          <div class="review-block-container d-flex space-between">
+                <div class="review-block image-mobile-only">
+                    {% if section.settings.image-featured-one != blank %}
+                         {{ section.settings.image-featured-one | image_url: width: 400 | image_tag }}
+                    {% endif %}
+               </div>
+               <div class="review-block">
+                    {% if section.settings.col-one != blank %}
+                    <h2>{{ section.settings.col-one }}</h2>
+                    {% endif %}
+                    {% if section.settings.col-one-desc != blank %}
+                         <p>{{ section.settings.col-one-desc }}</p>
+                    {% endif %}
+                    {% if section.settings.view-btn != blank %}
+                         <button class="view-btn"><a href="{{ section.settings.view-btn-link }}">{{ section.settings.view-btn }} <i class="fa-solid fa-angle-right"></i></a></button>
+                    {% endif %}
+               </div>
+               <div class="review-block image-desktop-only">
+                    {% if section.settings.image-featured-one != blank %}
+                         {{ section.settings.image-featured-one | image_url: width: 400 | image_tag }}
+                    {% endif %}
+               </div>
+         </div>
+     </div>
+</section>
+
+
+{% schema %}
+{
+"name": "Two Column Section", // Section name
+"settings": [
+{
+     "type": "image_picker",
+        "id": "image-featured-one",
+        "label": "Image"
+     },
+{
+"id": "col-one",
+"type": "text",
+"label": "Column One Title"
+},
+{
+"id": "col-one-desc",
+"type": "textarea",
+"label": "Description Col 1"
+},
+
+{
+"id": "view-btn-link",
+"type": "url",
+"label": "Button URL"
+},
+{
+"id": "view-btn",
+"type": "text",
+"label": "Button name"
+}
+],
+"presets": [
+{
+"name": "Two Column Section",
+"category": "Custom Layout"
+}
+]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.1 (72631) - https://sketchapp.com -->
+    <title>Atoms / icons / Navbar/ Color / Shop</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10.6697118,15.2572115 L10.0002468,16.7435397 L20.5021283,16.7435397 C21.054413,16.7435397 21.5021283,17.1912549 21.5021283,17.7435397 C21.5021283,18.2958244 21.054413,18.7435397 20.5021283,18.7435397 L10.0002468,18.7435397 C9.71705645,18.7435397 9.4370947,18.6833996 9.17888753,18.5670991 C8.17176346,18.1134749 7.72306314,16.9293045 8.17668731,15.9221804 L9.22744335,13.5893204 C9.22901193,13.5858379 9.23059797,13.5823687 9.23220134,13.578913 L6.1705831,7 L4,7 C3.44771525,7 3,6.55228475 3,6 C3,5.44771525 3.44771525,5 4,5 L7.44580889,5 L11.2884542,13.2572115 L18.5538028,13.2572115 L22.2033901,6.88293573 C22.4778049,6.40364984 23.0888,6.23756902 23.5680859,6.51198383 C24.0473718,6.78639864 24.2134526,7.39739378 23.9390378,7.87667966 L19.7133192,15.2572115 L10.6697118,15.2572115 Z" id="path-1"></path>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#1480C8" offset="0%"></stop>
+            <stop stop-color="#04A3FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Atoms-/-icons-/-Navbar/-Color-/-Shop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#042338" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <circle id="Oval-2" fill="url(#linearGradient-3)" fill-rule="nonzero" cx="11" cy="22" r="2"></circle>
+        <circle id="Oval-2-Copy" fill="url(#linearGradient-3)" fill-rule="nonzero" cx="19" cy="22" r="2"></circle>
+    </g>
+</svg>

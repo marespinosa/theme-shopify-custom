@@ -1,0 +1,45 @@
+<section class="mobile-only mobile-nav">
+
+<div class="large-margin" style="padding-bottom: 22px;">
+
+  <ul class="nav-icon-container d-flex space-around align-center">
+    <li>
+      <a href="/">
+        <img id="mobile-home-img" src="{{ 'icon-home.svg' | asset_url }}">
+      </a>
+    </li>
+
+    <li>
+      <a href="/collections">
+        <img id="mobile-product-img" src="{{ 'icon-product.svg' | asset_url }}">
+      </a>
+      </li>
+
+      <li class="relative">
+        <button class="cart-btn">
+          <img id="mobile-cart-img" src="{{ 'icon-cart.svg' | asset_url }}">
+
+          <span data-cart-render="item_count" class="absolute linear-orange smallest-font white-font text-center"
+          style="top: -20%; left: 12px; height: 14px; width: 14px; border-radius: 50%; font-weight: 700; padding: 2px;">
+          {{ cart.item_count }}
+          </span>
+        </button>
+      </li>
+
+    <a href="/account/login"><li><img id="mobile-account-img" src="{{ 'icon-account.svg' | asset_url }}"></li></a>
+    <li id="icon-more" style="cursor: pointer;"><img id="mobile-more-img" src="{{ 'icon-more.svg' | asset_url }}"></li>
+  </ul>
+
+  <ul class="d-flex space-around align-center">
+    <li style="font-size: 10px;">Home</li>
+    <li style="font-size: 10px;">Products</li>
+    <li style="font-size: 10px;">Cart</li>
+    <li style="font-size: 10px;">Account</li>
+    <li style="font-size: 10px;">More</li>
+  </ul>
+
+</div>
+
+<div class="rectangle-bar black-bg" style="margin-bottom: 10px"></div>
+
+</section>

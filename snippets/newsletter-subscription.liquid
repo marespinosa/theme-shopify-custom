@@ -1,0 +1,37 @@
+<section style="border-top: 1px solid #DBE3E9; border-bottom: 1px solid #DBE3E9;">
+
+  {% form 'customer' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+      <p>{{ 'general.newsletter_form.confirmation' | t }}</p>
+    {% else %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email"
+        name="contact[email]"
+        placeholder="Our newsletter subscription is absolutely FREE!
+        Sign for your newsletter and receive 8% discount today! Simply type your email Address here "
+        id="Email"
+        value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+        autocorrect="off"
+        autocapitalize="off">
+      <button type="submit" name="commit" id="Subscribe" class="linear-orange"
+      style="width: 262px; max-width: 100%; margin: 0; height: 100%;">
+        <span class="white-font">GET 10% OFF NOW</span>
+      </button>
+    {% endif %}
+  {% endform %}
+</section>
+
+<style>
+.contact-form{
+    display: flex;
+    align-items: center;
+    max-height: 100%;
+    height: 60px;
+}
+
+input[type=email]{
+    width: 100%;
+    text-align: center;
+}
+</style>

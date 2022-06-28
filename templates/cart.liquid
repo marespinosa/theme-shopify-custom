@@ -1,0 +1,198 @@
+{% comment %}
+  <form action="/cart" method="post" novalidate>
+    <table class="responsive-table">
+      <thead class="small--hide">
+        <tr>
+          <th colspan="2">{{ 'cart.label.product' | t }}</th>
+          <th>{{ 'cart.label.price' | t }}</th>
+          <th>{{ 'cart.label.quantity' | t }}</th>
+          <th>{{ 'cart.label.total' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for item in cart.items %}
+
+          <tr class="responsive-table-row">
+
+            <td data-label="{{ 'customer.order.product' | t }}">
+
+              {% if item.image != blank %}
+                <a href="{{ item.url | within: collections.all }}">
+                  {{ item | img_url: '240x240' | img_tag: item.title }}
+                </a>
+              {% endif %}
+
+            </td>
+            <td>
+              <a href="{{ item.url }}">{{ item.product.title }}</a>
+
+              {% unless item.product.has_only_default_variant %}
+                <p>{{ item.variant.title }}</p>
+              {% endunless %}
+
+              <p>{{ item.vendor }}</p>
+
+              {% assign property_size = item.properties | size %}
+
+              {% if property_size > 0 %}
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                  {{ p.first }}:
+
+                  {% if p.last contains '/uploads/' %}
+                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                  {% else %}
+                    {{ p.last }}
+                  {% endif %}
+
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                <small>{{ 'cart.general.remove' | t }}</small>
+              </a>
+            </td>
+            <td data-label="{{ 'cart.label.price' | t }}">
+              {% if item.original_line_price != item.line_price %}
+                <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                {{ item.price | money }}
+                <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                <s>{{ item.original_price | money }}</s>
+              {% else %}
+                {{ item.price | money }}
+              {% endif %}
+            </td>
+            <td data-label="{{ 'cart.label.quantity' | t }}">
+              <input type="number"
+                     name="updates[]"
+                     id="updates_{{ item.key }}"
+                     value="{{ item.quantity }}"
+                     min="0"
+                     aria-label="{{ 'cart.general.item_quantity' | t }}">
+            </td>
+            <td data-label="{{ 'cart.label.total' | t }}">
+              {{ item.line_price | money }}
+            </td>
+          </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% if settings.cart_notes_enable %}
+      <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+      <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+    {% endif %}
+
+    <p>{{ 'cart.general.subtotal' | t }}</p>
+    <p>{{ cart.total_price | money }}</p>
+    {% if cart.total_discounts > 0 %}
+      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+    {% endif %}
+    <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+    <input type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+    <input type="submit" name="checkout" class="button" value="{{ 'cart.general.checkout' | t }}">
+  </form>
+
+{% endcomment %}
+<!-----##### Checkout #####----->
+
+<form id="cart-checkout" action="/cart" method="post" novalidate>
+
+
+  <div id="fixed-place-yr-order" class="white-bg d-flex desktop-only">
+
+    <div>
+      <ul class="white-bg">
+        <p class="smallest-font dark-blue">Cart Subtotal:</p>
+        <p class="dark-blue" style="font-weight: 500; margin-right: 15px;" data-cart-render="total_price_money_with_currency"></p>
+      </ul>
+      <button type="submit" name="checkout" class="pbutton linear-orange uppercase" style="flex: 0 0 25%; width: 100%; height: 60px; padding: 19px 0 18px;">Place your order</button>
+    </div>
+  </div>
+
+
+<section data-cart-view="data-cart-view" class="light-grey cart-section">
+<div class="container-lg center-block">
+<div class="large-margin">
+
+<div rv-hide="cart.item_count | lt 1">
+
+<div style="margin-bottom: 34px;">
+  <h4 class="dark-blue">Hey {{ customer.first_name }} this is your Shopping Cart</h4>
+</div>
+
+
+<div class="d-flex space-between" style="flex-wrap: wrap;">
+
+<div rv-each-item="cart.items" class="white-bg d-flex cart-item relative">
+{% comment %}<a href="#" data-cart-remove="1">{% include 'icon-close' %}</a>{% endcomment %}
+<img rv-src="item.image | product_image_size '165x165'"/>
+
+<div class="cart-item-content" style="padding-top: 20px;">
+
+<p rv-text="item.title" class="sm-font dark-blue" style="margin-bottom: 10px; height: 50px; width: 95%;"></p>
+<p class="light-blue smallest-font" style="margin-bottom: 15px;">Brand: <span rv-text="item.vendor"></span></p>
+
+<div class="d-flex align-center space-between absolute ">
+
+  <div class="d-flex align-center white-bg number-spinner">
+  <a style="color: #1480c8" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | minus 1">-</a>
+  <p class="text-center" style="color: #505D68; font-weight: 700; width: 49px;" rv-text="item.quantity"></p>
+  <a style="color: #1480c8" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | plus 1">+</a>
+  </div>
+
+<h4 id"cart-item-price" class="black-font" rv-html="item.price | money Currency.currentCurrency"></h4>
+
+</div>
+</div>
+
+</div>
+
+{% section 'section-upsell-product' %}
+
+<!-----##### Checkout #####------>
+
+<div id="fixed-cart-checkout" class="d-flex">
+  <div class="white-bg d-flex space-between align-center desktop-only" style="flex: 0 0 75%; padding: 22px 30px 22px 66px; box-sizing: border-box;">
+    <p class="smallest-font dark-blue">Cart Subtotal:</p>
+
+    <p class="dark-blue" style="font-weight: 500;" data-cart-render="total_price_money_with_currency"></p>
+  </div>
+
+  <button type="submit" name="checkout" class="pbutton linear-orange uppercase" style="width: 100%; height: 60px; padding: 19px 0 18px;">Place your order</button>
+</div>
+
+</form>
+
+</div>
+</div>
+
+
+<!-----##### Empty cart #####----->
+
+<div rv-show="cart.item_count | lt 1">
+<section class="cart light-grey">
+<div class="center-block empty-cart-container">
+<div class="empty-cart-bg">
+<div style="padding-top: 58px;">
+<h4 class="dark-blue text-center" style="font-size: 25px; margin-bottom: 96px;">Your cart is empty</h4>
+<img class="empty-cart-img center-block" src="{{ 'empty-cart.png' | asset_img_url: 'master' }}" style="width: 270px; height: 220px;">
+<ul>
+<li class="text-center dark-blue" style="font-size: 15px; line-height: 25px;">You have no item in your shopping cart.</li>
+</ul>
+<a href="/">
+  <button class="pbutton linear-orange start-shopping center-block" style="width: 270px; margin-top: 42px;">START SHOPPING</button></a>
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
+
+</div>
+
+</section>
